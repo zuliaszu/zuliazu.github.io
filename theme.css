@@ -1,21 +1,22 @@
-/* Zulia Shavaeva, personal site: dark theme (warm charcoal paper, cream ink, clay accent).
+/* Zulia Shavaeva, personal site: dark theme (deep navy paper, cool white ink, electric cyan accent).
    Loaded after site.css. Overrides only, nothing here affects the light default. */
 
 [data-theme="dark"]{
-  --paper:oklch(19.5% 0.007 60);      /* #171412 warm charcoal */
-  --paper-2:oklch(24% 0.009 60);      /* raised surface */
-  --ink:oklch(94.5% 0.012 85);        /* cream body text */
-  --ink-2:oklch(86% 0.012 85);
-  --mute:oklch(70% 0.012 80);
-  --line:oklch(33% 0.012 65);
-  --petrol:oklch(73% 0.115 48);       /* clay, link + button colour */
-  --petrol-deep:oklch(83% 0.095 55);  /* clay hover, lighter on dark */
-  --petrol-soft:oklch(26% 0.030 45);  /* tinted clay surface */
-  --amber:oklch(78% 0.110 70);
-  --amber-deep:oklch(81% 0.120 62);   /* eyebrow text */
-  --amber-soft:oklch(30% 0.040 70);   /* decorative block */
-  --shadow:oklch(0% 0 0/.55);
-  --surface-invert:oklch(27% 0.032 45); /* replaces petrol-deep where it is a background */
+  --paper:oklch(15% 0.025 262);        /* #0a0f1c deep navy-black */
+  --paper-2:oklch(20% 0.028 260);      /* raised surface */
+  --ink:oklch(95% 0.008 230);          /* cool white text */
+  --ink-2:oklch(82% 0.015 235);
+  --mute:oklch(66% 0.02 240);
+  --line:oklch(29% 0.03 255);
+  --petrol:oklch(84% 0.13 200);        /* electric cyan: links, primary button */
+  --petrol-deep:oklch(90% 0.11 198);   /* cyan hover */
+  --petrol-soft:oklch(24% 0.05 215);   /* tinted cyan surface */
+  --amber:oklch(84% 0.13 200);         /* secondary accent = same cyan, restraint */
+  --amber-deep:oklch(84% 0.13 200);    /* eyebrow text */
+  --amber-soft:oklch(23% 0.05 215);    /* decorative block */
+  --shadow:oklch(0% 0 0/.6);
+  --surface-invert:oklch(21% 0.04 250); /* replaces petrol-deep where it is a background */
+  --fx-node:oklch(75% 0.05 230/.55);--fx-edge:oklch(70% 0.06 225/.22);--fx-hot:oklch(84% 0.13 200);--fx-grid:oklch(60% 0.04 240/.06);
   color-scheme:dark;
 }
 
@@ -23,9 +24,9 @@
 [data-theme="dark"] .skip{color:var(--paper)}
 [data-theme="dark"] .btn,[data-theme="dark"] .top nav a.btn{color:var(--paper)}
 [data-theme="dark"] .btn:hover,[data-theme="dark"] .top nav a.btn:hover{color:var(--paper)}
-[data-theme="dark"] .btn.ghost{color:var(--petrol-deep);border-color:oklch(45% 0.05 45)}
+[data-theme="dark"] .btn.ghost{color:var(--petrol);border-color:oklch(40% 0.06 220)}
 [data-theme="dark"] .btn.ghost:hover{background:var(--petrol-soft);color:var(--petrol-deep)}
-[data-theme="dark"] .btn.amber:hover{background:oklch(88% 0.11 62)}
+[data-theme="dark"] .btn.amber:hover{background:var(--petrol-deep)}
 [data-theme="dark"] .hero .pic img{box-shadow:0 30px 60px -30px var(--shadow)}
 [data-theme="dark"] .hero .pic .cap{box-shadow:0 10px 30px -18px var(--shadow)}
 [data-theme="dark"] .help a:first-child{background:var(--surface-invert);color:var(--ink)}
@@ -37,8 +38,8 @@
 [data-theme="dark"] .band{background:var(--surface-invert);color:var(--ink)}
 [data-theme="dark"] .band h2{color:var(--ink)}
 [data-theme="dark"] .band p{color:var(--ink-2)}
-[data-theme="dark"] .band .btn.ghost{color:var(--ink);border-color:oklch(48% 0.03 45)}
-[data-theme="dark"] .band .btn.ghost:hover{background:oklch(32% 0.04 45);color:var(--ink)}
+[data-theme="dark"] .band .btn.ghost{color:var(--ink);border-color:oklch(45% 0.05 230)}
+[data-theme="dark"] .band .btn.ghost:hover{background:oklch(28% 0.05 240);color:var(--ink)}
 /* images read a little hot on charcoal */
 [data-theme="dark"] .hero .pic img,[data-theme="dark"] .about .pic img,[data-theme="dark"] .talks .pic img{filter:brightness(.94) saturate(.96)}
 

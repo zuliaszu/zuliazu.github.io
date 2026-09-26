@@ -5,7 +5,7 @@ import json, pathlib, html, datetime
 ROOT = pathlib.Path(__file__).resolve().parent
 D = json.loads((ROOT / "content" / "site.json").read_text())
 esc = lambda s: html.escape(str(s), quote=True)
-FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..700,0..100&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">'
+FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">'
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
 YEAR = datetime.date.today().year
 THEME_BTN = (ROOT / 'theme-btn.html').read_text().strip()
@@ -15,10 +15,10 @@ HEAD_INLINE = (ROOT / "head-inline.js").read_text().strip() if (ROOT / "head-inl
 
 def head(title, desc, rel, extra=""):
     return (f'<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{esc(title)}</title>'
-            f'<meta name="description" content="{esc(desc)}"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:image" content="https://zuliaszu.github.io/img/zulia.jpg"><meta name="theme-color" content="#f7f5f1">'
+            f'<meta name="description" content="{esc(desc)}"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:image" content="https://zuliaszu.github.io/img/zulia.jpg"><meta name="theme-color" content="#0a0f1c">'
             f'<link rel="icon" href="{rel}img/favicon.svg" type="image/svg+xml">{FONTS}<link rel="stylesheet" href="{rel}site.css">'
             + (f'<link rel="stylesheet" href="{rel}theme.css">' if OPT["theme.css"] else "") + (f'<link rel="stylesheet" href="{rel}unlock.css">' if OPT["unlock.css"] else "")
-            + (f"<script>{HEAD_INLINE}</script>" if HEAD_INLINE else "") + f'{extra}</head><body>')
+            + (f"<script>{HEAD_INLINE}</script>" if HEAD_INLINE else "") + f'{extra}</head><body><canvas id="fx" aria-hidden="true"></canvas>')
 
 def top(rel, on):
     links = [(f"{rel}#help", "How I help", "help"), (f"{rel}#about", "About", "about"), (f"{rel}#talks", "Talks", "talks"), (f"{rel}cv/", "CV", "cv"), (D["linkedin"], "LinkedIn", "li")]
@@ -37,7 +37,7 @@ THINK = (f'''<section id="think"><div class="sec-head rv"><div><p class="eyebrow
 <div class="topics rv"><p class="eyebrow">{esc(ABOUT.get("topics_head",""))}</p><ul>{"".join(f'<li><b>{esc(x["name"])}</b><span>{esc(x["line"])}</span></li>' for x in ABOUT.get("topics", []))}</ul></div></section>''') if ABOUT.get('beliefs') else ''
 home = head(f'{D["name"]}, {D["title"]}', D["meta_description"], "") + top("", "home") + f'''
 <main id="main" class="wrap">
-<div class="hero"><canvas id="fx" aria-hidden="true"></canvas><div class="rv in"><p class="eyebrow">{esc(H["eyebrow"])}</p><h1>{esc(H["h1"])}</h1><p class="sub">{esc(H["sub"])}</p>
+<div class="hero"><div class="rv in"><p class="eyebrow">{esc(H["eyebrow"])}</p><h1>{esc(H["h1"])}</h1><span id="typed" class="typed" data-phrases='["prompt injection", "zero data retention", "agent and MCP security", "EU AI Act readiness", "getting you into the field"]' aria-hidden="true"></span><p class="sub">{esc(H["sub"])}</p>
 <div class="ctas"><a class="btn amber" href="quiz/">{esc(H["cta_primary"])} {ARROW}</a><a class="btn ghost" href="#about">{esc(H["cta_secondary"])}</a></div><p class="small" style="color:var(--mute);font-size:14.5px;margin:12px 0 0">{esc(H["cta_primary_note"])}</p></div>
 <figure class="pic rv in"><img src="img/zulia.jpg" width="880" height="1100" alt="Zulia Shavaeva, portrait by a lake" fetchpriority="high"><figcaption class="cap"><b>{esc(H["photo_caption"])}</b>{esc(H["photo_caption_sub"])}</figcaption></figure></div>
 <div class="facts rv">{"".join(f'<div><b>{esc(x["figure"])}</b><span>{esc(x["label"])}</span></div>' for x in D["proof"])}</div>
