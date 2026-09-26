@@ -7,3 +7,9 @@
 [data-theme="dark"]{--accent:var(--petrol);--accent-soft:oklch(26% 0.05 205);--bg:var(--paper);--panel:oklch(19% 0.025 262);--line:oklch(30% 0.03 258);--ink:oklch(95% 0.008 230);--mute:oklch(70% 0.02 245)}
 [data-theme="dark"] #quiz .choice{background:oklch(22% 0.025 260);color:var(--ink);border-color:var(--line)}[data-theme="dark"] #quiz .choice:hover{border-color:var(--petrol)}
 [data-theme="dark"] #quiz .n,[data-theme="dark"] #quiz .choice .k{background:oklch(28% 0.03 258);color:var(--ink)}
+
+/* Keep results in the shared palette and never gate them on an entrance effect. */
+#quiz [style*="--c:"]{--c:var(--accent)!important}
+#quiz .reveal{animation:none;opacity:1;transform:none}
+[data-theme="dark"] #quiz .reveal .rolel,[data-theme="dark"] #quiz .res .why,[data-theme="dark"] #quiz .result .whyp.close{color:var(--ink-2)}
+[data-theme="dark"] #quiz .mono{color:var(--paper)}

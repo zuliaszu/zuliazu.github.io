@@ -1,5 +1,5 @@
-/* fx.js: theme toggle + motion layer (constellation canvas, typed line, headline
-   assembly, magnetic buttons, journey reveal). No libraries. Every block is
+/* fx.js: theme toggle + motion layer (constellation canvas, typed line,
+   magnetic buttons). No libraries. Every block is
    guarded: a failure here must never break the page. */
 (function () {
   "use strict";
@@ -53,7 +53,7 @@
       var W = 0, H = 0, FH = 0, dpr = 1;
       var nodes = [], mouse = { x: -1e5, y: -1e5, on: false };
       var running = false, visible = true, raf = 0, t0 = 0, par = 0;
-      var packet = null, nextPacket = 1200, pulses = [];
+      var packet = null, nextPacket = 1200, pulses = [], lastFrame = 0;
       var COL = { node: "#2c3a52", edge: "#24344a", hot: "#35e0e6", grid: "#1b2436" };
 
       function readColours() {
@@ -64,7 +64,7 @@
       }
 
       function build() {
-        var n = W < 700 ? 40 : 90;
+        var n = W < 700 ? 24 : 60;
         nodes = [];
         for (var i = 0; i < n; i++) {
           nodes.push({
@@ -118,7 +118,12 @@
         raf = 0;
         if (!t0) t0 = ts || 0;
         var now = (ts || 0);
-        var dt = 16.7;
+        if (!reduce && lastFrame && now - lastFrame < 32) {
+          if (running) raf = requestAnimationFrame(frame);
+          return;
+        }
+        var dt = lastFrame ? Math.min(now - lastFrame, 50) : 16.7;
+        lastFrame = now;
         var time = (now - t0) / 1000;
         par = -(window.pageYOffset || 0) * 0.08;
         if (par < -500) par = -500;
@@ -131,7 +136,7 @@
         for (i = 0; i < nodes.length; i++) {
           nd = nodes[i];
           if (!reduce) {
-            nd.x += nd.vx; nd.y += nd.vy;
+            nd.x += nd.vx * dt / 16.7; nd.y += nd.vy * dt / 16.7;
             if (nd.x < 0) { nd.x = 0; nd.vx *= -1; }
             if (nd.x > W) { nd.x = W; nd.vx *= -1; }
             if (nd.y < 0) { nd.y = 0; nd.vy *= -1; }
@@ -215,7 +220,7 @@
             var P = nodes[packet.a], Q = nodes[packet.b];
             if (!P || !Q) { packet = null; }
             else {
-              packet.t += 0.012;
+              packet.t += 0.012 * dt / 16.7;
               if (packet.t >= 1) { Q.ring = 600; packet = null; }
               else {
                 var px = P.sx + (Q.sx - P.sx) * packet.t, py = P.sy + (Q.sy - P.sy) * packet.t;
@@ -313,38 +318,7 @@
     })();
   } catch (e) {}
 
-  /* ---------- 4. headline assembly ---------- */
-  try {
-    (function () {
-      var h1 = document.querySelector(".hero h1");
-      if (!h1 || h1.children.length) return;
-      var words = (h1.textContent || "").trim().split(/\s+/);
-      if (!words.length || !words[0]) return;
-      h1.textContent = "";
-      for (var i = 0; i < words.length; i++) {
-        var s = document.createElement("span");
-        s.className = "hw";
-        s.textContent = words[i];
-        h1.appendChild(s);
-        if (i < words.length - 1) h1.appendChild(document.createTextNode(" "));
-        if (reduce) { s.style.opacity = "1"; s.style.transform = "none"; continue; }
-        s.style.display = "inline-block";
-        s.style.opacity = "0";
-        s.style.transform = "translate3d(0,0.5em,0)";
-        s.style.transition = "opacity .62s cubic-bezier(.23,1,.32,1) " + (i * 60) + "ms, transform .62s cubic-bezier(.23,1,.32,1) " + (i * 60) + "ms";
-      }
-      if (reduce) return;
-      requestAnimationFrame(function () {
-        requestAnimationFrame(function () {
-          var sp = h1.querySelectorAll(".hw");
-          for (var k = 0; k < sp.length; k++) {
-            sp[k].style.opacity = "1";
-            sp[k].style.transform = "translate3d(0,0,0)";
-          }
-        });
-      });
-    })();
-  } catch (e) {}
+  /* Headings stay visible from the first paint; motion never gates content. */
 
   /* ---------- 5. magnetic buttons ---------- */
   try {
@@ -383,15 +357,4 @@
     })();
   } catch (e) {}
 
-  /* ---------- 6. route progress line ---------- */
-  try {
-    (function () {
-      var jy = document.getElementById("journey");
-      if (!jy) return;
-      if (reduce || !window.IntersectionObserver) { jy.classList.add("jy-inview"); return; }
-      new IntersectionObserver(function (es, o) {
-        if (es[0].isIntersecting) { jy.classList.add("jy-inview"); o.disconnect(); }
-      }, { threshold: 0.18 }).observe(jy);
-    })();
-  } catch (e) {}
 })();

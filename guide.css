@@ -1,0 +1,182 @@
+/* guide.css — skins the mirrored AI Security Career Platform so it reads as part of
+   zuliaszu.github.io. Loaded by integrate_guide.py AFTER the generated page's inline
+   <style>, so it wins collisions; every rule is scoped to body.guide (and the shared
+   header) so nothing here can touch the hand-built pages. */
+
+/* ---------- 1. tokens: the guide's own variables, remapped to navy / cyan ---------- */
+body.guide{
+  --zs-ink-2:oklch(36% 0.03 255);
+  --zs-panel-2:oklch(94% 0.012 240);
+  --zs-bar:oklch(90% 0.012 240);
+}
+html[data-theme="dark"] body.guide{
+  --bg:oklch(15% 0.025 262);
+  --panel:oklch(20% 0.028 260);
+  --ink:oklch(95% 0.008 230);
+  --mute:oklch(66% 0.02 240);
+  --line:oklch(29% 0.03 255);
+  --accent:oklch(84% 0.13 200);
+  --accent-soft:oklch(26% 0.05 215);
+  --warn:oklch(87% 0.1 85);
+  --warn-soft:oklch(30% 0.06 75);
+  --ok:oklch(87% 0.12 158);
+  --ok-soft:oklch(28% 0.06 158);
+  --zs-ink-2:oklch(82% 0.015 235);
+  --zs-panel-2:oklch(24% 0.03 258);
+  --zs-bar:oklch(32% 0.03 255);
+  color-scheme:dark;
+}
+html[data-theme="light"] body.guide{
+  --bg:oklch(97% 0.008 240);
+  --panel:#fff;
+  --ink:oklch(18% 0.03 260);
+  --mute:oklch(50% 0.025 250);
+  --line:oklch(88% 0.015 240);
+  --accent:oklch(46% 0.11 210);
+  --accent-soft:oklch(92% 0.04 205);
+}
+
+/* ---------- 2. type: personal-site fonts, guide's reading density kept ---------- */
+body.guide{font-family:var(--sans);font-size:16px;line-height:1.6;background:var(--bg);color:var(--ink)}
+:where(body.guide) h1,:where(body.guide) h2,:where(body.guide) h3,:where(body.guide) h4{font-family:var(--serif);font-weight:600;letter-spacing:-.025em}
+:where(body.guide) h1{font-size:36px;line-height:1.14}
+:where(body.guide) h2{font-size:26px;line-height:1.2}
+:where(body.guide) h3{font-size:18px;line-height:1.3}
+body.guide .mono,body.guide code,body.guide kbd,body.guide .pct,body.guide .db b,body.guide .facts b{font-family:var(--mono)}
+body.guide .eyebrow{font:500 12.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+
+/* the inline stylesheet hard-codes slate grey for secondary text */
+body.guide .hero p,body.guide .path-card .tag,body.guide .ph .tag,body.guide .result .why,
+body.guide .result .tag,body.guide .result .whyp.close,body.guide .res .why,body.guide .skill .sk span,
+body.guide .cc p,body.guide .ltabs a,body.guide .reveal .rolel,body.guide .muted{color:var(--zs-ink-2)}
+
+/* ---------- 3. dark-theme repairs where the guide hard-codes light surfaces ---------- */
+html[data-theme="dark"] body.guide .btn{color:var(--bg)}
+html[data-theme="dark"] body.guide .btn.ghost{background:transparent;color:var(--accent);border-color:var(--accent)}
+html[data-theme="dark"] body.guide .choice,
+html[data-theme="dark"] body.guide .opts.v .choice,
+html[data-theme="dark"] body.guide .ltabs a,
+html[data-theme="dark"] body.guide .filters button,
+html[data-theme="dark"] body.guide .outcome{background:var(--panel);color:var(--ink)}
+html[data-theme="dark"] body.guide .opts.v .choice kbd{background:var(--zs-panel-2);color:var(--mute)}
+html[data-theme="dark"] body.guide .choice.on,
+html[data-theme="dark"] body.guide .filters button.on,
+html[data-theme="dark"] body.guide .opts.v .choice.on kbd,
+html[data-theme="dark"] body.guide .mono,
+html[data-theme="dark"] body.guide .skill .n,
+html[data-theme="dark"] body.guide .ex-h .n{color:var(--bg)}
+html[data-theme="dark"] body.guide .opts.v .choice.on{background:var(--accent-soft);color:var(--ink)}
+html[data-theme="dark"] body.guide .na{background:var(--zs-panel-2);color:var(--mute)}
+html[data-theme="dark"] body.guide .cov-bars,
+html[data-theme="dark"] body.guide .db i,
+html[data-theme="dark"] body.guide .pl-bar{background:var(--zs-bar)}
+html[data-theme="dark"] body.guide .cov-bars .dem{background:oklch(46% 0.03 255)}
+html[data-theme="dark"] body.guide .mid{background:oklch(28% 0.06 230);color:oklch(87% 0.1 225)}
+html[data-theme="dark"] body.guide .lv-intro{background:oklch(27% 0.06 160);color:oklch(88% 0.12 158)}
+html[data-theme="dark"] body.guide .lv-working{background:oklch(27% 0.06 250);color:oklch(88% 0.11 240)}
+html[data-theme="dark"] body.guide .lv-advanced{background:oklch(28% 0.06 300);color:oklch(88% 0.1 300)}
+html[data-theme="dark"] body.guide .hero{background:oklch(19% 0.04 258);color:var(--ink)}
+html[data-theme="dark"] body.guide .hero h1,html[data-theme="dark"] body.guide .hero .facts b{color:var(--ink)}
+html[data-theme="dark"] body.guide .hero p,html[data-theme="dark"] body.guide .hero .promise{color:var(--zs-ink-2)}
+html[data-theme="dark"] body.guide .hero .facts{color:var(--mute)}
+html[data-theme="dark"] body.guide .hero .btn.ghost{color:var(--ink);border-color:oklch(45% 0.05 230)}
+html[data-theme="dark"] body.guide .hero .promise span::before{background:var(--accent)}
+html[data-theme="dark"] body.guide .skip{color:var(--bg)}
+html[data-theme="dark"] body.guide table th,html[data-theme="dark"] body.guide table td{border-color:var(--line)}
+
+/* ---------- 4. shared branded header (replaces the generated product nav) ---------- */
+body.guide .zs-top{position:sticky;top:0;z-index:20;background:color-mix(in oklch,var(--bg) 90%,transparent);backdrop-filter:saturate(1.2) blur(10px);border-bottom:1px solid transparent;transition:border-color .3s}
+body.guide .zs-top.scrolled{border-bottom-color:var(--line)}
+body.guide .zs-top .in{max-width:1120px;margin:0 auto;padding:12px clamp(16px,4vw,40px);display:flex;align-items:center;gap:14px;position:relative}
+body.guide .zs-top .brand{font-family:var(--serif);font-size:19px;font-weight:600;letter-spacing:-.02em;color:var(--ink);text-decoration:none;flex:0 0 auto}
+body.guide .zs-top .brand:hover{color:var(--ink)}
+body.guide .zs-back{display:inline-flex;align-items:center;gap:6px;font:600 13.5px/1 var(--sans);color:var(--accent);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:8px 13px;flex:0 0 auto;white-space:nowrap}
+body.guide .zs-back:hover{border-color:var(--accent)}
+body.guide .zs-top nav{margin-left:auto;display:flex;align-items:center;gap:20px}
+body.guide .zs-top nav a{font:500 15px/1 var(--sans);color:var(--zs-ink-2);text-decoration:none}
+body.guide .zs-top nav a:hover{color:var(--accent)}
+body.guide .zs-top nav a.on{color:var(--accent);font-weight:600}
+body.guide .zs-top nav a.btn{padding:9px 17px;font-size:14.5px;border-radius:999px;background:var(--accent);border:1px solid var(--accent);color:var(--bg)}
+body.guide .menu-btn{display:none;margin-left:auto;background:none;border:1px solid var(--line);border-radius:10px;padding:9px 13px;font:600 14px/1 var(--sans);color:var(--ink);cursor:pointer}
+body.guide .theme-btn{flex:0 0 auto}
+
+/* context strip: says where you are, and that this sits inside the personal site */
+body.guide .zs-crumb{border-bottom:1px solid var(--line);background:var(--panel)}
+body.guide .zs-crumb .in{max-width:1120px;margin:0 auto;padding:9px clamp(16px,4vw,40px);display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;font-size:13.5px;color:var(--mute)}
+body.guide .zs-crumb a{color:var(--zs-ink-2);text-decoration:none}
+body.guide .zs-crumb a:hover{color:var(--accent);text-decoration:underline}
+body.guide .zs-crumb b{color:var(--ink);font-weight:600}
+body.guide .zs-crumb .sep{opacity:.55}
+body.guide .zs-crumb .note{margin-left:auto;font:500 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+
+/* shared footer line inside the guide's own footer, no second landmark */
+body.guide .zs-foot{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline}
+body.guide .zs-foot a{color:var(--zs-ink-2)}
+body.guide .zs-foot .sep{opacity:.5}
+
+@media (max-width:900px){
+  body.guide .zs-top nav{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:6px 0 14px}
+  body.guide .zs-top.open nav{display:flex}
+  body.guide .zs-top nav a{padding:13px clamp(16px,4vw,40px);font-size:16px}
+  body.guide .zs-top nav a.btn{margin:10px clamp(16px,4vw,40px) 0;justify-content:center;border-radius:12px}
+  body.guide .menu-btn{display:inline-block}
+  body.guide .zs-top .in{flex-wrap:nowrap;gap:10px}
+  body.guide .zs-back{margin-left:auto}
+  body.guide .zs-crumb .note{margin-left:0;flex:0 0 100%}
+}
+@media (max-width:560px){
+  body.guide .zs-top .brand{font-size:16px}
+  body.guide .zs-back{padding:7px 10px;font-size:12.5px}
+}
+@media (prefers-reduced-motion:reduce){
+  body.guide .zs-top{transition:none}
+}
+
+/* Guide content uses a reading layout, not the personal hero's two-column grid. */
+body.guide .wrap{max-width:1120px;padding-inline:clamp(16px,4vw,40px)}
+body.guide .hero{display:block;margin:0;padding:clamp(32px,5vw,64px) clamp(16px,4vw,40px);background:var(--bg);border-bottom:1px solid var(--line)}
+body.guide .hero .in{max-width:1040px;margin:auto}
+body.guide .hero h1{font-size:clamp(32px,4.5vw,54px);max-width:24ch;color:var(--ink)}
+body.guide .hero p{max-width:62ch;color:var(--zs-ink-2)}
+body.guide .hero .btn.ghost{color:var(--accent);border-color:var(--line)}
+body.guide .hero .promise{color:var(--mute);gap:12px 20px}
+body.guide .hero .promise span::before{background:var(--accent)}
+body.guide .outcomes{display:none} /* The path list below already covers all seven roles. */
+body.guide .btn{border-radius:999px;font-family:var(--sans);margin-bottom:8px}
+body.guide .hero .btn+.btn{margin-left:8px}
+body.guide .zs-top nav a.btn{margin-bottom:0}
+body.guide .ph{padding-top:32px}
+body.guide .ph h1{font-size:clamp(30px,3.4vw,40px);line-height:1.15;max-width:36ch}
+body.guide .ph .progress{display:none} /* The context strip already provides the trail. */
+body.guide .zs-foot{max-width:1120px;margin:16px auto 0;padding-inline:clamp(16px,4vw,40px)}
+body.guide main,body.guide .card,body.guide .ri,body.guide .grid>*,body.guide .dem-bars{min-width:0;overflow-wrap:anywhere}
+body.guide .dem-bars .db{min-width:0}
+body.guide .res-head{min-width:0}
+body.guide [style*="--c:"]{--c:var(--accent)!important}
+body.guide .reveal .mono,body.guide .mono{background:var(--accent);color:var(--bg)}
+body.guide .filters button.on{background:var(--accent);color:var(--bg)}
+body.guide .brand::after{animation:none}
+@media(max-width:1100px){
+  body.guide .zs-top nav{gap:12px}
+}
+@media(max-width:560px){
+  body.guide .hero .btn{display:flex;justify-content:center;width:100%;margin:0 0 12px}
+  body.guide .hero .btn+.btn{margin-left:0}
+  body.guide .zs-crumb .in{font-size:13px;padding-block:10px}
+  body.guide .ph .tag{font-size:17px}
+  body.guide .zs-top .in{gap:8px;padding-inline:12px}
+  body.guide .zs-top .brand{font-size:15px}
+  body.guide .zs-back{padding:9px;font-size:12px}
+  body.guide .menu-btn{padding:9px}
+}
+@media(max-width:360px){
+  body.guide .zs-top .in{flex-wrap:wrap}
+  body.guide .zs-top .brand{flex:1 0 48%}
+}
+@media print{
+  body.guide{--ink:#17212d;--zs-ink-2:#354252;--bg:#fff;--panel:#fff;color:var(--ink);background:#fff}
+  body.guide .zs-crumb{display:none}
+}
+
+/* Results are immediately readable, including with reduced motion. */
+body.guide .reveal{animation:none;opacity:1;transform:none}

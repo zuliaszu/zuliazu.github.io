@@ -1,4 +1,4 @@
-/* Zulia Shavaeva, personal site. Warm editorial: sand paper, deep petrol ink, amber accent. */
+/* Zulia Shavaeva: navy and cyan, shared personal-site styles. */
 :root{
   --paper:oklch(97% 0.008 240);--paper-2:oklch(94% 0.012 240);--ink:oklch(18% 0.03 260);--ink-2:oklch(36% 0.03 255);--mute:oklch(50% 0.025 250);
   --line:oklch(88% 0.015 240);--petrol:oklch(46% 0.11 210);--petrol-deep:oklch(36% 0.1 215);--petrol-soft:oklch(92% 0.04 205);
@@ -77,7 +77,7 @@ section{padding:clamp(56px,8vw,112px) 0;scroll-margin-top:72px}section+section{p
 footer{border-top:1px solid var(--line);padding:34px 0 48px;color:var(--mute);font-size:14.5px}
 footer .in{display:flex;gap:18px 32px;flex-wrap:wrap;justify-content:space-between;align-items:center}footer a{color:var(--ink-2)}
 /* reveal */
-.rv{opacity:0;transform:translateY(14px);transition:opacity .7s var(--ease),transform .7s var(--ease)}.rv.in{opacity:1;transform:none}
+.rv,.rv.in{opacity:1;transform:none} /* Content is readable immediately, including without JavaScript. */
 @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.btn{transition:none}}
 /* responsive */
 @media (max-width:900px){
