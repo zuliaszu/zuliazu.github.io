@@ -1,1 +1,1 @@
-try{var t=localStorage.getItem("zs_theme")||(matchMedia("(prefers-color-scheme:light)").matches?"light":"dark");document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme="dark"}
+try{var t=localStorage.getItem("zs_theme")||"dark";document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme="dark"}
