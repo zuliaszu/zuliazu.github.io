@@ -4,3 +4,6 @@
 #hero.hidden{display:none}
 #quiz.live{background:var(--panel);border-radius:var(--r);margin-top:24px}
 #quiz h2,#quiz h3{font-family:var(--serif)}
+[data-theme="dark"]{--accent:var(--petrol);--accent-soft:oklch(28% 0.03 45);--bg:var(--paper);--panel:oklch(20% 0.008 60);--line:oklch(30% 0.01 60);--ink:oklch(93% 0.012 80);--mute:oklch(70% 0.015 60);--accent-soft:oklch(26% 0.03 45)}
+[data-theme="dark"] #quiz .choice{background:oklch(23% 0.01 60);color:var(--ink);border-color:var(--line)}[data-theme="dark"] #quiz .choice:hover{border-color:var(--petrol)}
+[data-theme="dark"] #quiz .n,[data-theme="dark"] #quiz .choice .k{background:oklch(28% 0.01 60);color:var(--ink)}

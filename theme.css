@@ -1,0 +1,75 @@
+/* Zulia Shavaeva, personal site: dark theme (warm charcoal paper, cream ink, clay accent).
+   Loaded after site.css. Overrides only, nothing here affects the light default. */
+
+[data-theme="dark"]{
+  --paper:oklch(19.5% 0.007 60);      /* #171412 warm charcoal */
+  --paper-2:oklch(24% 0.009 60);      /* raised surface */
+  --ink:oklch(94.5% 0.012 85);        /* cream body text */
+  --ink-2:oklch(86% 0.012 85);
+  --mute:oklch(70% 0.012 80);
+  --line:oklch(33% 0.012 65);
+  --petrol:oklch(73% 0.115 48);       /* clay, link + button colour */
+  --petrol-deep:oklch(83% 0.095 55);  /* clay hover, lighter on dark */
+  --petrol-soft:oklch(26% 0.030 45);  /* tinted clay surface */
+  --amber:oklch(78% 0.110 70);
+  --amber-deep:oklch(81% 0.120 62);   /* eyebrow text */
+  --amber-soft:oklch(30% 0.040 70);   /* decorative block */
+  --shadow:oklch(0% 0 0/.55);
+  --surface-invert:oklch(27% 0.032 45); /* replaces petrol-deep where it is a background */
+  color-scheme:dark;
+}
+
+/* --- places site.css hard-codes a colour or inverts on petrol-deep --- */
+[data-theme="dark"] .skip{color:var(--paper)}
+[data-theme="dark"] .btn,[data-theme="dark"] .top nav a.btn{color:var(--paper)}
+[data-theme="dark"] .btn:hover,[data-theme="dark"] .top nav a.btn:hover{color:var(--paper)}
+[data-theme="dark"] .btn.ghost{color:var(--petrol-deep);border-color:oklch(45% 0.05 45)}
+[data-theme="dark"] .btn.ghost:hover{background:var(--petrol-soft);color:var(--petrol-deep)}
+[data-theme="dark"] .btn.amber:hover{background:oklch(88% 0.11 62)}
+[data-theme="dark"] .hero .pic img{box-shadow:0 30px 60px -30px var(--shadow)}
+[data-theme="dark"] .hero .pic .cap{box-shadow:0 10px 30px -18px var(--shadow)}
+[data-theme="dark"] .help a:first-child{background:var(--surface-invert);color:var(--ink)}
+[data-theme="dark"] .help a:first-child h3{color:var(--ink)}
+[data-theme="dark"] .help a:first-child p{color:var(--ink-2)}
+[data-theme="dark"] .help a:first-child:hover{background:oklch(28% 0.035 45)}
+[data-theme="dark"] .help a:first-child:hover h3{color:var(--ink)}
+[data-theme="dark"] .pages a:hover .arr{color:var(--paper)}
+[data-theme="dark"] .band{background:var(--surface-invert);color:var(--ink)}
+[data-theme="dark"] .band h2{color:var(--ink)}
+[data-theme="dark"] .band p{color:var(--ink-2)}
+[data-theme="dark"] .band .btn.ghost{color:var(--ink);border-color:oklch(48% 0.03 45)}
+[data-theme="dark"] .band .btn.ghost:hover{background:oklch(32% 0.04 45);color:var(--ink)}
+/* images read a little hot on charcoal */
+[data-theme="dark"] .hero .pic img,[data-theme="dark"] .about .pic img,[data-theme="dark"] .talks .pic img{filter:brightness(.94) saturate(.96)}
+
+/* --- theme toggle button, sits in .top nav --- */
+.theme-btn{
+  display:inline-flex;align-items:center;gap:7px;
+  background:transparent;border:1px solid var(--line);border-radius:999px;
+  padding:7px 13px 7px 11px;font:600 14px/1 var(--sans);color:var(--ink-2);
+  cursor:pointer;-webkit-appearance:none;appearance:none}
+.theme-btn:hover{color:var(--petrol-deep);border-color:var(--petrol)}
+.theme-btn:focus-visible{outline:2px solid var(--petrol);outline-offset:2px}
+.theme-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.theme-btn .sun{display:none}.theme-btn .moon{display:block}
+[data-theme="dark"] .theme-btn .sun{display:block}[data-theme="dark"] .theme-btn .moon{display:none}
+.theme-btn .lab{letter-spacing:.02em}
+@media (max-width:900px){
+  .theme-btn{margin:10px clamp(18px,4vw,40px) 0;justify-content:center;border-radius:12px;padding:12px}
+}
+
+/* --- colour transition on theme change (colour properties only) --- */
+@media not (prefers-reduced-motion:reduce){
+  body,.top,.top nav,.brand,.menu-btn,.theme-btn,h1,h2,h3,p,a,
+  .facts,.facts div,.facts b,.facts span,.help,.help a,.help h3,.help .n,.help .go,
+  .pages a,.pages b,.pages .d,.pages .arr,.band,.band p,.talk-list,.talk-list li,
+  .talk-list span,.hero .pic .cap,.hero .pic::before,footer,footer a,.eyebrow,.sec-head p{
+    transition:background-color .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease)}
+  .btn{transition:background-color .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease),transform .25s var(--ease)}
+  .pages a:hover .arr{transition:background-color .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease)}
+}
+
+/* --- hero canvas (signature moment). Keeps the lead from patching site.css. --- */
+.hero{position:relative}
+#fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:-1;border-radius:var(--r)}
+@media (max-width:900px){#fx{display:none}}

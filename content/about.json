@@ -1,0 +1,130 @@
+{
+  "beliefs": [
+    {
+      "title": "AI security overlaps, not replaces",
+      "body": "I see AI security and cybersecurity as overlapping fields, like a Venn diagram, not one subsuming the other. AI's probabilistic nature and growing autonomy still deserve tailored defences even where existing controls help.",
+      "src": "AI Security vs Traditional Cybersecurity.txt"
+    },
+    {
+      "title": "Data attacks start early",
+      "body": "The biggest risks to data are poisoning training data and manipulating features or datasets, and they show up at the earliest stages of an attack, not at the model. If training data is not validated, everything downstream inherits the problem.",
+      "src": "Data Attacks.txt"
+    },
+    {
+      "title": "Supply chain is the whole pipeline",
+      "body": "A model file, a third-party library, a CI/CD pipeline, a cloud provider: any one of these can be the entry point, so I treat supply chain risk as running through the entire life cycle, not just the dependencies list.",
+      "src": "Supply Chain and Dependency Compromises.txt"
+    },
+    {
+      "title": "Structure follows headcount, not fashion",
+      "body": "There is no one-size-fits-all security org. Structure follows headcount and risk profile: work out which parts of the CIA triad your threat profile actually stresses, staff for that, and pick an org model on purpose rather than inheriting one.",
+      "src": "How to Structure Security for a Big Org.txt"
+    },
+    {
+      "title": "FDEs are an access question",
+      "body": "The forward deployed engineer model is an admission that the bottleneck moved from model capability to deployment reality. For anyone in security this matters twice: FDEs get deep access to production systems by design, and what they leave behind becomes part of the attack surface someone has to defend.",
+      "src": "What is a Forward Deployed Engineer.txt"
+    }
+  ],
+  "topics": [
+    {
+      "name": "AI vs traditional security",
+      "line": "Where AI security genuinely needs its own defences rather than borrowing cybersecurity's playbook.",
+      "src": "AI Security vs Traditional Cybersecurity.txt"
+    },
+    {
+      "name": "Data poisoning",
+      "line": "How unvalidated training data becomes the earliest and quietest way to compromise a model.",
+      "src": "Data Attacks.txt"
+    },
+    {
+      "name": "Model attacks",
+      "line": "Evasion, extraction and inversion, and where they actually surface in a real architecture.",
+      "src": "Model Attacks.txt"
+    },
+    {
+      "name": "Supply chain compromise",
+      "line": "Every artefact from a notebook's API key to a vendor's cloud infrastructure is part of the attack surface.",
+      "src": "Supply Chain and Dependency Compromises.txt"
+    },
+    {
+      "name": "Security org design",
+      "line": "Why most security orgs reflect yesterday's breaches instead of today's risk.",
+      "src": "How to Structure Security for a Big Org.txt"
+    },
+    {
+      "name": "Forward deployed engineering",
+      "line": "What the FDE role really is, and why it is a trust and access-control question as much as a delivery model.",
+      "src": "What is a Forward Deployed Engineer.txt"
+    },
+    {
+      "name": "AI exploits in the wild",
+      "line": "Real, documented cases of AI systems being broken outside the lab, from voice ID to a $1 car.",
+      "src": "AI Weaknesses in the Real World.txt"
+    },
+    {
+      "name": "Data science myths",
+      "line": "Pushing back on the fallacies that make people trust models more than they should.",
+      "src": "Debunking Data Science Myths.txt"
+    }
+  ],
+  "writing": [
+    {
+      "title": "AI Security vs. Traditional Cybersecurity",
+      "summary": "Argues the two fields overlap rather than one containing the other, and explains why AI-specific risks still deserve separate attention. Short, opinionated, publishable as-is.",
+      "src": "AI Security vs Traditional Cybersecurity.txt",
+      "publish_ready": true
+    },
+    {
+      "title": "How to Structure Security for a Big Organization",
+      "summary": "Lays out the functions every security org needs and the five structural models, then argues most orgs drift into a shape built by history rather than chosen on purpose. Well-sourced with external citations.",
+      "src": "How to Structure Security for a Big Org.txt",
+      "publish_ready": true
+    },
+    {
+      "title": "What is a Forward Deployed Engineer",
+      "summary": "Explains the FDE role from its Palantir origins to the AI labs, and makes the security case that FDEs are an access-control problem as much as a delivery model. Well-sourced, no internal material.",
+      "src": "What is a Forward Deployed Engineer.txt",
+      "publish_ready": true
+    },
+    {
+      "title": "Supply Chain and Dependency Compromises",
+      "summary": "Walks through every stage of an AI system, from training notebook to production jump host, mapping where supply chain compromise can enter. Detailed and technical.",
+      "src": "Supply Chain and Dependency Compromises.txt",
+      "publish_ready": false,
+      "why_not": "Reads as a chapter excerpt referencing figures and diagrams that are not included; needs rewriting as a standalone piece."
+    },
+    {
+      "title": "AI Weaknesses in the Real World",
+      "summary": "Collects documented cases of AI systems being exploited outside research settings, from voice ID bypass to a chatbot selling a car for a dollar. Grounded in named public incidents.",
+      "src": "AI Weaknesses in the Real World.txt",
+      "publish_ready": false,
+      "why_not": "Claims about specific incidents (dates, companies, outcomes) are not independently verified here and should be fact-checked before publishing."
+    },
+    {
+      "title": "Data Attacks",
+      "summary": "Explains how training data poisoning and feature manipulation compromise a model before it ever reaches production, mapped to MITRE ATLAS stages. Technically precise.",
+      "src": "Data Attacks.txt",
+      "publish_ready": false,
+      "why_not": "Written as a chapter section referencing an unincluded system diagram; needs rewriting to stand alone."
+    }
+  ],
+  "voice_notes": "She writes in short, direct sentences and states her own position plainly, often opening with 'I see' or 'I think' rather than hedging. She favours concrete, sometimes blunt framing (\"the reason is blunt\") over abstraction, and reaches for one clear metaphor per piece (a Venn diagram, a shape built by history) rather than stacking imagery. Technical pieces are structured and list-driven, mapping ideas to named frameworks like MITRE ATLAS. She rarely uses humour; the tone is measured and explanatory, closer to a briefing than a blog post. She cites sources plainly at the end of longer pieces rather than working links into the prose.",
+  "quotes": [
+    {
+      "text": "I see AI security and cybersecurity as overlapping fields, much like a Venn diagram.",
+      "src": "AI Security vs Traditional Cybersecurity.txt"
+    },
+    {
+      "text": "The structure ends up reflecting yesterday's dynamics rather than today's operating reality: a shape built by history instead of chosen on purpose.",
+      "src": "How to Structure Security for a Big Org.txt"
+    },
+    {
+      "text": "The reason is blunt: the hard part of AI is not the model.",
+      "src": "What is a Forward Deployed Engineer.txt"
+    }
+  ],
+  "think_head": "How I think about security",
+  "think_intro": "Positions I keep coming back to, taken from things I have written and talked about.",
+  "topics_head": "What I talk about"
+}

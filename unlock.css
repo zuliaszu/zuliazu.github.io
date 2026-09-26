@@ -1,0 +1,44 @@
+/* Home-page progress stepper, rendered by unlock.js into #journey.
+   Uses only site.css variables so a dark theme.css can override the palette. */
+#journey:empty{display:none}
+.jy{margin:clamp(28px,4vw,44px) 0 0}
+.jy-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.6vw,20px);counter-reset:none}
+.jy-step{position:relative;display:flex;flex-direction:column;gap:8px;padding:20px 20px 22px;border:1px solid var(--line);border-radius:var(--r);background:var(--paper-2)}
+.jy-step::after{content:"";position:absolute;top:34px;right:calc(-1 * clamp(12px,1.6vw,20px) - 1px);width:clamp(12px,1.6vw,20px);height:1px;background:var(--line)}
+.jy-step:last-child::after{display:none}
+.jy-top{display:flex;align-items:center;gap:10px;min-height:28px}
+.jy-n{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--petrol);color:var(--paper);font:600 14px/1 var(--sans)}
+.jy-lock{display:inline-flex;color:var(--mute)}
+.jy-lock svg{width:17px;height:17px}
+.jy-flag{font:600 11.5px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--amber-deep);background:var(--amber-soft);border-radius:999px;padding:5px 9px}
+.jy-h{font-size:clamp(18px,1.5vw,21px);line-height:1.2}
+.jy-role{margin:0;font:600 14.5px/1.4 var(--sans);color:var(--petrol-deep)}
+.jy-b{margin:0;font-size:14.5px;line-height:1.5;color:var(--ink-2)}
+.jy-go{margin-top:auto;display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:14.5px;color:var(--petrol);text-decoration:none}
+.jy-go svg{width:15px;height:15px;transition:transform .25s var(--ease)}
+.jy-go:hover{color:var(--petrol-deep);text-decoration:underline;text-underline-offset:3px}
+.jy-go:hover svg{transform:translateX(3px)}
+.jy-go:focus-visible{outline:2px solid var(--petrol);outline-offset:3px;border-radius:4px}
+.jy-locked-note{margin:auto 0 0;font-size:14px;color:var(--mute)}
+.jy-step.is-locked{background:transparent;border-style:dashed}
+.jy-step.is-locked .jy-n{background:transparent;color:var(--mute);border:1px solid var(--line)}
+.jy-step.is-locked .jy-h,.jy-step.is-locked .jy-b{color:var(--mute)}
+.jy-msg{margin:20px 0 0;font:600 15.5px/1.5 var(--sans);color:var(--petrol-deep)}
+.jy-foot{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;margin:14px 0 0;font-size:14px;color:var(--mute)}
+.jy-reset{background:none;border:0;padding:0;font:inherit;color:var(--petrol);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.jy-reset:hover{color:var(--petrol-deep)}
+.jy-reset:focus-visible{outline:2px solid var(--petrol);outline-offset:3px;border-radius:4px}
+/* unlock animation: transform and opacity only */
+@keyframes jy-pop{from{opacity:.25;transform:translateY(10px) scale(.985)}to{opacity:1;transform:none}}
+@keyframes jy-fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.jy-pop{animation:jy-pop .4s var(--ease) both}
+.jy-msg.is-new{animation:jy-fade .4s var(--ease) 1.2s both}
+@media (max-width:860px){
+  .jy-steps{grid-template-columns:1fr}
+  .jy-step{padding:16px 18px 18px}
+  .jy-step::after{top:auto;right:auto;left:34px;bottom:calc(-1 * clamp(12px,1.6vw,20px) - 1px);width:1px;height:clamp(12px,1.6vw,20px)}
+}
+@media (prefers-reduced-motion:reduce){
+  .jy-pop,.jy-msg.is-new{animation:none}
+  .jy-go svg,.jy-go:hover svg{transition:none;transform:none}
+}

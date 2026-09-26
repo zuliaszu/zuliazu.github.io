@@ -37,15 +37,15 @@
   "help": [
     {
       "title": "Find the AI security role that fits the work you already do",
-      "body": "Sixteen questions about how you work today, not a self-rating. You get one of six roles, the skills it asks for against what you have, and a week-by-week plan for the gaps.",
+      "body": "Sixteen questions about how you work today, not a self-rating. You get one of seven roles, the skills it asks for against what you have, and a week-by-week plan for the gaps.",
       "link_label": "Take the quiz",
       "href": "quiz/",
       "cta": true
     },
     {
-      "title": "Follow one of six learning paths",
-      "body": "Engineer, red team, architect, governance, consulting, research. Each path was built from real job postings: skills in the order to learn them, free resources first, one exercise that proves it.",
-      "link_label": "See the six paths",
+      "title": "Follow one of seven learning paths",
+      "body": "Engineer, red team, architect, governance, compliance and assurance, consulting, research. Each path was built from real job postings: skills in the order to learn them, free resources first, one exercise that proves it.",
+      "link_label": "See the seven paths",
       "href": "https://zuliaszu.github.io/ai-security-career-platform/#paths"
     },
     {
@@ -99,7 +99,7 @@
   "pages": [
     {
       "title": "AI Security Career Platform",
-      "desc": "The quiz, six paths and the Learn library. Free, no account, nothing leaves your browser.",
+      "desc": "The quiz, seven paths and the Learn library. Free, no account, nothing leaves your browser.",
       "href": "https://zuliaszu.github.io/ai-security-career-platform/"
     },
     {
@@ -132,7 +132,7 @@
   "quiz_page": {
     "title": "Which AI security role fits you? | Zulia Shavaeva",
     "h1": "Which AI security role fits the work you already do?",
-    "sub": "Sixteen questions, one per screen. You pick the sentence that describes you, not a number. At the end: one of six roles, the skills it asks for against what you have today, a week-by-week plan and one exercise that proves it. Nothing you enter leaves your browser.",
+    "sub": "Sixteen questions, one per screen. You pick the sentence that describes you, not a number. At the end: one of seven roles, the skills it asks for against what you have today, a week-by-week plan and one exercise that proves it. Nothing you enter leaves your browser.",
     "note": "The quiz and its rules are open source; the result pages open on my AI Security Career Platform."
   },
   "footer_line": "Views on this site are my own, not my employer's."
