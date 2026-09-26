@@ -112,3 +112,10 @@ body{position:relative;isolation:auto}
 .help{background:var(--line)}.help a{background:color-mix(in oklch,var(--paper) 86%,transparent)}
 .topics li,.talk-list,.pages,.beliefs li,.facts{backdrop-filter:blur(2px)}
 .band{background:var(--surface-invert,var(--petrol-deep));border:1px solid var(--line)}
+
+.hero .sub p{margin:0 0 .75em}.hero .sub p:last-child{margin-bottom:0}
+.about .text p.eyebrow{font:500 12.5px/1.5 var(--mono);letter-spacing:.12em;color:var(--petrol)}
+.eyebrow{line-height:1.5}
+
+.hero .pic{margin-inline:0}
+@media(max-width:900px){.hero .pic{width:min(calc(100% - 14px),360px)}}

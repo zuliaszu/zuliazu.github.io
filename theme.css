@@ -72,5 +72,4 @@
 
 /* --- hero canvas (signature moment). Keeps the lead from patching site.css. --- */
 .hero{position:relative}
-#fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:-1;border-radius:var(--r)}
-@media (max-width:900px){#fx{display:none}}
+#fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:-1}

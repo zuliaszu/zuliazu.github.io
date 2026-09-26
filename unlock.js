@@ -4,7 +4,7 @@
 (function () {
   "use strict";
 
-  var PLATFORM = "https://zuliaszu.github.io/ai-security-career-platform/";
+  var PLATFORM = "ai-security-career-platform/";
   var SEEN_KEY = "zs_seen_run";
 
   var ROLES = {
@@ -128,7 +128,7 @@
     var base = s.done ? PLATFORM + "paths/" + s.slug + ".html" : null;
     var plan = readJSON("aiscp_plan");
     var ticks = doneCount();
-    var planNote = "Eight weeks, week by week, on the platform.";
+    var planNote = "A study schedule based on your available time.";
     if (s.done && plan) {
       planNote = ticks > 0
         ? "Started. " + ticks + (ticks === 1 ? " step" : " steps") + " ticked off."
@@ -152,7 +152,7 @@
       },
       {
         n: 3, open: s.done,
-        head: "Your 8-week plan",
+        head: "Your study plan",
         body: planNote,
         href: PLATFORM + "plan.html", cta: "Open the plan",
         flag: (s.done && plan) ? "Started" : null
@@ -160,7 +160,7 @@
       {
         n: 4, open: s.done,
         head: "Prove it",
-        body: "One exercise that shows you can do the work, with what good looks like.",
+        body: "A practice exercise with a deliverable and self-checks.",
         href: base ? base + "#proof" : null, cta: "Open the exercise"
       }
     ];

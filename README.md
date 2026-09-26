@@ -1,16 +1,17 @@
-# zuliaszu.github.io
+# Zulia Shavaeva
 
-Personal site of Zulia Shavaeva, served by GitHub Pages from `main` (root).
+Personal site and free AI security learning guide.
 
-- `content/site.json` is the copy. Edit it, then run `/usr/bin/python3 build.py` to regenerate `index.html` and `quiz/index.html`.
-- `cv/index.html` is hand-maintained. Regenerate the PDF after editing it (print the page to A4; the print stylesheet is in the file).
-- `quiz/quiz.js` and `quiz/quiz.css` are copied from the career platform build (`docs/embed/` in github.com/zuliaszu/ai-security-career-platform). Copy them again after a platform rebuild. `quiz/quiz-skin.css` restyles the quiz to this site.
-- `site.css`, `site.js`: design system and the small amount of behaviour (menu, reveal on scroll).
-- `theme.css`, `fx.js`, `head-inline.js`, `theme-btn.html`: dark theme (default, warm charcoal and clay), the toggle in the nav (localStorage `zs_theme`), and the hero canvas (agent graph, pauses off-screen, static under reduced motion).
-- `unlock.js`, `unlock.css`: the four-step route under the hero. Steps 2 to 4 open once the quiz has written `aiscp_runs` (shared localStorage with the platform, same origin). `window.ZS.unlockState()` exposes the result.
-- `content/about.json`: positions, topics and pull quote for the "How I think about security" section, drawn from Zulia's own scripts.
+Published from `main`, root folder, using GitHub Pages.
+URL: https://zuliaszu.github.io/zuliazu.github.io/
 
-Rules: no customer or client names, no phone or email, no employer-internal terms. Views are Zulia's own.
+## Updating the site
 
-## ai-security-career-platform/
-Mirror of the platform build output (`docs/` in the ai_security_career_platform repo), so `https://zuliaszu.github.io/ai-security-career-platform/` is served from this user site whether or not that repo has Pages enabled. Do not edit here; run `sh sync_site.sh` in the platform repo after `build_product.py`.
+- Edit `content/site.json`, then run `python3 build.py`.
+- `cv/index.html` is hand-maintained. Regenerate the PDF after changes.
+- `ai-security-career-platform/` contains the generated learning guide. Sync it from the platform build output; do not edit generated HTML.
+- The embedded quiz reads `quiz/quiz.js`; plan persistence uses `ai-security-career-platform/embed/plan.js`.
+- Links within the site are relative so the quiz, resources and plans work under a project-site URL.
+- `head-inline.js` sets dark mode unless a visitor has saved a light-mode choice.
+
+No customer names, personal contact details or internal identifiers belong in this repository. Contact is through LinkedIn.

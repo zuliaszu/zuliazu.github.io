@@ -1,0 +1,779 @@
+{
+  "version": "v1.0",
+  "note": "Rule-based scoring. Each rule adds fixed points to named clusters when its condition matches an answer; op 'has' matches when a multi-select answer contains the value. Scores are sums of matched rule points; nothing is learned or inferred statistically. v1.0 (25 Sep): skill questions are behaviour-anchored (values 1, 2, 4, 5: none, basic, working, strong), a 'most of your week' multi-select adds background evidence, salary rules removed, every label is a second-person sentence used verbatim in 'Why this fit'.",
+  "cluster_names": [
+    "AI/Agent Security Engineer",
+    "AI Red Team / Adversarial Testing",
+    "AI Governance / GRC",
+    "AI Security Architect",
+    "AI Security Research / Applied Science",
+    "Consulting / Field delivery management",
+    "AI Compliance and Assurance"
+  ],
+  "rules": [
+    {
+      "id": "R-role-soc",
+      "field": "role_family",
+      "op": "eq",
+      "value": "soc",
+      "points": {
+        "AI/Agent Security Engineer": 1,
+        "AI Red Team / Adversarial Testing": 1,
+        "AI Security Architect": 1
+      },
+      "label": "You come from SOC and detection work, which transfers to monitoring AI systems and to testing them",
+      "kind": "background"
+    },
+    {
+      "id": "R-role-cloud",
+      "field": "role_family",
+      "op": "eq",
+      "value": "cloud",
+      "points": {
+        "AI/Agent Security Engineer": 3,
+        "AI Security Architect": 3
+      },
+      "label": "You come from cloud security, and securing model and agent workloads is mostly cloud security with new components",
+      "kind": "background"
+    },
+    {
+      "id": "R-role-architecture",
+      "field": "role_family",
+      "op": "eq",
+      "value": "architecture",
+      "points": {
+        "AI Security Architect": 4,
+        "AI Governance / GRC": 1
+      },
+      "label": "You come from security architecture, and AI system design reviews are the same craft applied to new parts",
+      "kind": "background"
+    },
+    {
+      "id": "R-role-pentest",
+      "field": "role_family",
+      "op": "eq",
+      "value": "pentest",
+      "points": {
+        "AI Red Team / Adversarial Testing": 4,
+        "AI/Agent Security Engineer": 1
+      },
+      "label": "You come from pentesting or red teaming, which is the most direct route into AI red teaming",
+      "kind": "background"
+    },
+    {
+      "id": "R-role-appsec",
+      "field": "role_family",
+      "op": "eq",
+      "value": "appsec",
+      "points": {
+        "AI/Agent Security Engineer": 4,
+        "AI Red Team / Adversarial Testing": 2
+      },
+      "label": "You come from AppSec, and guardrail and agent code is application security on a new kind of application",
+      "kind": "background"
+    },
+    {
+      "id": "R-role-grc",
+      "field": "role_family",
+      "op": "eq",
+      "value": "grc",
+      "points": {
+        "AI Governance / GRC": 4
+      },
+      "label": "You come from GRC, and AI governance frameworks are built for exactly your way of working",
+      "kind": "background"
+    },
+    {
+      "id": "R-role-iam",
+      "field": "role_family",
+      "op": "eq",
+      "value": "iam",
+      "points": {
+        "AI Security Architect": 3,
+        "AI/Agent Security Engineer": 2
+      },
+      "label": "You come from IAM, and least privilege for agents and their tools is the open problem in agent security",
+      "kind": "background"
+    },
+    {
+      "id": "R-role-consultant",
+      "field": "role_family",
+      "op": "eq",
+      "value": "consultant",
+      "points": {
+        "Consulting / Field delivery management": 5,
+        "AI Security Architect": 1,
+        "AI Governance / GRC": 1
+      },
+      "label": "You come from consulting, which is the background field-delivery and advisory roles are built on",
+      "kind": "background"
+    },
+    {
+      "id": "R-role-manager",
+      "field": "role_family",
+      "op": "eq",
+      "value": "manager",
+      "points": {
+        "Consulting / Field delivery management": 3,
+        "AI Governance / GRC": 2
+      },
+      "label": "You come from management, which maps onto delivery management and owning a governance programme",
+      "kind": "background"
+    },
+    {
+      "id": "R-role-student",
+      "field": "role_family",
+      "op": "eq",
+      "value": "student",
+      "points": {
+        "AI Security Research / Applied Science": 2,
+        "AI Red Team / Adversarial Testing": 1,
+        "AI/Agent Security Engineer": 1
+      },
+      "label": "You are early in your career, and research and hands-on testing tracks hire the most entrants",
+      "kind": "background"
+    },
+    {
+      "id": "R-role-ml",
+      "field": "role_family",
+      "op": "eq",
+      "value": "ml",
+      "points": {
+        "AI Security Research / Applied Science": 5,
+        "AI/Agent Security Engineer": 1,
+        "AI Red Team / Adversarial Testing": 1
+      },
+      "label": "You come from ML or data engineering, which is the most direct route into applied AI security research",
+      "kind": "background"
+    },
+    {
+      "id": "R-role-other",
+      "field": "role_family",
+      "op": "eq",
+      "value": "other",
+      "points": {},
+      "label": "Your background did not match a listed role family, so nothing was added for it",
+      "kind": "background"
+    },
+    {
+      "id": "R-years-0-2",
+      "field": "years",
+      "op": "eq",
+      "value": "0-2",
+      "points": {
+        "AI/Agent Security Engineer": 1,
+        "AI Red Team / Adversarial Testing": 1
+      },
+      "label": "With 0-2 years, hands-on entry tracks are the realistic first step",
+      "kind": "background"
+    },
+    {
+      "id": "R-years-3-5",
+      "field": "years",
+      "op": "eq",
+      "value": "3-5",
+      "points": {
+        "AI/Agent Security Engineer": 2,
+        "AI Red Team / Adversarial Testing": 2,
+        "AI Security Architect": 1
+      },
+      "label": "With 3-5 years you are placed for an individual-contributor engineering or testing move",
+      "kind": "background"
+    },
+    {
+      "id": "R-years-6-10",
+      "field": "years",
+      "op": "eq",
+      "value": "6-10",
+      "points": {
+        "AI Security Architect": 2,
+        "AI Governance / GRC": 2,
+        "Consulting / Field delivery management": 2
+      },
+      "label": "With 6-10 years you are placed for architecture, governance or delivery roles",
+      "kind": "background"
+    },
+    {
+      "id": "R-years-10+",
+      "field": "years",
+      "op": "eq",
+      "value": "10+",
+      "points": {
+        "AI Security Architect": 3,
+        "Consulting / Field delivery management": 3,
+        "AI Governance / GRC": 2
+      },
+      "label": "With more than 10 years you are placed for senior architecture, advisory and governance roles",
+      "kind": "background"
+    },
+    {
+      "id": "R-week-alerts",
+      "field": "week_activities",
+      "op": "has",
+      "value": "alerts",
+      "points": {
+        "AI Red Team / Adversarial Testing": 1,
+        "AI/Agent Security Engineer": 1
+      },
+      "label": "Most of your week is alerts and investigations, which transfers to testing and monitoring AI systems",
+      "kind": "background"
+    },
+    {
+      "id": "R-week-code",
+      "field": "week_activities",
+      "op": "has",
+      "value": "code",
+      "points": {
+        "AI/Agent Security Engineer": 2,
+        "AI Security Research / Applied Science": 1
+      },
+      "label": "Most of your week is writing code, which engineering and research roles are built on",
+      "kind": "background"
+    },
+    {
+      "id": "R-week-designs",
+      "field": "week_activities",
+      "op": "has",
+      "value": "designs",
+      "points": {
+        "AI Security Architect": 3
+      },
+      "label": "Most of your week is reviewing designs, which is the core of the architect role",
+      "kind": "background"
+    },
+    {
+      "id": "R-week-pentest",
+      "field": "week_activities",
+      "op": "has",
+      "value": "pentest",
+      "points": {
+        "AI Red Team / Adversarial Testing": 3
+      },
+      "label": "Most of your week is offensive testing, which is the core of the red team role",
+      "kind": "background"
+    },
+    {
+      "id": "R-week-policy",
+      "field": "week_activities",
+      "op": "has",
+      "value": "policy",
+      "points": {
+        "AI Governance / GRC": 3
+      },
+      "label": "Most of your week is policy, audit and risk work, which is the core of the governance role",
+      "kind": "background"
+    },
+    {
+      "id": "R-week-customers",
+      "field": "week_activities",
+      "op": "has",
+      "value": "customers",
+      "points": {
+        "Consulting / Field delivery management": 3
+      },
+      "label": "Most of your week is with customers, which is the core of the consulting role",
+      "kind": "background"
+    },
+    {
+      "id": "R-week-people",
+      "field": "week_activities",
+      "op": "has",
+      "value": "people",
+      "points": {
+        "Consulting / Field delivery management": 2,
+        "AI Governance / GRC": 1
+      },
+      "label": "Most of your week is managing people, which maps onto delivery management and programme ownership",
+      "kind": "background"
+    },
+    {
+      "id": "R-week-experiments",
+      "field": "week_activities",
+      "op": "has",
+      "value": "experiments",
+      "points": {
+        "AI Security Research / Applied Science": 3
+      },
+      "label": "Most of your week is experiments and evaluation, which is the core of the research role",
+      "kind": "background"
+    },
+    {
+      "id": "R-cloud-high",
+      "field": "cloud_depth",
+      "op": "gte",
+      "value": 4,
+      "points": {
+        "AI Security Architect": 3,
+        "AI/Agent Security Engineer": 2
+      },
+      "label": "You design or review security for cloud workloads, which architect and engineer postings ask for",
+      "kind": "skill"
+    },
+    {
+      "id": "R-cloud-low",
+      "field": "cloud_depth",
+      "op": "lte",
+      "value": 2,
+      "points": {
+        "AI Governance / GRC": 1
+      },
+      "label": "You do not yet design cloud security, which points to governance rather than platform work",
+      "kind": "skill"
+    },
+    {
+      "id": "R-code-high",
+      "field": "coding",
+      "op": "gte",
+      "value": 4,
+      "points": {
+        "AI/Agent Security Engineer": 4,
+        "AI Security Research / Applied Science": 3,
+        "AI Red Team / Adversarial Testing": 2
+      },
+      "label": "You can write a working tool in a day or better, which engineering and research postings require",
+      "kind": "skill"
+    },
+    {
+      "id": "R-code-low",
+      "field": "coding",
+      "op": "lte",
+      "value": 2,
+      "points": {
+        "AI Governance / GRC": 3,
+        "Consulting / Field delivery management": 2,
+        "AI Security Architect": 1
+      },
+      "label": "You do not yet write working tools, which points to governance and advisory tracks",
+      "kind": "skill"
+    },
+    {
+      "id": "R-appsec-high",
+      "field": "appsec",
+      "op": "gte",
+      "value": 4,
+      "points": {
+        "AI/Agent Security Engineer": 3,
+        "AI Red Team / Adversarial Testing": 1
+      },
+      "label": "You do code review or threat modelling on applications, which guardrail and secure-SDLC work needs",
+      "kind": "skill"
+    },
+    {
+      "id": "R-arch-high",
+      "field": "architecture",
+      "op": "gte",
+      "value": 4,
+      "points": {
+        "AI Security Architect": 4
+      },
+      "label": "You run threat models and design reviews, which is what architect postings ask for",
+      "kind": "skill"
+    },
+    {
+      "id": "R-grc-high",
+      "field": "grc",
+      "op": "gte",
+      "value": 4,
+      "points": {
+        "AI Governance / GRC": 4
+      },
+      "label": "You map systems to frameworks and write risk registers, which AI governance postings ask for",
+      "kind": "skill"
+    },
+    {
+      "id": "R-red-high",
+      "field": "redteam",
+      "op": "gte",
+      "value": 4,
+      "points": {
+        "AI Red Team / Adversarial Testing": 4,
+        "AI Security Research / Applied Science": 1
+      },
+      "label": "You test systems and write findings professionally, which adversarial testing postings ask for",
+      "kind": "skill"
+    },
+    {
+      "id": "R-soc-high",
+      "field": "soc",
+      "op": "gte",
+      "value": 4,
+      "points": {
+        "AI/Agent Security Engineer": 1,
+        "AI Red Team / Adversarial Testing": 1
+      },
+      "label": "You write detections and run investigations, useful for detection work in engineering and testing roles",
+      "kind": "skill"
+    },
+    {
+      "id": "R-work-build",
+      "field": "preferred_work",
+      "op": "eq",
+      "value": "build",
+      "points": {
+        "AI/Agent Security Engineer": 4,
+        "AI Security Architect": 1
+      },
+      "label": "You said you want to build, which is what engineering roles are",
+      "kind": "preference"
+    },
+    {
+      "id": "R-work-break",
+      "field": "preferred_work",
+      "op": "eq",
+      "value": "break",
+      "points": {
+        "AI Red Team / Adversarial Testing": 4
+      },
+      "label": "You said you want to break things, which is what red team roles are",
+      "kind": "preference"
+    },
+    {
+      "id": "R-work-assess",
+      "field": "preferred_work",
+      "op": "eq",
+      "value": "assess",
+      "points": {
+        "AI Security Architect": 4,
+        "Consulting / Field delivery management": 1
+      },
+      "label": "You said you want to assess and design, which is what architect roles are",
+      "kind": "preference"
+    },
+    {
+      "id": "R-work-govern",
+      "field": "preferred_work",
+      "op": "eq",
+      "value": "govern",
+      "points": {
+        "AI Governance / GRC": 4
+      },
+      "label": "You said you want to govern, which is what governance roles are",
+      "kind": "preference"
+    },
+    {
+      "id": "R-work-research",
+      "field": "preferred_work",
+      "op": "eq",
+      "value": "research",
+      "points": {
+        "AI Security Research / Applied Science": 5,
+        "AI Red Team / Adversarial Testing": 1
+      },
+      "label": "You said you want to research, which is what applied science roles are",
+      "kind": "preference"
+    },
+    {
+      "id": "R-work-advise",
+      "field": "preferred_work",
+      "op": "eq",
+      "value": "advise",
+      "points": {
+        "Consulting / Field delivery management": 5,
+        "AI Governance / GRC": 1
+      },
+      "label": "You said you want to advise clients, which is what consulting roles are",
+      "kind": "preference"
+    },
+    {
+      "id": "R-cf-yes",
+      "field": "customer_facing",
+      "op": "eq",
+      "value": "yes",
+      "points": {
+        "Consulting / Field delivery management": 4,
+        "AI Security Architect": 1
+      },
+      "label": "You are willing to be customer-facing, which most consulting postings require",
+      "kind": "preference"
+    },
+    {
+      "id": "R-cf-no",
+      "field": "customer_facing",
+      "op": "eq",
+      "value": "no",
+      "points": {
+        "AI/Agent Security Engineer": 2,
+        "AI Security Research / Applied Science": 2,
+        "AI Red Team / Adversarial Testing": 1
+      },
+      "label": "You would rather not be customer-facing, which fits engineering, research and test roles",
+      "kind": "preference"
+    },
+    {
+      "id": "R-hours-lt2",
+      "field": "hours_per_week",
+      "op": "eq",
+      "value": "<2",
+      "points": {
+        "AI Governance / GRC": 2,
+        "Consulting / Field delivery management": 1
+      },
+      "label": "Under 2 hours a week suits reading-led governance and advisory preparation",
+      "kind": "pace"
+    },
+    {
+      "id": "R-hours-2-5",
+      "field": "hours_per_week",
+      "op": "eq",
+      "value": "2-5",
+      "points": {
+        "AI Governance / GRC": 1,
+        "AI Security Architect": 1,
+        "Consulting / Field delivery management": 1
+      },
+      "label": "2-5 hours a week suits governance, architecture and advisory preparation",
+      "kind": "pace"
+    },
+    {
+      "id": "R-hours-5-10",
+      "field": "hours_per_week",
+      "op": "eq",
+      "value": "5-10",
+      "points": {
+        "AI/Agent Security Engineer": 1,
+        "AI Red Team / Adversarial Testing": 1,
+        "AI Security Architect": 1
+      },
+      "label": "5-10 hours a week is enough for hands-on lab practice",
+      "kind": "pace"
+    },
+    {
+      "id": "R-hours-10plus",
+      "field": "hours_per_week",
+      "op": "eq",
+      "value": "10+",
+      "points": {
+        "AI/Agent Security Engineer": 2,
+        "AI Red Team / Adversarial Testing": 2,
+        "AI Security Research / Applied Science": 2
+      },
+      "label": "10 or more hours a week supports build-heavy and research-heavy preparation",
+      "kind": "pace"
+    },
+    {
+      "id": "R-timeframe-0-3",
+      "field": "timeframe",
+      "op": "eq",
+      "value": "0-3",
+      "points": {
+        "AI Governance / GRC": 1,
+        "Consulting / Field delivery management": 1
+      },
+      "label": "A 0-3 month timeframe favours tracks that reuse your existing experience",
+      "kind": "pace"
+    },
+    {
+      "id": "R-timeframe-3-6",
+      "field": "timeframe",
+      "op": "eq",
+      "value": "3-6",
+      "points": {
+        "AI/Agent Security Engineer": 1,
+        "AI Security Architect": 1,
+        "AI Red Team / Adversarial Testing": 1
+      },
+      "label": "A 3-6 month timeframe allows a focused hands-on skill build",
+      "kind": "pace"
+    },
+    {
+      "id": "R-timeframe-6-12",
+      "field": "timeframe",
+      "op": "eq",
+      "value": "6-12",
+      "points": {
+        "AI/Agent Security Engineer": 1,
+        "AI Red Team / Adversarial Testing": 1,
+        "AI Security Architect": 1,
+        "AI Security Research / Applied Science": 1
+      },
+      "label": "A 6-12 month timeframe allows a deeper technical build",
+      "kind": "pace"
+    },
+    {
+      "id": "R-timeframe-12plus",
+      "field": "timeframe",
+      "op": "eq",
+      "value": "12+",
+      "points": {
+        "AI Security Research / Applied Science": 2,
+        "AI/Agent Security Engineer": 1
+      },
+      "label": "A timeframe over 12 months allows the longest transitions, including research",
+      "kind": "pace"
+    },
+    {
+      "id": "R-role-grc-compliance",
+      "field": "role_family",
+      "op": "eq",
+      "value": "grc",
+      "points": {
+        "AI Compliance and Assurance": 3
+      },
+      "label": "You come from GRC, and audit, evidence and certification work is the assurance side of that same job",
+      "kind": "background"
+    },
+    {
+      "id": "R-week-policy-compliance",
+      "field": "week_activities",
+      "op": "has",
+      "value": "policy",
+      "points": {
+        "AI Compliance and Assurance": 3
+      },
+      "label": "Most of your week is policy, audit and risk work, and audit and evidence work is the core of the assurance role",
+      "kind": "background"
+    },
+    {
+      "id": "R-grc-high-compliance",
+      "field": "grc",
+      "op": "gte",
+      "value": 4,
+      "points": {
+        "AI Compliance and Assurance": 3
+      },
+      "label": "You map systems to frameworks already, which is what conformity assessment and control mapping ask for",
+      "kind": "skill"
+    },
+    {
+      "id": "R-code-low-compliance",
+      "field": "coding",
+      "op": "lte",
+      "value": 2,
+      "points": {
+        "AI Compliance and Assurance": 2
+      },
+      "label": "You do not yet write working tools, and assurance work is written and evidential rather than built",
+      "kind": "skill"
+    },
+    {
+      "id": "R-cf-yes-compliance",
+      "field": "customer_facing",
+      "op": "eq",
+      "value": "yes",
+      "points": {
+        "AI Compliance and Assurance": 2
+      },
+      "label": "You are willing to face clients, which assurance work needs for auditors, regulators and customer questionnaires",
+      "kind": "preference"
+    },
+    {
+      "id": "R-work-assure",
+      "field": "preferred_work",
+      "op": "eq",
+      "value": "assure",
+      "points": {
+        "AI Compliance and Assurance": 5
+      },
+      "label": "You said you want to prove systems are compliant, which is what assurance and audit roles are",
+      "kind": "preference"
+    }
+  ],
+  "clusters": {
+    "AI/Agent Security Engineer": {
+      "core_skills": [
+        "LLM-specific security knowledge (prompt injection, LLM risk, LLM architecture)",
+        "Agents / agentic systems security",
+        "Coding ability required (Python most named)",
+        "AppSec (secure SDLC, code review, vuln management)",
+        "Cloud platform security (AWS/Azure/GCP)"
+      ],
+      "next_steps": [
+        "Build one small LLM or agent application yourself, then write down every way you can make it misbehave.",
+        "Add input/output guardrails to that application and test them with known prompt-injection payloads.",
+        "Read the OWASP Top 10 for LLM Applications end to end and map each item to code you have written."
+      ]
+    },
+    "AI Red Team / Adversarial Testing": {
+      "core_skills": [
+        "Red teaming / adversarial testing",
+        "LLM-specific security knowledge (prompt injection, LLM risk, LLM architecture)",
+        "Coding ability required (Python most named)",
+        "Agents / agentic systems security"
+      ],
+      "next_steps": [
+        "Work through a public prompt-injection or jailbreak challenge set and keep notes on what worked.",
+        "Write a short repeatable test plan for one model or agent, including pass/fail criteria.",
+        "Practise writing findings the way a pentest report does: impact, reproduction, fix."
+      ]
+    },
+    "AI Governance / GRC": {
+      "core_skills": [
+        "GRC / governance framework work (NIST AI RMF, EU AI Act, ISO 42001)",
+        "LLM-specific security knowledge (prompt injection, LLM risk, LLM architecture)",
+        "Architecture / threat modelling",
+        "Certifications named (any)"
+      ],
+      "next_steps": [
+        "Read the NIST AI Risk Management Framework core and its playbook once, in full.",
+        "Pick one AI system you know and complete a risk assessment against that framework.",
+        "Track the EU AI Act obligations that apply to your employer's use cases and note the deadlines."
+      ]
+    },
+    "AI Security Architect": {
+      "core_skills": [
+        "Architecture / threat modelling",
+        "Cloud platform security (AWS/Azure/GCP)",
+        "IAM (identity/access, least privilege for agents)",
+        "LLM-specific security knowledge (prompt injection, LLM risk, LLM architecture)",
+        "RAG-specific security (vector DB, retrieval pipeline)"
+      ],
+      "next_steps": [
+        "Threat model one RAG pipeline, including the vector store and retrieval path.",
+        "Define least-privilege identity and tool access for one agent, and document the decisions.",
+        "Write a one-page reference architecture for a secure LLM deployment on a cloud you already know."
+      ]
+    },
+    "AI Security Research / Applied Science": {
+      "core_skills": [
+        "Red teaming / adversarial testing",
+        "Coding ability required (Python most named)",
+        "LLM-specific security knowledge (prompt injection, LLM risk, LLM architecture)",
+        "Degree/education requirement stated"
+      ],
+      "next_steps": [
+        "Reproduce the results of one published attack or defence paper on a small open model.",
+        "Keep a short written log of experiments, including the failures.",
+        "Publish one write-up so your method can be reviewed by other people."
+      ]
+    },
+    "Consulting / Field delivery management": {
+      "core_skills": [
+        "Customer-facing (client workshops, pre-sales, exec presentation)",
+        "LLM-specific security knowledge (prompt injection, LLM risk, LLM architecture)",
+        "GRC / governance framework work (NIST AI RMF, EU AI Act, ISO 42001)",
+        "Architecture / threat modelling"
+      ],
+      "next_steps": [
+        "Run one internal workshop explaining AI security risks to a non-security audience.",
+        "Write a scoped statement of work for a short AI security assessment.",
+        "Prepare a 10-minute explanation of AI risk for an executive audience and deliver it once."
+      ]
+    },
+    "AI Compliance and Assurance": {
+      "core_skills": [
+        "GRC / governance framework work (NIST AI RMF, EU AI Act, ISO 42001)",
+        "Conformity and audit evidence (ISO/IEC 42001, ISO/IEC 27001, SOC 2)",
+        "LLM-specific security knowledge (prompt injection, LLM risk, LLM architecture)",
+        "Customer-facing (client workshops, pre-sales, exec presentation)"
+      ],
+      "next_steps": [
+        "Read the ISO/IEC 42001 clause and control structure once, in full.",
+        "Take one AI system you know and write a control-by-control gap list with the evidence each control needs.",
+        "Decide the EU AI Act risk class for that system, write the reasoning, and list the obligations that follow."
+      ]
+    }
+  },
+  "skill_answer_map": {
+    "AppSec (secure SDLC, code review, vuln management)": "appsec",
+    "Architecture / threat modelling": "architecture",
+    "GRC / governance framework work (NIST AI RMF, EU AI Act, ISO 42001)": "grc",
+    "Red teaming / adversarial testing": "redteam",
+    "SOC / detection & response integration": "soc",
+    "Cloud platform security (AWS/Azure/GCP)": "cloud_depth",
+    "Coding ability required (Python most named)": "coding",
+    "Customer-facing (client workshops, pre-sales, exec presentation)": "customer_facing_rating",
+    "LLM-specific security knowledge (prompt injection, LLM risk, LLM architecture)": "llm",
+    "Agents / agentic systems security": "agents"
+  },
+  "strong_threshold": 4
+}
