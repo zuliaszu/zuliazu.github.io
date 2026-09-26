@@ -1,139 +1,108 @@
 {
-  "name": "Zulia Shavaeva",
-  "title": "Senior GenAI Security Consultant, AWS Generative AI Innovation Center",
-  "linkedin": "https://www.linkedin.com/in/zulia-shavaeva-72767113b/",
-  "platform": "https://zuliaszu.github.io/ai-security-career-platform/",
-  "meta_description": "Zulia Shavaeva, EMEA security lead at the AWS Generative AI Innovation Center. AI security consulting, a career quiz, learning paths, talks and mentoring.",
-  "hero": {
-    "eyebrow": "AI security, EMEA",
-    "h1": "I secure generative AI. And I help people get into the field.",
-    "sub": "Senior GenAI Security Consultant and EMEA security lead at the AWS Generative AI Innovation Center. I work with regulated organisations on deploying frontier models and agents safely, and I run a free quiz and learning paths for security people who want to move into AI security.",
-    "cta_primary": "Find your AI security path",
-    "cta_primary_note": "16 questions, about 4 minutes, no signup",
-    "cta_secondary": "Read about me",
-    "photo_caption": "Based in Manchester, UK",
-    "photo_caption_sub": "Working across the UK, EU, Middle East and Africa"
+ "name": "Zulia Shavaeva",
+ "title": "Security Leader, Generative AI Innovation Center, AWS",
+ "linkedin": "https://www.linkedin.com/in/zulia-shavaeva-72767113b/",
+ "platform": "https://zuliaszu.github.io/ai-security-career-platform/",
+ "meta_description": "Zulia Shavaeva, Security Leader for the AWS Generative AI Innovation Center in EMEA. A free AI security training plan: quiz, seven paths, Learn library.",
+ "hero": {
+  "eyebrow": "Security Leader, Generative AI Innovation Center",
+  "h1": "AI security should be easy to get into",
+  "sub": "I lead security for the AWS Generative AI Innovation Center in EMEA, reviewing the AI systems that 40+ scientists and 15+ strategists build for customers. Security people kept asking me how to move into this work, so I wrote the route down and put it online for free: a 16-question quiz, seven learning paths built from real job postings, and 13 skill pages.",
+  "cta_primary": "Find your AI security path",
+  "cta_primary_note": "16 questions, about 4 minutes, no signup",
+  "cta_secondary": "Read about me",
+  "photo_caption": "Based in Manchester, UK",
+  "photo_caption_sub": "Working across the UK, EU, Middle East and Africa"
+ },
+ "proof": [
+  {
+   "figure": "8 years",
+   "label": "engineering, DevOps and security, the last five in security"
   },
-  "proof": [
-    {
-      "figure": "8 years",
-      "label": "engineering, DevOps and security for regulated enterprises"
-    },
-    {
-      "figure": "45+",
-      "label": "engagement security assessments: banks, insurers, automotive, pharma, energy, public sector"
-    },
-    {
-      "figure": "4",
-      "label": "AWS certifications, including Security Specialty and Solutions Architect Professional"
-    },
-    {
-      "figure": "300+",
-      "label": "sign-ups to the AWS Cloud Women Manchester public-speaking programme"
-    }
-  ],
-  "help_head": "How I can help you into AI security",
-  "help_intro": "Everything here is free and needs no account. Start with the quiz if you are not sure where you fit; open a path if you already know.",
-  "help": [
-    {
-      "title": "Find the AI security role that fits the work you already do",
-      "body": "Sixteen questions about how you work today, not a self-rating. You get one of seven roles, the skills it asks for against what you have, and a week-by-week plan for the gaps.",
-      "link_label": "Take the quiz",
-      "href": "quiz/",
-      "cta": true
-    },
-    {
-      "title": "Follow one of seven learning paths",
-      "body": "Engineer, red team, architect, governance, compliance and assurance, consulting, research. Each path was built from real job postings: skills in the order to learn them, free resources first, one exercise that proves it.",
-      "link_label": "See the seven paths",
-      "href": "https://zuliaszu.github.io/ai-security-career-platform/#paths"
-    },
-    {
-      "title": "Use the Learn library",
-      "body": "Thirteen skill pages, from LLM and agent security to IAM, cloud and governance. Curated resources by level, a short brief per skill with practice questions, and the paid options where they are worth it.",
-      "link_label": "Open the Learn library",
-      "href": "https://zuliaszu.github.io/ai-security-career-platform/learn/index.html"
-    },
-    {
-      "title": "Talks, workshops and mentoring",
-      "body": "I speak on GenAI security, run hands-on workshops and mentor women moving into cloud and security through AWS Cloud Women Manchester. If you want me at your event, message me on LinkedIn.",
-      "link_label": "See talks and community",
-      "href": "#talks"
-    }
-  ],
-  "about_head": "About",
-  "about": [
-    "I am the EMEA security lead for the AWS Generative AI Innovation Center: the security authority on GenAI engagements across the region, and the escalation point when security decides whether an AI project goes ahead.",
-    "I have spent eight years in engineering, DevOps and security for regulated enterprises, the last five in security. I have run more than 45 engagement security assessments for banks, insurers, automotive finance, pharma, energy and public sector organisations across the UK, EU, Middle East and Africa.",
-    "My specialism is the part people find hardest: EU data residency, data retention and Zero Data Retention, GDPR and DPIA-aligned data classification, and the security of agentic systems, including MCP and autonomous agents. I spend my days with CISOs, DPOs, compliance officers and AI governance boards, translating what a frontier model can do into a deployment a regulator will accept.",
-    "Before security I built manufacturing scheduling software and taught algorithms and data structures at Durham University, where I read Computer Science."
-  ],
-  "about_photo_caption": "Off duty, somewhere with a waterfall.",
-  "talks_head": "Talks and community",
-  "talks_intro": "I speak about GenAI security and I build the rooms where other people get to speak. Message me on LinkedIn if you want either at your event.",
-  "talks": [
-    {
-      "title": "GenAI security capture-the-flag",
-      "where": "Selected for AWS re:Invent 2026 GameDay",
-      "note": "I wrote a CTF spanning prompt injection chains, guardrail bypass and data exfiltration through tool use."
-    },
-    {
-      "title": "Critical AWS security vulnerabilities: hiding in plain sight",
-      "where": "Community talk, Manchester",
-      "note": "A talk on the AWS misconfigurations that hide in plain sight."
-    },
-    {
-      "title": "Public-speaking programme",
-      "where": "AWS Cloud Women Manchester",
-      "note": "A programme that gets first-time speakers on stage. 300+ sign-ups so far."
-    },
-    {
-      "title": "Security workshops for delivery teams",
-      "where": "AWS Professional Services, EMEA",
-      "note": "Hands-on enablement for customer-facing teams on securing GenAI engagements."
-    }
-  ],
-  "talk_photo_caption": "Speaking at a community event in Manchester.",
-  "community": "I lead AWS Cloud Women Manchester, the largest AWS Cloud Women chapter in the UK: monthly events and workshops, and a public-speaking programme that has had more than 300 sign-ups. I also mentor women moving into cloud and security careers.",
-  "pages_head": "Pages worth opening",
-  "pages": [
-    {
-      "title": "AI Security Career Platform",
-      "desc": "The quiz, seven paths and the Learn library. Free, no account, nothing leaves your browser.",
-      "href": "https://zuliaszu.github.io/ai-security-career-platform/"
-    },
-    {
-      "title": "Learn library",
-      "desc": "Thirteen skill pages with curated resources, briefs and practice questions.",
-      "href": "https://zuliaszu.github.io/ai-security-career-platform/learn/index.html"
-    },
-    {
-      "title": "AWS Cloud Women Manchester",
-      "desc": "The chapter I lead. Monthly events, workshops, first-time speakers.",
-      "href": "https://www.meetup.com/aws-cloud-women-manchester/"
-    },
-    {
-      "title": "How the platform was built",
-      "desc": "Research notes, job-posting data and source code on GitHub.",
-      "href": "https://github.com/zuliaszu/ai-security-career-platform"
-    },
-    {
-      "title": "LinkedIn",
-      "desc": "Where I post and where to reach me.",
-      "href": "https://www.linkedin.com/in/zulia-shavaeva-72767113b/"
-    }
-  ],
-  "cv_band": {
-    "h2": "The full CV",
-    "p": "Roles, selected work, expertise and certifications on one page, with a PDF to download.",
-    "btn": "Read the CV",
-    "btn2": "Message me on LinkedIn"
+  {
+   "figure": "45+",
+   "label": "engagement security assessments: banks, insurers, automotive finance, pharma, energy, public sector"
   },
-  "quiz_page": {
-    "title": "Which AI security role fits you? | Zulia Shavaeva",
-    "h1": "Which AI security role fits the work you already do?",
-    "sub": "Sixteen questions, one per screen. You pick the sentence that describes you, not a number. At the end: one of seven roles, the skills it asks for against what you have today, a week-by-week plan and one exercise that proves it. Nothing you enter leaves your browser.",
-    "note": "The quiz and its rules are open source; the result pages open on my AI Security Career Platform."
+  {
+   "figure": "40+",
+   "label": "scientists, and 15+ strategists, whose customer engagements I secure"
   },
-  "footer_line": "Views on this site are my own, not my employer's."
+  {
+   "figure": "300+",
+   "label": "sign-ups to the AWS Cloud Women Manchester public-speaking programme"
+  }
+ ],
+ "help_head": "The free training plan",
+ "help_intro": "Three parts, no account, nothing to pay. Start with the quiz if you do not know which role fits; go straight to a path if you do.",
+ "help": [
+  {
+   "title": "Find out which of seven AI security roles fits the work you already do",
+   "body": "Sixteen questions about how you work today, not a self-rating. You get one role, the skills it asks for against what you have, and a week-by-week plan for the gaps. Nothing leaves your browser.",
+   "link_label": "Take the quiz",
+   "href": "quiz/",
+   "cta": true
+  },
+  {
+   "title": "Follow a learning path built from real job postings",
+   "body": "Engineer, red team, architect, governance, compliance and assurance, consulting, research. Each path lists the skills in the order to learn them, free resources first, and one exercise that proves you can do the work.",
+   "link_label": "See the seven paths",
+   "href": "https://zuliaszu.github.io/ai-security-career-platform/#paths"
+  },
+  {
+   "title": "Read a short brief and a resource list for each of 13 skills",
+   "body": "From LLM and agent security to IAM, cloud and governance. Each page has resources sorted by level, practice questions, and the paid options where they are worth the money.",
+   "link_label": "Open the Learn library",
+   "href": "https://zuliaszu.github.io/ai-security-career-platform/learn/index.html"
+  }
+ ],
+ "about_head": "About",
+ "about": [
+  "I am the Security Leader for the Generative AI Innovation Center in EMEA at AWS. I am responsible for the secure delivery of client engagements: I review what 40+ scientists and 15+ strategists build, identify and mitigate risk in AI-enabled systems, and research novel attack methods against AI and ML. I also present to customers and at conferences on securing AI systems.",
+  "I have eight years in engineering, DevOps and security, the last five in security. I have run more than 45 engagement security assessments for banks, insurers, automotive finance, pharma, energy and public sector organisations, across the UK, EU, Middle East and Africa.",
+  "My specialisms are EU data residency and cross-region inference boundaries, data retention and Zero Data Retention, GDPR and DPIA-aligned data classification, EU AI Act risk triage, and agentic AI security, including MCP and autonomous agents. Day to day that means Bedrock Guardrails, IAM and Zero Trust, EKS, SIEM and SOAR, and audits against ISO 27001, NIST CSF and PCI DSS. I wrote a GenAI security capture-the-flag on prompt injection chains, guardrail bypass and data exfiltration through tool use, which was selected for AWS re:Invent 2026 GameDay.",
+  "The plan on this site exists because security people kept asking me the same question. It is for people who already have security fundamentals and want to know which AI security role fits them, what to learn, and in what order.",
+  "Before security I built a manufacturing scheduling optimisation at Nissan Trading Corporation, and taught algorithms and data structures at Durham University, where I read Computer Science. I lead AWS Cloud Women Manchester, the largest AWS Cloud Women chapter in the UK, and mentor women moving into cloud and security. I have been featured in BBC News coverage of women in computing, and I won the Professor Sue Black Award for Technology Evangelism."
+ ],
+ "about_photo_caption": "Off duty, somewhere with a waterfall.",
+ "talks_head": "Talks and community",
+ "talks_intro": "I speak about GenAI security, and I run a programme that gets first-time speakers on stage. Message me on LinkedIn if you want either at your event.",
+ "talks": [
+  {
+   "title": "GenAI security capture-the-flag",
+   "where": "Selected for AWS re:Invent 2026 GameDay",
+   "note": "I wrote a CTF spanning prompt injection chains, guardrail bypass and data exfiltration through tool use."
+  },
+  {
+   "title": "Critical AWS security vulnerabilities: hiding in plain sight",
+   "where": "Community talk, Manchester",
+   "note": "A talk on the AWS misconfigurations that survive a security review, and what to fix first."
+  },
+  {
+   "title": "Public-speaking programme",
+   "where": "AWS Cloud Women Manchester",
+   "note": "A programme that gets first-time speakers on stage. 300+ sign-ups so far."
+  },
+  {
+   "title": "Security workshops for delivery teams",
+   "where": "AWS Professional Services, EMEA",
+   "note": "Hands-on sessions for customer-facing teams on securing GenAI engagements."
+  }
+ ],
+ "talk_photo_caption": "Speaking at a community event in Manchester.",
+ "community": "I lead AWS Cloud Women Manchester, the largest AWS Cloud Women chapter in the UK. We run monthly events and workshops, and the public-speaking programme has had more than 300 sign-ups. I also mentor women moving into cloud and security careers.",
+ "pages_head": "",
+ "pages": [],
+ "cv_band": {
+  "h2": "The full CV",
+  "p": "Roles, selected work and expertise on one page, with a PDF to download.",
+  "btn": "Read the CV",
+  "btn2": "Message me on LinkedIn"
+ },
+ "quiz_page": {
+  "title": "Which AI security role fits you? | Zulia Shavaeva",
+  "h1": "Which AI security role fits the work you already do?",
+  "sub": "Sixteen questions, one per screen. You pick the sentence that describes you, not a number. At the end: one of seven roles, the skills it asks for against what you have today, a week-by-week plan and one exercise that proves it. Nothing you enter leaves your browser.",
+  "note": "The quiz and its rules are open source; the result pages open on my AI Security Career Platform."
+ },
+ "footer_line": "Views on this site are my own, not my employer's."
 }

@@ -11,3 +11,6 @@ Personal site of Zulia Shavaeva, served by GitHub Pages from `main` (root).
 - `content/about.json`: positions, topics and pull quote for the "How I think about security" section, drawn from Zulia's own scripts.
 
 Rules: no customer or client names, no phone or email, no employer-internal terms. Views are Zulia's own.
+
+## ai-security-career-platform/
+Mirror of the platform build output (`docs/` in the ai_security_career_platform repo), so `https://zuliaszu.github.io/ai-security-career-platform/` is served from this user site whether or not that repo has Pages enabled. Do not edit here; run `sh sync_site.sh` in the platform repo after `build_product.py`.

@@ -1,0 +1,428 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AI red teaming and adversarial testing | AI Security Career Platform</title><style>:root{--bg:#fbfbfc;--panel:#fff;--ink:#1a1d21;--mute:#6b7280;--line:#e5e7eb;--accent:#14508c;--accent-soft:#e8f0f8;--warn:#92400e;--warn-soft:#fef3c7;--ok:#166534;--ok-soft:#dcfce7}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+a{color:var(--accent)}a:hover{text-decoration-thickness:2px}
+.top{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line)}
+.top .in{max-width:1100px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:22px}
+.top .brand{font-weight:600;text-decoration:none;color:var(--ink)}.top nav{display:flex;gap:18px;margin-left:auto}.top nav a{text-decoration:none;color:#374151;font-size:14.5px}.top nav a.on{color:var(--accent);font-weight:600}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+.hero{padding:64px 0 40px}.hero h1{font-size:40px;line-height:1.15;margin:0 0 14px;max-width:20ch}.hero p{font-size:19px;color:#374151;max-width:62ch;margin:0 0 26px}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;padding:12px 20px;border-radius:8px;font-weight:600;border:0;font-size:16px;cursor:pointer}.btn.ghost{background:#fff;color:var(--accent);border:1px solid var(--accent)}.btn+.btn{margin-left:10px}
+.facts{display:flex;gap:26px;flex-wrap:wrap;margin-top:28px;font-size:14px;color:var(--mute)}.facts b{display:block;font-size:22px;color:var(--ink);font-weight:600}
+section{padding:36px 0}h2{font-size:26px;margin:0 0 6px}.sub{color:var(--mute);margin:0 0 22px;font-size:15.5px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:26px 30px}
+.grid{display:grid;gap:16px}.grid.c3{grid-template-columns:repeat(3,1fr)}.grid.c2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:860px){.grid.c3,.grid.c2{grid-template-columns:1fr}.hero h1{font-size:30px}}
+.path-card{display:block;text-decoration:none;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px;transition:border-color .15s}.path-card:hover{border-color:var(--accent)}
+.path-card h3{margin:0 0 4px;font-size:18px}.path-card .tag{color:#374151;font-size:14.5px;margin:0 0 10px}.path-card .meta{font-size:13px;color:var(--mute)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.chip{font-size:12.5px;background:var(--accent-soft);color:var(--accent);padding:2px 9px;border-radius:10px}
+.pct{display:inline-block;min-width:44px;font-variant-numeric:tabular-nums;font-weight:600}
+/* quiz */
+.q .progress{font-size:13px;color:var(--mute);margin:0 0 6px}.q .bar{height:4px;background:var(--line);border-radius:2px;margin-bottom:22px}.q .bar i{display:block;height:4px;background:var(--accent);border-radius:2px}
+.q .qt{font-size:20px;font-weight:600;margin:0 0 4px}.q .ql{font-size:14px;color:var(--mute);margin:14px 0 6px}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 4px}.choice{border:1px solid var(--line);background:#fff;padding:9px 14px;border-radius:8px;font-size:15px;cursor:pointer}.choice:hover{border-color:var(--accent)}.choice.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.navbtns{display:flex;align-items:center;gap:10px;margin-top:22px}.err{color:#b91c1c;font-size:14px}
+.result .top2{display:grid;grid-template-columns:2fr 1fr;gap:16px}@media(max-width:860px){.result .top2{grid-template-columns:1fr}}
+.result h3{margin:0 0 4px;font-size:22px}.result .why{color:#374151;margin:0 0 14px}
+.rank{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:14px 16px;font-size:14px}.rank div{display:flex;justify-content:space-between;padding:3px 0}.rank div:first-child{font-weight:600}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:14.5px}th,td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}th{font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--mute);font-weight:600}
+.gap{background:var(--warn-soft);color:var(--warn);padding:1px 8px;border-radius:10px;font-size:12.5px;white-space:nowrap}.have{background:var(--ok-soft);color:var(--ok);padding:1px 8px;border-radius:10px;font-size:12.5px;white-space:nowrap}.na{background:#eef0f2;color:var(--mute);padding:1px 8px;border-radius:10px;font-size:12.5px;white-space:nowrap}
+.res{margin:4px 0 0 0;padding:0;list-style:none}.res li{padding:6px 0;border-top:1px dashed var(--line);font-size:14.5px}.res li:first-child{border-top:0}.res .m{color:var(--mute);font-size:13px}.res .why{display:block;color:#374151}
+.small{font-size:13.5px}.muted{color:var(--mute)}
+/* path page */
+.ph{padding:48px 0 20px}.ph h1{font-size:36px;margin:0 0 8px}.ph .tag{font-size:19px;color:#374151;margin:0 0 18px;max-width:64ch}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0 0}.stats div{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;font-size:14px}.stats b{display:block;font-size:13px;color:var(--mute);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+@media(max-width:860px){.stats{grid-template-columns:1fr}}
+.skill{border:1px solid var(--line);border-radius:12px;background:var(--panel);margin:12px 0;padding:0}.skill summary{cursor:pointer;padding:16px 22px;display:grid;grid-template-columns:36px 1fr auto;gap:14px;align-items:center;list-style:none}.skill summary::-webkit-details-marker{display:none}
+.skill .n{width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:600;font-size:14px}.skill .sk b{display:block;font-size:17px}.skill .sk span{color:#374151;font-size:14.5px}.skill .d{text-align:right;font-size:13px;color:var(--mute)}.skill .d b{display:block;font-size:20px;color:var(--ink)}
+.skill .body{padding:0 22px 18px 72px}
+.steps{counter-reset:s;list-style:none;padding:0;margin:14px 0}.steps li{counter-increment:s;position:relative;padding:6px 0 6px 40px}.steps li::before{content:counter(s);position:absolute;left:0;top:6px;width:26px;height:26px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-weight:600;font-size:13px}
+.check{list-style:none;padding:0;margin:8px 0}.check li{padding:4px 0 4px 28px;position:relative}.check li::before{content:"";position:absolute;left:2px;top:9px;width:14px;height:14px;border:2px solid var(--accent);border-radius:3px}
+footer{border-top:1px solid var(--line);padding:26px 0 40px;font-size:13.5px;color:var(--mute)}footer a{color:var(--mute)}
+/* v1 quiz app */
+.hidden{display:none!important}
+#quiz{display:none}#quiz.live{display:block;max-width:760px;margin:28px auto 0}
+.q .qhead{display:flex;justify-content:space-between;font-size:13px;color:var(--mute);margin-bottom:8px}.q .sec{font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;font-size:12px}
+.q .qt{font-size:24px;line-height:1.3;margin:22px 0 4px;font-weight:600}.q .qhint{color:var(--mute);font-size:13.5px;margin:0 0 18px}
+.opts.v{display:flex;flex-direction:column;gap:8px}.opts.v .choice{display:flex;align-items:center;gap:14px;text-align:left;padding:13px 16px;font-size:16px;border-radius:10px;background:#fff;border:1px solid var(--line);width:100%}
+.opts.v .choice kbd{flex:0 0 26px;height:26px;border-radius:6px;border:1px solid var(--line);display:grid;place-items:center;font:600 12px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--mute);background:#f9fafb}
+.opts.v .choice.on{background:var(--accent-soft);border-color:var(--accent);color:var(--ink)}.opts.v .choice.on kbd{background:var(--accent);color:#fff;border-color:var(--accent)}
+.opts.v .choice span{display:flex;flex-direction:column}.opts.v .choice small{color:var(--mute);font-size:13.5px}
+.q .navbtns{margin-top:26px}
+/* result */
+.result .res-head{display:grid;grid-template-columns:3fr 2fr;gap:28px;align-items:start}@media(max-width:860px){.result .res-head{grid-template-columns:1fr}}
+.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:600;margin:0 0 6px}
+.result h2{font-size:34px;margin:0 0 6px;line-height:1.15}.result .tag{font-size:18px;color:#374151;margin:0 0 16px}
+.result .whyp{font-size:16px;margin:0 0 10px;max-width:60ch}.result .whyp.close{color:#374151;font-size:15px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.actions .btn+.btn{margin-left:0}
+.ranks{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:16px 18px}.rk{display:grid;grid-template-columns:1fr 34px;grid-template-rows:auto 6px;column-gap:10px;font-size:14px;margin:8px 0}.rk span{grid-column:1}.rk b{grid-row:1/3;align-self:center;text-align:right;font-variant-numeric:tabular-nums}.rk i{display:block;height:6px;border-radius:3px;background:var(--accent);opacity:.85;grid-column:1}
+.res-sec{padding:26px 0 0;margin-top:28px;border-top:1px solid var(--line)}.res-sec h3{font-size:21px;margin:0 0 4px}
+.cov{padding:12px 0;border-bottom:1px dashed var(--line)}.cov:last-child{border-bottom:0}.cov-h{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:6px}.cov-h b{font-size:15.5px}
+.cov-bars{position:relative;height:10px;background:#eef0f2;border-radius:5px;overflow:hidden}.cov-bars i{position:absolute;left:0;top:0;height:10px;border-radius:5px}.cov-bars .dem{background:#c7ccd4}.cov-bars .you{background:var(--accent);height:4px;top:3px}
+.cov-m{display:flex;justify-content:space-between;gap:16px;font-size:13px;color:var(--mute);margin-top:5px}.cov-m span:last-child{text-align:right;max-width:60%}
+.mid{background:#e0f2fe;color:#075985;padding:1px 8px;border-radius:10px;font-size:12.5px;white-space:nowrap}
+.wk{margin:14px 0;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 18px}.wk-h{display:flex;justify-content:space-between;font-weight:600;margin-bottom:4px}.wk-h span{color:var(--mute);font-weight:400;font-size:13px}
+.res .skl{display:inline-block;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin-right:8px}
+.proof{background:var(--accent-soft);border:0;border-radius:12px;padding:22px 26px;margin-top:28px}.proof h3{margin-top:0}
+.res-foot{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:30px}.res-foot .btn+.btn{margin-left:0}
+@media print{.top,.res-foot,.actions,footer,#paths,#how{display:none!important}.result .res-head{grid-template-columns:1fr}}
+/* v2: identity, hero band, archetype tiles, interstitials, reveal */
+.hero{background:#0b1f3a;color:#fff;margin:0 -24px;padding:64px 24px 44px;border-radius:0}.hero .in{max-width:1100px;margin:0 auto}
+.hero h1{font-size:46px;color:#fff;max-width:22ch}.hero p{color:#c7d2e2;max-width:60ch}.hero .btn.ghost{background:transparent;color:#fff;border-color:#5b7396}.hero .facts{color:#9fb0c8}.hero .facts b{color:#fff}
+.hero .promise{display:flex;gap:18px;flex-wrap:wrap;margin:18px 0 0;font-size:14px;color:#c7d2e2}.hero .promise span::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#60a5fa;margin-right:8px;vertical-align:middle}
+.outcomes{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin:-26px auto 0;max-width:1100px;position:relative}@media(max-width:1000px){.outcomes{grid-template-columns:repeat(3,1fr)}}@media(max-width:640px){.outcomes{grid-template-columns:repeat(2,1fr)}}
+.outcome{background:#fff;border:1px solid var(--line);border-top:4px solid var(--c);border-radius:10px;padding:14px 14px 12px;text-decoration:none;color:inherit;display:block}.outcome:hover{border-color:var(--c)}
+.outcome b{display:block;font-size:15.5px;margin-bottom:2px}.outcome span{font-size:13px;color:var(--mute);display:block}.outcome small{display:block;font-size:12px;color:var(--c);margin-top:8px;font-weight:600}
+.mono{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:12px;background:var(--c,#14508c);color:#fff;font-weight:700;font-size:20px;flex:0 0 44px}.mono.big{width:84px;height:84px;font-size:38px;border-radius:20px;flex-basis:84px}
+.opts.v.grid2{display:grid;grid-template-columns:1fr 1fr}@media(max-width:640px){.opts.v.grid2{grid-template-columns:1fr}}
+.q.inter .inter-card{display:flex;gap:18px;align-items:flex-start;background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--c);border-radius:12px;padding:22px 24px;margin-top:22px}.inter-body{margin:0;font-size:18px;line-height:1.5}
+.reveal{display:flex;gap:22px;align-items:center;padding:6px 0 26px;border-bottom:1px solid var(--line);margin-bottom:24px;animation:rise .5s ease-out}.reveal h2{font-size:40px;margin:0 0 4px;color:var(--c)}.reveal .ident{font-size:19px;margin:0 0 8px;color:var(--ink)}.reveal .rolel{margin:0;color:#374151}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.res-sec.split{display:grid;grid-template-columns:1fr 1fr;gap:28px}@media(max-width:860px){.res-sec.split{grid-template-columns:1fr}}.res-sec.split ul,.res-sec.split ol{padding-left:20px;margin:6px 0}.res-sec.split li{padding:3px 0}
+.result .ranks .rk i{background:var(--c)}.cov-bars .you{background:var(--c)}
+#quiz.live{max-width:800px}
+.rk{display:block;margin:10px 0}.rk span{display:flex;justify-content:space-between;font-size:14px}.rk b{font-variant-numeric:tabular-nums}.rk i{display:block;height:6px;border-radius:3px;margin-top:4px}
+body.quiz-live #paths,body.quiz-live #how{display:none}
+
+/* learn */
+.dem{display:grid;grid-template-columns:180px 1fr;gap:18px;align-items:start;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-top:10px}@media(max-width:760px){.dem{grid-template-columns:1fr}}
+.dem-n{font-size:14px;color:var(--mute)}.dem-n b{display:block;font-size:28px;color:var(--ink)}
+.dem-bars{display:grid;gap:6px}.db{display:grid;grid-template-columns:200px 1fr 44px 44px;gap:10px;align-items:center;font-size:13.5px;text-decoration:none;color:inherit}.db i{height:8px;background:#eef0f2;border-radius:4px;overflow:hidden}.db em{display:block;height:8px;background:var(--c)}.db b{text-align:right;font-variant-numeric:tabular-nums}.db small{color:var(--mute)}
+.ltabs{display:flex;gap:6px;flex-wrap:wrap;margin:18px 0 6px}.ltabs a{font-size:14px;text-decoration:none;border:1px solid var(--line);background:#fff;padding:6px 12px;border-radius:18px;color:#374151}.ltabs a:hover{border-color:var(--accent);color:var(--accent)}
+.prov{max-width:80ch}
+#brief p{max-width:72ch}#brief h3{margin:22px 0 4px}sup a{text-decoration:none;font-size:11px;margin-left:1px;color:var(--accent)}
+.cc{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 18px}.cc p{margin:6px 0 0;font-size:14.5px;color:#374151}
+.ex{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:12px 0}.ex-h{display:flex;align-items:center;gap:12px}.ex-h .n{width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:600;font-size:14px}.ex-h .m{margin-left:auto;color:var(--mute);font-size:13px}.ex ol{margin:6px 0;padding-left:22px;font-size:14.5px}
+.iq{border:1px solid var(--line);border-radius:10px;background:var(--panel);margin:8px 0;padding:12px 16px}.iq summary{cursor:pointer;font-weight:600}.iq ul{margin:4px 0;font-size:14.5px}
+.srcs{font-size:14px}.srcs li{padding:3px 0}.srcs .m{color:var(--mute);font-size:13px}
+.filters{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:0 0 12px;font-size:13px}.filters span{color:var(--mute);margin:0 4px 0 10px}.filters span:first-child{margin-left:0}
+.filters button{border:1px solid var(--line);background:#fff;border-radius:16px;padding:4px 11px;font-size:13px;cursor:pointer}.filters button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.ridx .ri{display:grid;grid-template-columns:78px 1fr;gap:12px;padding:10px 0}.lv{font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;font-weight:600;padding:2px 0;border-radius:6px;text-align:center;height:fit-content}
+.lv-intro{background:#ecfdf5;color:#047857}.lv-working{background:#eff6ff;color:#1d4ed8}.lv-advanced{background:#f5f3ff;color:#6d28d9}
+.free{font-size:12px;color:var(--ok)}.paid{font-size:12px;color:var(--warn);background:var(--warn-soft);padding:0 6px;border-radius:8px}
+.roles{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px}.rl{font-size:11px;color:var(--mute);border:1px solid var(--line);border-radius:8px;padding:0 6px}
+.pc{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 20px}.pc-h{display:flex;flex-direction:column;margin-bottom:8px}.pc-h .m{font-size:13px;color:var(--mute)}
+.pc dl{display:grid;grid-template-columns:130px 1fr;gap:3px 10px;font-size:13.5px;margin:6px 0 10px}.pc dt{color:var(--mute)}.pc dd{margin:0}
+.res-sec.split li a{text-decoration:none}
+
+/* postings table */
+.jobs{font-size:14px}.jobs td:first-child{max-width:320px}.jobs td.small{color:var(--mute);max-width:260px}@media(max-width:860px){.jobs th:nth-child(5),.jobs td:nth-child(5){display:none}}
+
+.skip{position:absolute;left:-999px;top:8px;background:var(--accent);color:#fff;padding:8px 12px;border-radius:6px;z-index:10}.skip:focus{left:8px}
+
+/* Mobile and accessibility fixes (task 2.11). Mobile widths and focus styles only. */
+
+/* Focus visibility: product.css sets outline-width but outline-style:none, so nothing shows. */
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,
+.choice:focus-visible,.btn:focus-visible,.db:focus-visible,.tab:focus-visible{
+  outline:3px solid var(--accent);outline-offset:2px;border-radius:6px
+}
+.hero a:focus-visible,.hero button:focus-visible{outline-color:#fff}
+.btn:focus-visible{outline-offset:3px}
+
+@media(max-width:700px){
+  /* Header: 6 nav links plus the brand overflowed to 471px at a 390px viewport. */
+  .top .in{flex-wrap:wrap;gap:8px 16px;padding:10px 16px}
+  .top .brand{flex:0 0 100%;font-size:15px}
+  .top nav{margin-left:0;flex-wrap:wrap;gap:4px 16px;width:100%}
+  .top nav a{font-size:15px;min-height:40px;display:inline-flex;align-items:center}
+
+  .wrap{padding:0 16px}
+  .hero{margin:0;padding:36px 16px 30px}
+  .hero h1{font-size:27px;max-width:none}
+  .hero p{font-size:17px}
+
+  /* Tap targets */
+  .btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+  .btn+.btn{margin-left:0}
+  .actions,.res-foot{gap:10px}
+  .opts.v .choice{min-height:48px}
+  .choice{min-height:44px;display:inline-flex;align-items:center}
+  summary{min-height:40px;display:flex;align-items:center}
+
+  /* Demand bars: the 200px label column left the bar 0px wide. Bar moves to its own row. */
+  .db{grid-template-columns:1fr auto auto;gap:4px 10px;padding:6px 0}
+  .db span{grid-column:1/-1}
+  .db i{grid-column:1/2;height:10px}
+  .dem{padding:14px 16px}
+
+  /* Tables: the postings table measured 395px inside a 342px column. */
+  table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .jobs td:first-child,.jobs td.small{max-width:200px}
+
+  /* Two-column definition lists and filter rows stack. */
+  .pc{display:block}
+  .filters{display:flex;flex-wrap:wrap;gap:8px}
+
+  /* Text under 14px: smallest values were 11px to 12.5px. */
+  .small,small,.muted.small,.db,.db small,.meta,.chip,.rl,.rl a,.lv,.free,.paid,
+  .iq-tag,.iq-score,th,td.small,.m,.prov,.qhint,dt,dd,
+  .q .sec,.q .progress,.eyebrow,.mid,.na,.gap,.have,.res .m,.res .why,.res .skl,
+  .stats div,.skill .d,.skill .sk span,.steps li,.cov-m,.wk-h span,.outcome small,.outcome span,
+  .filters span,.filters button,.ridx .ri,.srcs li,.srcs .m,.pc-h .m,.pc dt,.pc dd,.ex-h .m,
+  footer,footer a{font-size:13.5px}
+  .opts.v .choice kbd{font-size:13px}
+  .db b{font-size:14px}
+  .muted{color:#5b6472}
+}
+
+@media(max-width:700px){
+  /* Page-level CSS is injected after this file, so these need a second selector. */
+  summary .iq-tag,.iq-h .iq-tag{font-size:13.5px}
+  /* Footnote markers stay superscript-sized; the padding gives a usable tap area. */
+  sup a{font-size:12px;padding:3px 5px;margin-left:0}
+}
+
+/* progress ticks and the My plan page */
+label.dn{display:inline-block;margin-right:7px;vertical-align:baseline}
+label.dn input{width:14px;height:14px;margin:0;vertical-align:-1px;accent-color:var(--accent);cursor:pointer}
+.res li a.done,.ridx .ri a.done,.pl-list li a.done{text-decoration:line-through;color:var(--mute)}
+.res li.done .why,.res li.done .m,.pl-list li.done .m{color:var(--mute)}
+.pl-head{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:flex-end}
+.pl-bar{height:8px;background:#eef0f2;border-radius:4px;overflow:hidden;margin:10px 0 6px}
+.pl-bar i{display:block;height:8px;background:var(--accent);border-radius:4px}
+.pl-wk{border-top:1px solid var(--line);padding:16px 0 4px}.pl-wk:first-of-type{border-top:0}
+.pl-wk-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px}.pl-wk-h b{font-size:16px}
+.pl-list{margin:6px 0 0;padding:0;list-style:none}
+.pl-list li{padding:7px 0;border-top:1px dashed var(--line);font-size:14.5px}.pl-list li:first-child{border-top:0}
+.pl-list .skl{color:var(--mute);font-size:13px;display:block}
+.pl-list .m{color:var(--mute);font-size:13px}
+.pl-st{font-size:13px;color:var(--mute);white-space:nowrap}
+.pl-url{display:block;font-size:12.5px;color:var(--mute);word-break:break-all}
+
+.iq summary{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.iq-tag{font-size:12px;font-weight:400;color:var(--mute);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:normal}
+.iq-pts{display:grid;gap:6px;margin:6px 0 8px}
+.iq-pts label{display:flex;gap:8px;align-items:flex-start;font-size:14.5px;cursor:pointer}
+.iq-pts input{margin:3px 0 0;flex:0 0 auto}
+.iq-pts label.on{color:var(--mute)}
+.iq-score{margin:0}
+.sc-sum{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:0 0 12px}
+.sc-sum p{margin:0;font-size:14.5px}
+.sc-sum a{font-size:13px;color:var(--mute)}
+</style></head><body><a class="skip" href="#main">Skip to content</a><header class="top"><div class="in"><a class="brand" href="../index.html">AI Security Career Platform</a><nav><a href="../index.html">Home</a><a href="../index.html#paths">Paths</a><a href="../learn/index.html" class=on>Learn</a><a href="../index.html">Diagnostic</a><a href="../plan.html">My plan</a></nav></div></header>
+<main id="main" class="wrap"><div class="ph"><p class="progress muted small"><a href="index.html">Learn</a> / AI red teaming and adversarial testing</p><h1>AI red teaming and adversarial testing</h1><p class="tag">Probing AI systems, especially LLMs, for exploitable weaknesses using adversary tactics and structured attack testing.</p>
+<div class="dem" id="demand"><div class="dem-n"><b>23 of 48</b>postings ask for it (48%)</div><div class="dem-bars"><a href="../paths/research.html" class="db" style="--c:#0369a1"><span>AI Security Researcher</span><i><em style="width:100%"></em></i><b>100%</b><small>of 4</small></a><a href="../paths/red-team.html" class="db" style="--c:#b91c1c"><span>AI Red Teamer</span><i><em style="width:100%"></em></i><b>100%</b><small>of 9</small></a><a href="../paths/engineer.html" class="db" style="--c:#0f766e"><span>AI Security Engineer</span><i><em style="width:44%"></em></i><b>44%</b><small>of 16</small></a><a href="../paths/architect.html" class="db" style="--c:#1d4ed8"><span>AI Security Architect</span><i><em style="width:43%"></em></i><b>43%</b><small>of 7</small></a><a href="../paths/grc.html" class="db" style="--c:#6d28d9"><span>AI Governance and Risk Lead</span><i><em style="width:0%"></em></i><b>0%</b><small>of 7</small></a><a href="../paths/consulting.html" class="db" style="--c:#c2410c"><span>AI Security Consultant</span><i><em style="width:0%"></em></i><b>0%</b><small>of 5</small></a></div></div>
+<nav class="ltabs"><a href="#brief">Brief</a><a href="#resources">Resources (25)</a><a href="#paid">Paid options (13)</a><a href="#exercises">Exercises</a><a href="#questions">Practice questions</a></nav><p class="small muted prov">Researched on 2026-09-26 by Claude on Amazon Bedrock using live web search; every link was opened on the day and any link the model did not actually see in a search result was removed. Not yet reviewed by a person.</p></div>
+<section id="brief"><h2>What it is</h2><p>AI red teaming is adversarial probing of a generative AI system to find failures an attacker could cause on purpose. The Microsoft team that red teamed over 100 generative AI products describes it as covering both security flaws and responsible AI harms, and argues the work of securing AI systems is never complete.<sup><a href="#src-s3">2</a></sup></p><p>The target is the whole system, not the model alone. OWASP&#x27;s GenAI Red Teaming Guide organises the work into four areas: model evaluation, implementation testing, infrastructure assessment and runtime behaviour analysis.<sup><a href="#src-s10">9</a></sup></p><p>It is not the same as safety benchmarking. Benchmarks score a model on a fixed test set, while red teaming looks for new attacks under adversarial pressure, which is why live competitions still surface attacks that static benchmarks miss.<sup><a href="#src-s3">2</a></sup><sup><a href="#src-s7">6</a></sup></p><p>Findings are usually written up against a shared vocabulary. MITRE ATLAS catalogues adversary tactics and techniques against AI systems and grew out of the Adversarial ML Threat Matrix, published by MITRE, Microsoft and 16 other organisations.<sup><a href="#src-s1">1</a></sup><sup><a href="#src-s11">10</a></sup></p><h3>Why postings ask for it</h3><p>23 of 48 postings ask for it (48 percent), and it is universal in the two clusters that exist to break things: AI Red Team / Adversarial Testing (9 postings, 100 percent) and AI Security Research (4 postings, 100 percent).<sup><a href="#demand">P</a></sup></p><p>Builder roles ask too, because attacks now land through data an agent reads rather than through a user prompt: AI/Agent Security Engineer 44 percent of 16 postings, AI Security Architect 43 percent of 7, matching the indirect injection and agent hijacking patterns documented in the literature.<sup><a href="#demand">P</a></sup><sup><a href="#src-s4">3</a></sup><sup><a href="#src-s7">6</a></sup></p><p>It is absent from AI Governance / GRC (7 postings) and Consulting (5 postings) at 0 percent, so if you sit in those clusters, treat it as background for reading red team reports rather than the skill you are hired for.<sup><a href="#demand">P</a></sup></p></section><section id="concepts"><h2>Concepts you should be able to explain</h2><p class="sub">If you can say each of these out loud in two minutes, with an example, you are ready for the technical part of an interview on this skill.</p><div class="grid c2"><div class="cc"><b>Direct vs indirect prompt injection</b><p>Direct injection is the user overriding instructions in their own prompt. Indirect injection puts the attacker&#x27;s instructions into data the application later retrieves, such as a web page, email or repository file, so the attacker needs no interface to the model. The original paper shows this working against real systems including Bing&#x27;s GPT-4 powered chat and code completion engines.<sup><a href="#src-s4">3</a></sup></p></div><div class="cc"><b>Data and instruction boundary</b><p>LLM-integrated applications blur the line between data and instructions, so retrieved content can act like code the application executes. The indirect injection taxonomy covers data theft, worming, information ecosystem contamination and control over whether and how other APIs are called. When you test, ask which untrusted channels reach the prompt and what the model is allowed to do afterwards.<sup><a href="#src-s4">3</a></sup></p></div><div class="cc"><b>Agent hijacking</b><p>When an agent processes emails, websites or code, malicious instructions in that data can derail it into exfiltrating credentials, sending phishing mail or downloading and running malware. NIST&#x27;s CAISI treats agent hijacking as the same problem as indirect prompt injection and as a focus of its measurement work. Impact scales with the tools and permissions the agent holds.<sup><a href="#src-s7">6</a></sup></p></div><div class="cc"><b>Jailbreaks and automated adversarial suffixes</b><p>Manual jailbreaks rely on human ingenuity and are brittle. The GCG work automates the search with greedy and gradient-based techniques to produce a suffix that pushes a model towards an affirmative answer instead of a refusal. Suffixes trained on Vicuna-7B and 13B transferred to public black-box interfaces including ChatGPT, Bard and Claude.<sup><a href="#src-s5">4</a></sup></p></div><div class="cc"><b>You do not need gradients</b><p>One of the eight lessons from red teaming 100 generative AI products is that you do not have to compute gradients to break an AI system. System-level weaknesses in application logic, retrieval paths and permissions are often cheaper routes than optimisation attacks. The same report notes that LLMs amplify existing security risks as well as introducing new ones.<sup><a href="#src-s3">2</a></sup></p></div><div class="cc"><b>Attack transfer and model choice</b><p>Across more than 250,000 attempts by over 400 participants against 13 frontier models, at least one successful attack was found against every model, but success rates differed sharply and did not track capability. Some universal attacks transferred across scenarios and models, and attacks found against harder-to-break models transferred to weaker ones more often than the reverse. That makes comparative red teaming useful input to model selection.<sup><a href="#src-s7">6</a></sup></p></div><div class="cc"><b>Automation with human judgement</b><p>Automation helps cover more of the risk landscape, but the human element stays central, and responsible AI harms are pervasive and hard to measure. In practice you automate breadth with scanners and keep humans for scoping, novel attack ideas and judging whether an output is actually harmful in context.<sup><a href="#src-s3">2</a></sup></p></div><div class="cc"><b>Probes, detectors and failure rates</b><p>Scanners such as garak combine static, dynamic and adaptive probes for prompt injection, data leakage, jailbreaks, toxicity and hallucination, and mark a response FAIL when a detector fires. Because garak makes several generations per prompt by default, results come as a failure rate rather than a yes or no. Detector output needs manual triage before it becomes a finding.<sup><a href="#src-s8">7</a></sup></p></div></div></section><section id="exercises"><h2>Three exercises</h2><p class="sub">In order of difficulty. Free tools. Keep what you build; it is evidence.</p><div class="ex"><div class="ex-h"><span class="n">1</span><b>Manual injection pass with ATLAS-mapped write-ups</b><span class="m">about 3 h</span></div><p class="small">A short report of three attempted attacks on a small chat application, each mapped to an ATLAS technique and to the OWASP area it sits in.<sup><a href="#src-s1">1</a></sup><sup><a href="#src-s4">3</a></sup><sup><a href="#src-s10">9</a></sup></p><ol><li>Pick a local open-weight chat model and wrap it in a script with a system prompt and one fake tool.</li><li>Try direct instruction override, then hide the same instruction in a document the script retrieves, following the indirect injection pattern.</li><li>Record prompt, output, and what the application would have done next.</li><li>Map each attempt to an ATLAS tactic and technique, and label it model evaluation, implementation testing, infrastructure or runtime per OWASP.</li><li>Write one paragraph per finding: impact, preconditions, suggested control.</li></ol><p class="small muted">Tools: Python, a local open-weight model, MITRE ATLAS, OWASP GenAI Red Teaming Guide</p></div><div class="ex"><div class="ex-h"><span class="n">2</span><b>Automated scan and triage with garak</b><span class="m">about 5 h</span></div><p class="small">Evidence that you can run a scanner, read the log and separate real findings from detector noise.<sup><a href="#src-s8">7</a></sup><sup><a href="#src-s3">2</a></sup></p><ol><li>Install garak from PyPI and run garak --list_probes to see the probe families.</li><li>Scan a small Hugging Face model with --target_type huggingface, first --spec probes.encoding then a jailbreak probe such as probes.dan.Dan_11_0.</li><li>Read the jsonl run log and use analyse/analyse_log.py to find the probes and prompts with the most hits.</li><li>Manually review 20 FAIL rows and mark each as true positive, false positive or unclear.</li><li>Report failure rates per probe plus your own corrected rate, and note which detectors were unreliable.</li></ol><p class="small muted">Tools: garak, Python, Hugging Face model</p></div><div class="ex"><div class="ex-h"><span class="n">3</span><b>Adaptive attacks against a tool-using agent in AgentDojo</b><span class="m">about 10 h</span></div><p class="small">A measured comparison of agent task success and attack success, with at least one adaptive attack you wrote yourself.<sup><a href="#src-s6">5</a></sup><sup><a href="#src-s9">8</a></sup><sup><a href="#src-s7">6</a></sup></p><ol><li>Install AgentDojo and run its baseline tasks so you see how often the agent fails with no attacker present.</li><li>Run the bundled prompt injection attacks across the security test cases and record which security properties break.</li><li>Write one adaptive injection tailored to a scenario the bundled attacks fail on, and test it.</li><li>Test whether your attack still works against a second model, and note the direction of transfer.</li><li>Optionally script the attack loop and scoring in PyRIT so the run repeats after a prompt or model change.</li><li>Report utility under attack, attack success rate, and which defence paradigm helped most.</li></ol><p class="small muted">Tools: AgentDojo, PyRIT, Python, open-weight models</p></div></section><section id="questions"><h2>Practice questions</h2><p class="sub">Written from the concepts above, not collected from a named employer. Open one, answer it out loud, then tick the points you covered; the score stays in this browser.</p><details class="iq" data-q="0" data-basis="Not what you&#x27;ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection"><summary>Explain the difference between direct and indirect prompt injection, and why the second one changes your threat model.<span class="iq-tag">Not what you&#x27;ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection</span></summary><p class="small muted">Say your answer out loud or write it down, then tick what you covered:</p><div class="iq-pts"><label><input type="checkbox" data-q="0" data-i="0"> Indirect injection places instructions in data the app retrieves, so no attacker interface is needed</label><label><input type="checkbox" data-q="0" data-i="1"> LLM-integrated apps blur data and instructions, so retrieved text can act like executed code</label><label><input type="checkbox" data-q="0" data-i="2"> Impacts include data theft, worming and control over which APIs get called</label><label><input type="checkbox" data-q="0" data-i="3"> Demonstrated against real products, not only lab setups</label></div><p class="small muted iq-score" data-q="0" data-total="4">0 of 4 covered</p></details><details class="iq" data-q="1" data-basis="Red teaming vs benchmarking (s3, s7)"><summary>How is AI red teaming different from running a safety benchmark, and when would you do each?<span class="iq-tag">Red teaming vs benchmarking (s3, s7)</span></summary><p class="small muted">Say your answer out loud or write it down, then tick what you covered:</p><div class="iq-pts"><label><input type="checkbox" data-q="1" data-i="0"> Benchmarks score fixed known cases; red teaming searches for unknown attacks</label><label><input type="checkbox" data-q="1" data-i="1"> Red teaming includes scoping the system&#x27;s capability and deployment context</label><label><input type="checkbox" data-q="1" data-i="2"> Benchmarks give regression signal, red teaming gives new findings</label><label><input type="checkbox" data-q="1" data-i="3"> Competition data shows dedicated humans still find attacks on models that pass static tests</label></div><p class="small muted iq-score" data-q="1" data-total="4">0 of 4 covered</p></details><details class="iq" data-q="2" data-basis="Agent hijacking, You do not need gradients (s3, s7)"><summary>You have two days to test an internal agent that reads support tickets and can email customers. What is your plan?<span class="iq-tag">Agent hijacking, You do not need gradients (s3, s7)</span></summary><p class="small muted">Say your answer out loud or write it down, then tick what you covered:</p><div class="iq-pts"><label><input type="checkbox" data-q="2" data-i="0"> Start by mapping untrusted input channels, tools and permissions</label><label><input type="checkbox" data-q="2" data-i="1"> Attack through ticket content rather than the operator prompt</label><label><input type="checkbox" data-q="2" data-i="2"> Aim at actions with real impact such as outbound email and data access</label><label><input type="checkbox" data-q="2" data-i="3"> Note that system-level flaws usually beat gradient-based attacks on a short clock</label></div><p class="small muted iq-score" data-q="2" data-total="4">0 of 4 covered</p></details><details class="iq" data-q="3" data-basis="Attack transfer (s5, s7)"><summary>What does transferability mean for adversarial prompts, and how does it affect how you test?<span class="iq-tag">Attack transfer (s5, s7)</span></summary><p class="small muted">Say your answer out loud or write it down, then tick what you covered:</p><div class="iq-pts"><label><input type="checkbox" data-q="3" data-i="0"> Optimised suffixes trained on open models have transferred to closed black-box interfaces</label><label><input type="checkbox" data-q="3" data-i="1"> Universal attack families can carry across scenarios and models</label><label><input type="checkbox" data-q="3" data-i="2"> Attacks found on harder-to-break models tend to transfer down to weaker ones</label><label><input type="checkbox" data-q="3" data-i="3"> So test a candidate attack against every model version and vendor in scope</label></div><p class="small muted iq-score" data-q="3" data-total="4">0 of 4 covered</p></details><details class="iq" data-q="4" data-basis="Probes, detectors and failure rates (s8)"><summary>A scanner reports a 30 percent failure rate on a jailbreak probe. What do you do before reporting it?<span class="iq-tag">Probes, detectors and failure rates (s8)</span></summary><p class="small muted">Say your answer out loud or write it down, then tick what you covered:</p><div class="iq-pts"><label><input type="checkbox" data-q="4" data-i="0"> Check that the detector judgement matches the actual output</label><label><input type="checkbox" data-q="4" data-i="1"> Understand that multiple generations per prompt produce rates, not binary results</label><label><input type="checkbox" data-q="4" data-i="2"> Reproduce in the real application with its system prompt and filters</label><label><input type="checkbox" data-q="4" data-i="3"> Describe business impact rather than the raw probe score</label></div><p class="small muted iq-score" data-q="4" data-total="4">0 of 4 covered</p></details><details class="iq" data-q="5" data-basis="Automation with human judgement (s3, s8, s9)"><summary>Where do automated tools help in a red team engagement, and where do they not?<span class="iq-tag">Automation with human judgement (s3, s8, s9)</span></summary><p class="small muted">Say your answer out loud or write it down, then tick what you covered:</p><div class="iq-pts"><label><input type="checkbox" data-q="5" data-i="0"> Automation extends coverage of the risk landscape and makes runs repeatable</label><label><input type="checkbox" data-q="5" data-i="1"> Humans are needed for scoping, novel attack ideas and context</label><label><input type="checkbox" data-q="5" data-i="2"> Responsible AI harms are pervasive but hard to measure automatically</label><label><input type="checkbox" data-q="5" data-i="3"> Frameworks like PyRIT and garak fit different jobs: orchestration versus broad probing</label></div><p class="small muted iq-score" data-q="5" data-total="4">0 of 4 covered</p></details><details class="iq" data-q="6" data-basis="s1, s10, s3"><summary>How would you structure a red team report so an engineering team can act on it?<span class="iq-tag">s1, s10, s3</span></summary><p class="small muted">Say your answer out loud or write it down, then tick what you covered:</p><div class="iq-pts"><label><input type="checkbox" data-q="6" data-i="0"> Map findings to ATLAS tactics and techniques for shared language</label><label><input type="checkbox" data-q="6" data-i="1"> Separate model evaluation, implementation, infrastructure and runtime issues</label><label><input type="checkbox" data-q="6" data-i="2"> Give preconditions, reproduction steps and a concrete control per finding</label><label><input type="checkbox" data-q="6" data-i="3"> State residual risk, since securing these systems is never finished</label></div><p class="small muted iq-score" data-q="6" data-total="4">0 of 4 covered</p></details><details class="iq" data-q="7" data-basis="AgentDojo (s6)"><summary>How do you measure whether a defence against prompt injection actually works?<span class="iq-tag">AgentDojo (s6)</span></summary><p class="small muted">Say your answer out loud or write it down, then tick what you covered:</p><div class="iq-pts"><label><input type="checkbox" data-q="7" data-i="0"> Measure task utility with no attacker as a baseline, since agents fail plenty on their own</label><label><input type="checkbox" data-q="7" data-i="1"> Track attack success against defined security properties, not vibes</label><label><input type="checkbox" data-q="7" data-i="2"> Use adaptive attacks written after seeing the defence, not only stock payloads</label><label><input type="checkbox" data-q="7" data-i="3"> Re-run the suite after prompt, tool or model changes</label></div><p class="small muted iq-score" data-q="7" data-total="4">0 of 4 covered</p></details></section><section id="sources"><h2>Sources</h2><p class="sub">Every numbered claim above links here. P = the platform's own coding of 48 job postings.</p><ol class="srcs"><li id="src-s1"><a href="https://atlas.mitre.org/" target="_blank" rel="noopener">MITRE ATLAS</a> <span class="m">MITRE</span></li><li id="src-s3"><a href="https://arxiv.org/abs/2501.07238v1" target="_blank" rel="noopener">Lessons From Red Teaming 100 Generative AI Products</a> <span class="m">arXiv (Microsoft AI Red Team)</span></li><li id="src-s4"><a href="https://arxiv.org/abs/2302.12173v2" target="_blank" rel="noopener">Not what you&#x27;ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection</a> <span class="m">arXiv</span></li><li id="src-s5"><a href="https://arxiv.org/abs/2307.15043v2" target="_blank" rel="noopener">Universal and Transferable Adversarial Attacks on Aligned Language Models</a> <span class="m">arXiv</span></li><li id="src-s6"><a href="https://arxiv.org/abs/2406.13352" target="_blank" rel="noopener">AgentDojo: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for LLM Agents</a> <span class="m">arXiv (ETH Zurich)</span></li><li id="src-s7"><a href="https://www.nist.gov/blogs/caisi-research-blog/insights-ai-agent-security-large-scale-red-teaming-competition" target="_blank" rel="noopener">Insights into AI Agent Security from a Large-Scale Red-Teaming Competition</a> <span class="m">NIST CAISI</span></li><li id="src-s8"><a href="https://github.com/NVIDIA/garak" target="_blank" rel="noopener">garak, the LLM vulnerability scanner</a> <span class="m">NVIDIA</span></li><li id="src-s9"><a href="https://github.com/microsoft/PyRIT" target="_blank" rel="noopener">PyRIT: Python Risk Identification Tool for generative AI</a> <span class="m">Microsoft</span></li><li id="src-s10"><a href="https://genai.owasp.org/resource/genai-red-teaming-guide/" target="_blank" rel="noopener">GenAI Red Teaming Guide</a> <span class="m">OWASP Gen AI Security Project</span></li><li id="src-s11"><a href="https://github.com/mitre/advmlthreatmatrix/" target="_blank" rel="noopener">mitre/advmlthreatmatrix: Adversarial Threat Landscape for AI Systems</a> <span class="m">MITRE (GitHub)</span></li></ol></section>
+<section id="resources"><h2>Resources</h2><p class="sub">Free first. Levels: intro means no prior knowledge of this skill; working means you can apply it on a project; advanced means research depth or specialist tooling.</p>
+<div class="filters"><span>Level</span><button data-f="level" data-v="all" class="on">All</button><button data-f="level" data-v="intro">Intro (6)</button><button data-f="level" data-v="working">Working (12)</button><button data-f="level" data-v="advanced">Advanced (7)</button>
+<span>Format</span><button data-f="format" data-v="all" class="on">All</button><button data-f="format" data-v="standard">Standard</button><button data-f="format" data-v="course">Course</button><button data-f="format" data-v="paper">Paper</button><button data-f="format" data-v="lab">Hands-on lab</button><button data-f="format" data-v="tool">Tool</button><button data-f="format" data-v="guide">Guide</button><button data-f="free" class="tog">Free only</button><span class="muted small" id="rcount"></span></div>
+<ul class="res ridx"><li class="ri" data-level="intro" data-format="standard" data-free="1"><span class="lv lv-intro">intro</span><div><a href="https://atlas.mitre.org/" target="_blank" rel="noopener">MITRE ATLAS</a> <span class="m">MITRE, Standard</span> <span class="free">free</span><span class="why">Gives you the shared tactic and technique vocabulary to scope an AI red team engagement and map findings the way defenders expect.</span><span class=roles><span class="rl">Red teamer</span><span class="rl">Engineer</span><span class="rl">Architect</span><span class="rl">Researcher</span><span class="rl">Governance</span></span></div></li><li class="ri" data-level="intro" data-format="lab" data-free="1"><span class="lv lv-intro">intro</span><div><a href="https://gandalf.lakera.ai/" target="_blank" rel="noopener">Gandalf</a> <span class="m">Lakera, Hands-on lab</span> <span class="free">free</span><span class="why">First hands-on feel for prompt injection and guardrail evasion against progressively stronger defences, with no setup required.</span><span class=roles><span class="rl">Red teamer</span><span class="rl">Engineer</span></span></div></li><li class="ri" data-level="intro" data-format="course" data-free="1"><span class="lv lv-intro">intro</span><div><a href="https://learn.microsoft.com/en-us/security/ai-red-team/training" target="_blank" rel="noopener">AI Red Teaming 101 training series</a> <span class="m">Microsoft, Course</span> <span class="free">free</span><span class="why">Walks a security professional through generative AI attack techniques, case studies and tooling before running their own tests.</span><span class=roles><span class="rl">Red teamer</span><span class="rl">Engineer</span><span class="rl">Architect</span><span class="rl">Consultant</span></span></div></li><li class="ri" data-level="intro" data-format="standard" data-free="1"><span class="lv lv-intro">intro</span><div><a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf" target="_blank" rel="noopener">AI RMF: Generative AI Profile (NIST AI 600-1)</a> <span class="m">NIST, Standard</span> <span class="free">free</span><span class="why">Connects red team findings to the risk categories and governance actions your GRC and architecture stakeholders are already tracking.</span><span class=roles><span class="rl">Governance</span><span class="rl">Architect</span><span class="rl">Consultant</span><span class="rl">Researcher</span></span></div></li><li class="ri" data-level="intro" data-format="standard" data-free="1"><span class="lv lv-intro">intro</span><div><a href="https://genai.owasp.org/resource/genai-red-teaming-guide/" target="_blank" rel="noopener">GenAI Red Teaming Guide</a> <span class="m">OWASP Gen AI Security Project, Standard</span> <span class="free">free</span><span class="why">Lets you structure an AI red team exercise across model, implementation, infrastructure and runtime testing instead of ad hoc prompt poking.</span><span class=roles><span class="rl">Red teamer</span><span class="rl">Consultant</span><span class="rl">Governance</span><span class="rl">Architect</span></span></div></li><li class="ri" data-level="intro" data-format="course" data-free="1"><span class="lv lv-intro">intro</span><div><a href="https://www.deeplearning.ai/courses/red-teaming-llm-applications" target="_blank" rel="noopener">Red Teaming LLM Applications</a> <span class="m">DeepLearning.AI with Giskard, Course, about 1.5 h</span> <span class="free">free</span><span class="why">Walks you through manual and automated attacks on a chatbot in notebooks, so you can run a first assessment on your own app.</span><span class=roles><span class="rl">Engineer</span><span class="rl">Red teamer</span><span class="rl">Consultant</span></span></div></li><li class="ri" data-level="working" data-format="paper" data-free="1"><span class="lv lv-working">working</span><div><a href="https://arxiv.org/abs/2501.07238v1" target="_blank" rel="noopener">Lessons From Red Teaming 100 Generative AI Products</a> <span class="m">arXiv (Microsoft AI Red Team), Paper</span> <span class="free">free</span><span class="why">Eight operational lessons from a working AI red team, including how to pick targets, when simple attacks beat gradient methods, and reporting.</span><span class=roles><span class="rl">Red teamer</span><span class="rl">Consultant</span><span class="rl">Architect</span><span class="rl">Governance</span></span></div></li><li class="ri" data-level="working" data-format="lab" data-free="1"><span class="lv lv-working">working</span><div><a href="https://portswigger.net/web-security/llm-attacks" target="_blank" rel="noopener">Web LLM attacks</a> <span class="m">PortSwigger Web Security Academy, Hands-on lab</span> <span class="free">free</span><span class="why">Practises indirect injection, insecure output handling and API abuse in graded web labs, the closest free match to a real pentest scope.</span><span class=roles><span class="rl">Red teamer</span><span class="rl">Engineer</span><span class="rl">Consultant</span></span></div></li><li class="ri" data-level="working" data-format="tool" data-free="1"><span class="lv lv-working">working</span><div><a href="https://github.com/microsoft/PyRIT" target="_blank" rel="noopener">PyRIT</a> <span class="m">Microsoft, Tool</span> <span class="free">free</span><span class="why">Automates multi-turn attacks and scoring against your own targets, which is how you scale beyond manual prompt-by-prompt testing.</span><span class=roles><span class="rl">Red teamer</span><span class="rl">Engineer</span><span class="rl">Researcher</span></span></div></li><li class="ri" data-level="working" data-format="tool" data-free="1"><span class="lv lv-working">working</span><div><a href="https://github.com/NVIDIA/garak" target="_blank" rel="noopener">garak</a> <span class="m">NVIDIA, Tool</span> <span class="free">free</span><span class="why">Runs a broad probe suite against a model endpoint and produces a repeatable failure report you can hand to engineering.</span><span class=roles><span class="rl">Engineer</span><span class="rl">Red teamer</span><span class="rl">Researcher</span></span></div></li><li class="ri" data-level="working" data-format="lab" data-free="1"><span class="lv lv-working">working</span><div><a href="https://github.com/0x4D31/airt" target="_blank" rel="noopener">AIRT: open-source AI red teaming course with Docker labs</a> <span class="m">0x4D31 (Adel Karimi), Hands-on lab</span> <span class="free">free</span><span class="why">Eight modules with local Docker targets, so you practise attacks end to end without needing a customer environment.</span><span class=roles><span class="rl">Red teamer</span><span class="rl">Engineer</span><span class="rl">Researcher</span></span></div></li><li class="ri" data-level="working" data-format="paper" data-free="1"><span class="lv lv-working">working</span><div><a href="https://arxiv.org/abs/2302.12173v2" target="_blank" rel="noopener">Not what you&#x27;ve signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection</a> <span class="m">arXiv (Greshake et al.), Paper</span> <span class="free">free</span><span class="why">The reference threat model for indirect injection, so you can reason about data-flow attack paths in RAG and tool-using systems.</span><span class=roles><span class="rl">Red teamer</span><span class="rl">Engineer</span><span class="rl">Architect</span><span class="rl">Researcher</span></span></div></li><li class="ri" data-level="working" data-format="guide" data-free="1"><span class="lv lv-working">working</span><div><a href="https://boschko.ca/adversarial-ml/" target="_blank" rel="noopener">Breaking Down Adversarial Machine Learning Attacks Through Red Team Challenges</a> <span class="m">Olivier Laflamme, Guide, about 3 h</span> <span class="free">free</span><span class="why">Worked solutions to adversarial ML challenges, showing how model extraction and evasion attacks are actually built step by step.</span><span class=roles><span class="rl">Red teamer</span><span class="rl">Researcher</span><span class="rl">Engineer</span></span></div></li><li class="ri" data-level="working" data-format="paper" data-free="1"><span class="lv lv-working">working</span><div><a href="https://arxiv.org/pdf/2504.19855.pdf" target="_blank" rel="noopener">The Automation Advantage in AI Red Teaming</a> <span class="m">arXiv (Dreadnode), Paper, about 2 h</span> <span class="free">free</span><span class="why">Analyses 214,271 real attack attempts on a public challenge platform, showing which attack patterns pay off and where automation helps.</span><span class=roles><span class="rl">Red teamer</span><span class="rl">Researcher</span><span class="rl">Engineer</span></span></div></li><li class="ri" data-level="working" data-format="guide" data-free="1"><span class="lv lv-working">working</span><div><a href="https://www.promptfoo.dev/blog/owasp-red-teaming/" target="_blank" rel="noopener">OWASP Red Teaming: A Practical Guide to Getting Started</a> <span class="m">Promptfoo, Guide, about 2 h</span> <span class="free">free</span><span class="why">Shows how to turn OWASP LLM risk categories into repeatable automated scans you can run in a pipeline.</span><span class=roles><span class="rl">Engineer</span><span class="rl">Red teamer</span><span class="rl">Consultant</span></span></div></li><li class="ri" data-level="working" data-format="lab" data-free="1"><span class="lv lv-working">working</span><div><a href="https://promptairlines.com/" target="_blank" rel="noopener">Prompt Airlines AI security challenge</a> <span class="m">Wiz, Hands-on lab</span> <span class="free">free</span><span class="why">Five staged challenges against a customer service chatbot, including API and chat history manipulation, not just prompt text tricks.</span><span class=roles><span class="rl">Red teamer</span><span class="rl">Engineer</span></span></div></li><li class="ri" data-level="working" data-format="lab" data-free="1"><span class="lv lv-working">working</span><div><a href="https://www.hackaprompt.com/" target="_blank" rel="noopener">HackAPrompt</a> <span class="m">Learn Prompting, Hands-on lab</span> <span class="free">free</span><span class="why">Competitive tracks including a tutorial series and an indirect injection track against agents, useful for building an attack repertoire.</span><span class=roles><span class="rl">Red teamer</span><span class="rl">Researcher</span></span></div></li><li class="ri" data-level="working" data-format="lab" data-free="1"><span class="lv lv-working">working</span><div><a href="https://github.com/GenAI-Security-Project/GenAI-Red-Team-Lab" target="_blank" rel="noopener">GenAI Red Team Lab</a> <span class="m">OWASP GenAI Security Project (Red Teaming Initiative), Hands-on lab</span> <span class="free">free</span><span class="why">Self-hosted lab that pairs with the OWASP guide, so you can rehearse the guide&#x27;s test types on infrastructure you control.</span><span class=roles><span class="rl">Red teamer</span><span class="rl">Engineer</span><span class="rl">Consultant</span></span></div></li><li class="ri" data-level="advanced" data-format="guide" data-free="1"><span class="lv lv-advanced">advanced</span><div><a href="https://www.nist.gov/blogs/caisi-research-blog/insights-ai-agent-security-large-scale-red-teaming-competition" target="_blank" rel="noopener">Insights into AI Agent Security from a Large-Scale Red-Teaming Competition</a> <span class="m">NIST Center for AI Standards and Innovation, Guide</span> <span class="free">free</span><span class="why">Findings from a public agent attack competition, showing which attack classes actually succeed against defended agents today.</span><span class=roles><span class="rl">Researcher</span><span class="rl">Red teamer</span><span class="rl">Architect</span></span></div></li><li class="ri" data-level="advanced" data-format="paper" data-free="1"><span class="lv lv-advanced">advanced</span><div><a href="https://arxiv.org/abs/2406.13352" target="_blank" rel="noopener">AgentDojo: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for LLM Agents</a> <span class="m">arXiv (Debenedetti et al.), Paper</span> <span class="free">free</span><span class="why">Gives you an extensible harness plus 97 tasks and 629 security cases for measuring agent robustness and testing adaptive attacks.</span><span class=roles><span class="rl">Researcher</span><span class="rl">Red teamer</span><span class="rl">Engineer</span></span></div></li><li class="ri" data-level="advanced" data-format="paper" data-free="1"><span class="lv lv-advanced">advanced</span><div><a href="https://arxiv.org/abs/2404.01318v5" target="_blank" rel="noopener">JailbreakBench: An Open Robustness Benchmark for Jailbreaking Large Language Models</a> <span class="m">arXiv (Chao et al.), Paper</span> <span class="free">free</span><span class="why">Sets out reproducible attack success measurement, so your jailbreak results are comparable across models, runs and defences.</span><span class=roles><span class="rl">Researcher</span><span class="rl">Red teamer</span><span class="rl">Engineer</span></span></div></li><li class="ri" data-level="advanced" data-format="paper" data-free="1"><span class="lv lv-advanced">advanced</span><div><a href="https://arxiv.org/abs/2202.03286" target="_blank" rel="noopener">Red Teaming Language Models with Language Models</a> <span class="m">arXiv (DeepMind), Paper</span> <span class="free">free</span><span class="why">The original automated test case generation approach behind today&#x27;s attacker-LLM tooling, worth reading before you build your own generator.</span><span class=roles><span class="rl">Researcher</span><span class="rl">Red teamer</span></span></div></li><li class="ri" data-level="advanced" data-format="tool" data-free="1"><span class="lv lv-advanced">advanced</span><div><a href="https://inspect.aisi.org.uk/" target="_blank" rel="noopener">Inspect</a> <span class="m">UK AI Security Institute, Tool</span> <span class="free">free</span><span class="why">Build your own attack and capability evaluations with sandboxed agents and scorers, the framework a national AI security body uses.</span><span class=roles><span class="rl">Researcher</span><span class="rl">Red teamer</span><span class="rl">Engineer</span></span></div></li><li class="ri" data-level="advanced" data-format="paper" data-free="1"><span class="lv lv-advanced">advanced</span><div><a href="https://arxiv.org/abs/2307.15043v2" target="_blank" rel="noopener">Universal and Transferable Adversarial Attacks on Aligned Language Models</a> <span class="m">arXiv (Zou et al.), Paper</span> <span class="free">free</span><span class="why">Explains the GCG optimisation attack and transfer behaviour, the basis for automated suffix attacks you will meet in tooling and papers.</span><span class=roles><span class="rl">Researcher</span><span class="rl">Red teamer</span></span></div></li><li class="ri" data-level="advanced" data-format="course" data-free="0"><span class="lv lv-advanced">advanced</span><div><a href="https://academy.hackthebox.com/path/preview/ai-red-teamer" target="_blank" rel="noopener">AI Red Teamer job role path</a> <span class="m">Hack The Box Academy (with Google), Course</span> <span class="paid">not stated</span><span class="why">Twelve modules of graded exercises covering prompt injection, data poisoning, evasion and model privacy attacks against live targets.</span><span class=roles><span class="rl">Red teamer</span><span class="rl">Engineer</span><span class="rl">Consultant</span></span></div></li></ul>
+<p class="small muted"><b>Gaps the research could not fill with a good free source:</b> No free, structured multi-week AI red teaming course with graded labs: the free options are either 1.5 hours (DeepLearning.AI) or unstructured challenge sites, and the long paths (HTB) are paid.; No free hands-on lab found today specifically for MCP and multi-agent tool chains; agent practice is mostly benchmark code (AgentDojo) rather than a guided range.; No free multimodal red teaming lab (image, audio or document-borne injection) from a primary source; the material found is papers only.; No free rules-of-engagement, scoping or report template for AI red team engagements from a standards body; the OWASP and CSA guides describe process but templates were not confirmed.; No free hands-on training on model extraction, membership inference or poisoning attacks: coverage found sits inside paid paths.</p></section>
+<section id="paid"><h2>Paid options</h2><p class="sub">Most of what postings ask for on this skill is covered by the free material above. These are the paid courses and certifications that touch it, with what they add and what free already covers. Showing 6 of 13: ones postings name first, then the most focused on this skill. <a href="paid.html">All paid options</a>.</p>
+<div class="grid c2"><div class="pc"><div class="pc-h"><a href="https://www.offsec.com/courses/exp-301/" target="_blank" rel="noopener"><b>OSED (EXP-301: Windows User Mode Exploit Development)</b></a><span class="m">OffSec, certification</span></div><dl><dt>Cost</dt><dd>Starting at USD 1,749 (as listed on the EXP-301 page)</dd><dt>Duration</dt><dd>932h of content (level 300)</dd><dt>Format</dt><dd>self-paced</dd><dt>Prerequisite</dt><dd>Not stated on the pages we could read; OffSec describes EXP-301 as an intermediate-level exploit development course</dd><dt>In the 48 postings</dt><dd>Named in 1 of 48 postings: Sr. AI Red Team Engineer (listed).</dd></dl><p class="small"><b>Adds over free material:</b> Builds ROP chains, DEP and ASLR bypasses and read/write primitives with grading, which matters if your AI target includes native inference runtimes or C/C++ model loaders.</p><p class="small muted"><b>Free already covers:</b> Free exploit development series and CTF binary challenges teach the same primitives without a certification or a fixed lab set.</p></div><div class="pc"><div class="pc-h"><a href="https://www.zeropointsecurity.co.uk/course/red-team-ops" target="_blank" rel="noopener"><b>CRTO (Red Team Ops)</b></a><span class="m">Zero-Point Security, certification</span></div><dl><dt>Cost</dt><dd>GBP 365 is listed against Red Team Ops on Zero-Point&#x27;s legacy training site course list; the current course page stated no price in the text we could read</dd><dt>Duration</dt><dd>Study time: 20 hours (as stated on the course page)</dd><dt>Format</dt><dd>self-paced</dd><dt>Prerequisite</dt><dd>None stated; the course page lists the level as Practitioner</dd><dt>Renewal</dt><dd>None stated; the page states lifetime access, course updates at no extra cost, lab access with no expiry, and unlimited free exam attempts</dd><dt>In the 48 postings</dt><dd>Named in 1 of 48 postings: Sr. AI Red Team Engineer (listed).</dd></dl><p class="small"><b>Adds over free material:</b> Hands-on Cobalt Strike adversary simulation with a licensed copy provided in the labs, plus unlimited exam retries at no extra cost.</p><p class="small muted"><b>Free already covers:</b> Free C2 frameworks, Active Directory attack labs and public adversary emulation plans cover the concepts, but not licensed Cobalt Strike practice.</p></div><div class="pc"><div class="pc-h"><a href="https://www.offsec.com/courses/pen-300/" target="_blank" rel="noopener"><b>OSEP (PEN-300: Evasion Techniques and Breaching Defenses)</b></a><span class="m">OffSec, certification</span></div><dl><dt>Cost</dt><dd>Starting at USD 1,749 (OffSec&#x27;s Course + Cert Bundle price for a 200 or 300-level course); USD 2,749/year for Learn One</dd><dt>Duration</dt><dd>671h of content; 20+ modules plus 7 challenge labs</dd><dt>Format</dt><dd>self-paced</dd><dt>Prerequisite</dt><dd>As stated: completion of PEN-200 and a passed OSCP+, or equivalent knowledge and experience</dd><dt>In the 48 postings</dt><dd>Named in 2 of 48 postings: Sr. AI Red Team Engineer (listed); AI Red Team Engineer for LLM Security (required, one of a list).</dd></dl><p class="small"><b>Adds over free material:</b> Teaches EDR and AV evasion, custom toolchains and in-memory payload delivery against hardened enterprise targets, which free labs rarely instrument realistically.</p><p class="small muted"><b>Free already covers:</b> Public tradecraft writeups, MITRE ATT&amp;CK technique pages and open source loaders cover much of the theory, but not a graded hardened environment.</p></div><div class="pc"><div class="pc-h"><a href="https://www.offsec.com/courses/web-300/" target="_blank" rel="noopener"><b>OSWE (WEB-300: Advanced Web Attacks and Exploitation)</b></a><span class="m">OffSec, certification</span></div><dl><dt>Cost</dt><dd>USD 1,749 once (Course + Cert Bundle) or USD 2,749/year (Learn One), per OffSec&#x27;s pricing page for any 200 or 300-level course</dd><dt>Duration</dt><dd>not stated</dd><dt>Format</dt><dd>self-paced</dd><dt>Prerequisite</dt><dd>Not stated on the pages we could read; OffSec positions WEB-300 as an advanced white box web application course</dd><dt>In the 48 postings</dt><dd>Named in 1 of 48 postings: AI Red Team Engineer for LLM Security (required, one of a list).</dd></dl><p class="small"><b>Adds over free material:</b> Source code review, .NET deserialization, blind SQLi and authentication bypass chains under exam conditions, the skill set you need when the LLM feature is bolted onto a web app.</p><p class="small muted"><b>Free already covers:</b> PortSwigger Web Security Academy covers SSRF, XSS, SQLi and auth bypass labs free, and OWASP guidance covers the review method.</p></div><div class="pc"><div class="pc-h"><a href="https://www.offsec.com/courses/pen-200/" target="_blank" rel="noopener"><b>OSCP / OSCP+ (PEN-200: Penetration Testing with Kali Linux)</b></a><span class="m">OffSec, certification</span></div><dl><dt>Cost</dt><dd>USD 1,749 once (Course + Cert Bundle, 90 days access, one exam attempt); USD 2,749/year (Learn One, one year access, two exam attempts); USD 1,699 once for the OSCP+ standalone exam</dd><dt>Duration</dt><dd>321h of content; 20+ modules plus 9 challenge labs; exam is 24 hours proctored</dd><dt>Format</dt><dd>self-paced</dd><dt>Prerequisite</dt><dd>As stated: no hard prerequisite, but OffSec suggests hands-on practical knowledge of Linux and Windows administration, networking and network scripting</dd><dt>Renewal</dt><dd>OSCP has no expiration date; the OSCP+ designation expires 3 years from issuance</dd><dt>In the 48 postings</dt><dd>Named in 2 of 48 postings: Sr. AI Red Team Engineer (listed); AI Red Team Engineer for LLM Security (required, one of a list).</dd></dl><p class="small"><b>Adds over free material:</b> Gives the proctored 24-hour exam and the AD and AWS challenge labs that hiring managers in the two AI red team postings treat as the entry filter.</p><p class="small muted"><b>Free already covers:</b> Enumeration, privilege escalation and the web attacks in the syllabus are all reachable free through PortSwigger Web Security Academy, HackTricks and free TryHackMe/HTB rooms, with no exam.</p></div><div class="pc"><div class="pc-h"><a href="https://help.offsec.com/hc/en-us/articles/46593095198740-OSAI-Advanced-AI-Red-Teaming-AI-300-FAQ" target="_blank" rel="noopener"><b>OSAI / OSAI+ (AI-300: Advanced AI Red Teaming)</b></a><span class="m">OffSec, certification</span></div><dl><dt>Cost</dt><dd>not stated on the provider page</dd><dt>Duration</dt><dd>11 modules; self-paced, sold by access duration (lab extensions in 30-day increments for Course &amp; Cert Bundle learners)</dd><dt>Format</dt><dd>self-paced</dd><dt>Prerequisite</dt><dd>As stated: advanced level, for experienced cybersecurity practitioners, red teamers and AI professionals; solid cybersecurity fundamentals and basic familiarity with AI systems including LLMs</dd><dt>Renewal</dt><dd>OSAI does not expire; the OSAI+ designation expires 3 years from issuance, maintained by one of three continuing education paths. Passing OSAI+ may qualify for 40 CPE points, self-submitted to ISC2</dd><dt>In the 48 postings</dt><dd>Not named in any of the 48 postings.</dd></dl><p class="small"><b>Adds over free material:</b> The first graded, proctored AI red team exam from a provider the two AI red team postings already name, against live LLM and agent-integrated targets.</p><p class="small muted"><b>Free already covers:</b> OWASP LLM Top 10, prompt injection writeups and free CTF-style prompt hacking games cover most attack classes with no proctored assessment.</p></div></div></section>
+</main><footer><div class="wrap">Prototype, built 2026-09-26. Demand figures come from 48 public job postings read by hand, coded on 2026-09-26. Source code and research notes: <a href="https://github.com/zuliaszu/ai-security-career-platform" rel="noopener">GitHub</a>. Nothing you enter leaves your browser. No account, no tracking.</div></footer><script>window.AISCP_REL="../";</script><script>/* My plan: tick resources anywhere, snapshot the quiz week plan, render it on plan.html.
+   Storage: aiscp_done {key: ISO date}, aiscp_plan {saved, top, path_title, hours, weeks, proof}. */
+(function () {
+  var REL = window.AISCP_REL || "", DONE = "aiscp_done", PLAN = "aiscp_plan";
+  var SKILLS = {
+    "Agents": { name: "Agent and agentic system security: tool use, permissions, memory, multi-agent", slug: "agents" },
+    "AppSec": { name: "Application security for LLM-backed software", slug: "appsec" },
+    "Architecture": { name: "AI system threat modelling and secure architecture", slug: "architecture" },
+    "Cloud": { name: "Securing model and agent workloads on cloud platforms", slug: "cloud" },
+    "Coding": { name: "Python and coding for AI security work", slug: "coding" },
+    "Customer-facing": { name: "Advisory and customer-facing delivery skills", slug: "customer-facing" },
+    "GRC": { name: "AI governance, risk and compliance: NIST AI RMF, ISO/IEC 42001, EU AI Act, CSA AICM", slug: "grc" },
+    "IAM": { name: "Identity and least privilege for agents and tools", slug: "iam" },
+    "LLM": { name: "LLM security: prompt injection, jailbreaks, output handling", slug: "llm" },
+    "MCP": { name: "Model Context Protocol security: servers, tool poisoning, auth", slug: "mcp" },
+    "RAG": { name: "RAG pipeline security: retrieval, vector stores, data poisoning", slug: "rag" },
+    "Red teaming": { name: "AI red teaming and adversarial testing", slug: "red-teaming" },
+    "SOC": { name: "Detection, logging and response for AI systems", slug: "soc" }
+  };
+  var BY_NAME = {}; Object.keys(SKILLS).forEach(function (k) { BY_NAME[SKILLS[k].name] = SKILLS[k].slug; });
+
+  function get(k, f) { try { var v = JSON.parse(localStorage.getItem(k)); return v === null || v === undefined ? f : v; } catch (e) { return f; } }
+  function set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  function esc(s) { return String(s === undefined || s === null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+  function ticked(key) { return !!get(DONE, {})[key]; }
+  function tick(key, on) { var d = get(DONE, {}); if (on) d[key] = new Date().toISOString(); else delete d[key]; set(DONE, d); }
+  function num(s, re) { var m = re.exec(s || ""); return m ? Number(m[1]) : 0; }
+
+  function paint(a, on) { a.classList.toggle("done", on); var li = a.closest("li, .ri"); if (li) li.classList.toggle("done", on); }
+  function box(a, key) {
+    if (a.getAttribute("data-plan-box")) return;
+    a.setAttribute("data-plan-box", "1");
+    var lab = document.createElement("label"), cb = document.createElement("input");
+    lab.className = "dn"; cb.type = "checkbox"; cb.checked = ticked(key);
+    cb.title = "Mark as done"; cb.setAttribute("aria-label", "Mark as done");
+    lab.appendChild(cb); a.parentNode.insertBefore(lab, a);
+    cb.addEventListener("change", function () { tick(key, cb.checked); paint(a, cb.checked); if (window.AISCP_PLAN_RENDER) window.AISCP_PLAN_RENDER(); });
+    paint(a, cb.checked);
+  }
+  function boxes(root) {
+    (root || document).querySelectorAll('.res li a[href^="http"], .ridx .ri a[href^="http"], .pl-list li a[href^="http"]').forEach(function (a) { box(a, a.getAttribute("href")); });
+  }
+
+  function snapshot() {
+    var wks = document.querySelectorAll(".result .wk");
+    if (!wks.length) return;
+    var hours = 0;
+    document.querySelectorAll(".result h3").forEach(function (h) { hours = hours || num(h.textContent, /about\s+([\d.]+)\s+hours a week/i); });
+    var weeks = [].map.call(wks, function (w) {
+      return { items: [].map.call(w.querySelectorAll('.res li a[href^="http"]'), function (a) {
+        var li = a.closest("li"), sk = li.querySelector(".skl"), m = li.querySelector(".m");
+        return { title: a.textContent.trim(), url: a.getAttribute("href"), skill: sk ? sk.textContent.trim() : "", hours: num(m && m.textContent, /([\d.]+)\s*h\b/) };
+      }) };
+    });
+    var pe = document.querySelector(".result .res-sec.proof"), proof = null;
+    if (pe) {
+      var h3 = pe.querySelector("h3"), mu = pe.querySelector(".small.muted");
+      proof = { title: (h3 ? h3.textContent : "").replace(/^Then prove it:\s*/, "").trim(), hours: num(mu && mu.textContent, /About\s+([\d.]+)\s+hours/i) };
+    }
+    var rolel = document.querySelector(".result .rolel b"), h2 = document.querySelector(".result h2");
+    var runs = get("aiscp_runs", []), last = runs.length ? runs[runs.length - 1] : {};
+    set(PLAN, { saved: new Date().toISOString(), top: last.top || (h2 ? h2.textContent.trim() : ""),
+      path_title: rolel ? rolel.textContent.trim() : "", hours: hours, weeks: weeks, proof: proof });
+  }
+
+  function itemRow(it) {
+    var slug = BY_NAME[it.skill];
+    var sk = it.skill ? '<span class="skl">' + (slug ? '<a href="' + REL + "learn/" + slug + '.html">' + esc(it.skill) + "</a>" : esc(it.skill)) + "</span>" : "";
+    return "<li>" + sk + '<a href="' + esc(it.url) + '" target="_blank" rel="noopener">' + esc(it.title) + "</a>" +
+      (it.hours ? ' <span class="m">' + it.hours + " h</span>" : "") + "</li>";
+  }
+
+  function renderPlan(root) {
+    var p = get(PLAN, null), d = get(DONE, {});
+    if (!p || !p.weeks) {
+      root.innerHTML = '<div class="card"><h2>Take the diagnostic first</h2><p>Your plan is built from a diagnostic result. It is stored in this browser only.</p><p><a class="btn" href="' + REL + 'index.html#quiz">Take the diagnostic</a></p></div>';
+      return;
+    }
+    var all = [], planKeys = {};
+    p.weeks.forEach(function (w) { (w.items || []).forEach(function (it) { all.push(it); planKeys[it.url] = 1; }); });
+    var doneN = all.filter(function (it) { return !!d[it.url]; }).length;
+    var leftH = all.reduce(function (s, it) { return s + (d[it.url] ? 0 : (it.hours || 0)); }, 0);
+    var pk = p.proof ? "proof:" + p.proof.title : null, proofDone = pk ? !!d[pk] : false;
+    if (p.proof && !proofDone) leftH += p.proof.hours || 0;
+    var total = all.length + (p.proof ? 1 : 0), doneAll = doneN + (proofDone ? 1 : 0);
+    var pct = total ? Math.round(100 * doneAll / total) : 0;
+
+    var html = '<div class="card"><div class="pl-head"><div><h2 style="margin:0 0 4px">' + esc(p.path_title || p.top || "Your plan") + "</h2>" +
+      '<p class="small muted" style="margin:0">Saved ' + esc((p.saved || "").slice(0, 10)) + (p.hours ? ", about " + p.hours + " hours a week" : "") + ". Kept in this browser only.</p></div>" +
+      '<div class="small muted">' + doneAll + " of " + total + " done, about " + Math.round(leftH) + " hours left</div></div>" +
+      '<div class="pl-bar"><i style="width:' + pct + '%"></i></div>';
+
+    html += p.weeks.map(function (w, i) {
+      var items = w.items || [], n = items.filter(function (it) { return !!d[it.url]; }).length;
+      var st = items.length && n === items.length ? "done" : n ? n + " of " + items.length + " done" : "not started";
+      return '<div class="pl-wk"><div class="pl-wk-h"><b>Week ' + (i + 1) + '</b><span class="pl-st">' + st + "</span></div>" +
+        '<ul class="pl-list res">' + items.map(itemRow).join("") + "</ul></div>";
+    }).join("");
+
+    if (p.proof) {
+      html += '<div class="pl-wk"><div class="pl-wk-h"><b>Proof exercise</b><span class="pl-st">' + (proofDone ? "done" : "to do") + "</span></div>" +
+        '<ul class="pl-list"><li><label class="dn"><input type="checkbox" id="pl-proof"' + (proofDone ? " checked" : "") + ' aria-label="Mark as done"></label><span' + (proofDone ? ' class="done"' : "") + ">" + esc(p.proof.title) + "</span>" +
+        (p.proof.hours ? ' <span class="m">about ' + p.proof.hours + " h</span>" : "") + "</li></ul></div>";
+    }
+    html += '<p style="margin:18px 0 0"><button type="button" class="btn ghost" id="pl-clear">Clear my plan</button></p></div>';
+
+    var others = Object.keys(d).filter(function (k) { return k.indexOf("http") === 0 && !planKeys[k]; });
+    if (others.length) {
+      html += '<div class="card" style="margin-top:16px"><h2 style="margin:0 0 4px">Resources you ticked elsewhere</h2>' +
+        '<p class="small muted" style="margin:0 0 8px">' + others.length + " item" + (others.length === 1 ? "" : "s") + " outside this plan.</p>" +
+        '<ul class="pl-list">' + others.map(function (u) {
+          return '<li><a href="' + esc(u) + '" target="_blank" rel="noopener">' + esc(u.replace(/^https?:\/\//, "").slice(0, 70)) + "</a>" +
+            '<span class="pl-url">ticked ' + esc(String(d[u]).slice(0, 10)) + "</span></li>";
+        }).join("") + "</ul></div>";
+    }
+    root.innerHTML = html;
+    var cb = document.getElementById("pl-proof");
+    if (cb) cb.addEventListener("change", function () { tick(pk, cb.checked); renderPlan(root); });
+    var cl = document.getElementById("pl-clear");
+    if (cl) cl.addEventListener("click", function () {
+      if (window.confirm("Clear the saved plan? Your ticks stay, the plan snapshot goes.")) { try { localStorage.removeItem(PLAN); } catch (e) {} renderPlan(root); }
+    });
+    boxes(root);
+  }
+
+  function run() {
+    boxes(document);
+    snapshot();
+    var root = document.getElementById("plan-root");
+    if (root) { window.AISCP_PLAN_RENDER = function () { renderPlan(root); }; renderPlan(root); }
+  }
+  function ready(f) { if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", f); else f(); }
+  ready(function () {
+    run();
+    var q = document.getElementById("quiz");
+    if (q && window.MutationObserver) new MutationObserver(function () { boxes(document); snapshot(); }).observe(q, { childList: true, subtree: true });
+  });
+})();
+</script><script>(function () {
+  var sec = document.getElementById("questions");
+  if (!sec) return;
+  var boxes = [].slice.call(sec.querySelectorAll('.iq-pts input[type=checkbox]'));
+  if (!boxes.length) return;
+
+  var KEY = "aiscp_selfcheck", PAGE = location.pathname;
+
+  function readAll() {
+    try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; }
+  }
+  function save(state) {
+    var all = readAll();
+    all[PAGE] = state;
+    try { localStorage.setItem(KEY, JSON.stringify(all)); } catch (e) {}
+  }
+  var state = readAll()[PAGE] || {};
+
+  var sum = document.createElement("div");
+  sum.className = "sc-sum";
+  var line = document.createElement("p");
+  var reset = document.createElement("a");
+  reset.href = "#questions";
+  reset.textContent = "Reset";
+  sum.appendChild(line);
+  sum.appendChild(reset);
+  var first = sec.querySelector(".iq");
+  sec.insertBefore(sum, first);
+
+  function render() {
+    var covered = 0, total = 0;
+    [].forEach.call(sec.querySelectorAll(".iq-score"), function (el) {
+      var q = el.dataset.q, t = parseInt(el.dataset.total, 10) || 0;
+      var n = sec.querySelectorAll('.iq-pts input[data-q="' + q + '"]:checked').length;
+      el.textContent = n + " of " + t + " covered";
+      covered += n;
+      total += t;
+    });
+    var n_q = sec.querySelectorAll(".iq").length;
+    var threshold = Math.ceil(total * 0.8);
+    var txt = "You have covered " + covered + " of " + total + " points across " + n_q + " question" + (n_q === 1 ? "" : "s") + ". ";
+    line.textContent = txt + (covered >= threshold
+      ? "That is past " + threshold + ": do the proof exercise."
+      : "Ready for the proof exercise at " + threshold + ".");
+  }
+
+  boxes.forEach(function (box) {
+    var q = box.dataset.q, i = parseInt(box.dataset.i, 10);
+    box.checked = (state[q] || []).indexOf(i) !== -1;
+    box.parentNode.classList.toggle("on", box.checked);
+    box.addEventListener("change", function () {
+      var list = state[q] || [];
+      var at = list.indexOf(i);
+      if (box.checked && at === -1) list.push(i);
+      if (!box.checked && at !== -1) list.splice(at, 1);
+      state[q] = list;
+      box.parentNode.classList.toggle("on", box.checked);
+      save(state);
+      render();
+    });
+  });
+
+  reset.addEventListener("click", function (e) {
+    e.preventDefault();
+    state = {};
+    save(state);
+    boxes.forEach(function (box) {
+      box.checked = false;
+      box.parentNode.classList.remove("on");
+    });
+    render();
+  });
+
+  render();
+})();
+</script><script>(function(){var s={level:'all',format:'all',free:false};function apply(){document.querySelectorAll('.ri').forEach(function(li){var ok=(s.level==='all'||li.dataset.level===s.level)&&(s.format==='all'||li.dataset.format===s.format)&&(!s.free||li.dataset.free==='1');li.style.display=ok?'':'none';});var n=[].filter.call(document.querySelectorAll('.ri'),function(li){return li.style.display!=='none';}).length;var c=document.getElementById('rcount');if(c)c.textContent=n+' shown';}
+document.querySelectorAll('[data-f]').forEach(function(b){b.addEventListener('click',function(){var f=b.dataset.f,v=b.dataset.v;if(f==='free'){s.free=!s.free;b.classList.toggle('on',s.free);}else{s[f]=v;document.querySelectorAll('[data-f="'+f+'"]').forEach(function(x){x.classList.toggle('on',x===b);});}apply();});});apply();})();</script></body></html>

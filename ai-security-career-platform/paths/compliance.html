@@ -1,0 +1,431 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AI Compliance and Assurance Lead path | AI Security Career Platform</title><style>:root{--bg:#fbfbfc;--panel:#fff;--ink:#1a1d21;--mute:#6b7280;--line:#e5e7eb;--accent:#14508c;--accent-soft:#e8f0f8;--warn:#92400e;--warn-soft:#fef3c7;--ok:#166534;--ok-soft:#dcfce7}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+a{color:var(--accent)}a:hover{text-decoration-thickness:2px}
+.top{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line)}
+.top .in{max-width:1100px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:22px}
+.top .brand{font-weight:600;text-decoration:none;color:var(--ink)}.top nav{display:flex;gap:18px;margin-left:auto}.top nav a{text-decoration:none;color:#374151;font-size:14.5px}.top nav a.on{color:var(--accent);font-weight:600}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+.hero{padding:64px 0 40px}.hero h1{font-size:40px;line-height:1.15;margin:0 0 14px;max-width:20ch}.hero p{font-size:19px;color:#374151;max-width:62ch;margin:0 0 26px}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;padding:12px 20px;border-radius:8px;font-weight:600;border:0;font-size:16px;cursor:pointer}.btn.ghost{background:#fff;color:var(--accent);border:1px solid var(--accent)}.btn+.btn{margin-left:10px}
+.facts{display:flex;gap:26px;flex-wrap:wrap;margin-top:28px;font-size:14px;color:var(--mute)}.facts b{display:block;font-size:22px;color:var(--ink);font-weight:600}
+section{padding:36px 0}h2{font-size:26px;margin:0 0 6px}.sub{color:var(--mute);margin:0 0 22px;font-size:15.5px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:26px 30px}
+.grid{display:grid;gap:16px}.grid.c3{grid-template-columns:repeat(3,1fr)}.grid.c2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:860px){.grid.c3,.grid.c2{grid-template-columns:1fr}.hero h1{font-size:30px}}
+.path-card{display:block;text-decoration:none;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px;transition:border-color .15s}.path-card:hover{border-color:var(--accent)}
+.path-card h3{margin:0 0 4px;font-size:18px}.path-card .tag{color:#374151;font-size:14.5px;margin:0 0 10px}.path-card .meta{font-size:13px;color:var(--mute)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.chip{font-size:12.5px;background:var(--accent-soft);color:var(--accent);padding:2px 9px;border-radius:10px}
+.pct{display:inline-block;min-width:44px;font-variant-numeric:tabular-nums;font-weight:600}
+/* quiz */
+.q .progress{font-size:13px;color:var(--mute);margin:0 0 6px}.q .bar{height:4px;background:var(--line);border-radius:2px;margin-bottom:22px}.q .bar i{display:block;height:4px;background:var(--accent);border-radius:2px}
+.q .qt{font-size:20px;font-weight:600;margin:0 0 4px}.q .ql{font-size:14px;color:var(--mute);margin:14px 0 6px}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 4px}.choice{border:1px solid var(--line);background:#fff;padding:9px 14px;border-radius:8px;font-size:15px;cursor:pointer}.choice:hover{border-color:var(--accent)}.choice.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.navbtns{display:flex;align-items:center;gap:10px;margin-top:22px}.err{color:#b91c1c;font-size:14px}
+.result .top2{display:grid;grid-template-columns:2fr 1fr;gap:16px}@media(max-width:860px){.result .top2{grid-template-columns:1fr}}
+.result h3{margin:0 0 4px;font-size:22px}.result .why{color:#374151;margin:0 0 14px}
+.rank{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:14px 16px;font-size:14px}.rank div{display:flex;justify-content:space-between;padding:3px 0}.rank div:first-child{font-weight:600}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:14.5px}th,td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}th{font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--mute);font-weight:600}
+.gap{background:var(--warn-soft);color:var(--warn);padding:1px 8px;border-radius:10px;font-size:12.5px;white-space:nowrap}.have{background:var(--ok-soft);color:var(--ok);padding:1px 8px;border-radius:10px;font-size:12.5px;white-space:nowrap}.na{background:#eef0f2;color:var(--mute);padding:1px 8px;border-radius:10px;font-size:12.5px;white-space:nowrap}
+.res{margin:4px 0 0 0;padding:0;list-style:none}.res li{padding:6px 0;border-top:1px dashed var(--line);font-size:14.5px}.res li:first-child{border-top:0}.res .m{color:var(--mute);font-size:13px}.res .why{display:block;color:#374151}
+.small{font-size:13.5px}.muted{color:var(--mute)}
+/* path page */
+.ph{padding:48px 0 20px}.ph h1{font-size:36px;margin:0 0 8px}.ph .tag{font-size:19px;color:#374151;margin:0 0 18px;max-width:64ch}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0 0}.stats div{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;font-size:14px}.stats b{display:block;font-size:13px;color:var(--mute);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+@media(max-width:860px){.stats{grid-template-columns:1fr}}
+.skill{border:1px solid var(--line);border-radius:12px;background:var(--panel);margin:12px 0;padding:0}.skill summary{cursor:pointer;padding:16px 22px;display:grid;grid-template-columns:36px 1fr auto;gap:14px;align-items:center;list-style:none}.skill summary::-webkit-details-marker{display:none}
+.skill .n{width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:600;font-size:14px}.skill .sk b{display:block;font-size:17px}.skill .sk span{color:#374151;font-size:14.5px}.skill .d{text-align:right;font-size:13px;color:var(--mute)}.skill .d b{display:block;font-size:20px;color:var(--ink)}
+.skill .body{padding:0 22px 18px 72px}
+.steps{counter-reset:s;list-style:none;padding:0;margin:14px 0}.steps li{counter-increment:s;position:relative;padding:6px 0 6px 40px}.steps li::before{content:counter(s);position:absolute;left:0;top:6px;width:26px;height:26px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-weight:600;font-size:13px}
+.check{list-style:none;padding:0;margin:8px 0}.check li{padding:4px 0 4px 28px;position:relative}.check li::before{content:"";position:absolute;left:2px;top:9px;width:14px;height:14px;border:2px solid var(--accent);border-radius:3px}
+footer{border-top:1px solid var(--line);padding:26px 0 40px;font-size:13.5px;color:var(--mute)}footer a{color:var(--mute)}
+/* v1 quiz app */
+.hidden{display:none!important}
+#quiz{display:none}#quiz.live{display:block;max-width:760px;margin:28px auto 0}
+.q .qhead{display:flex;justify-content:space-between;font-size:13px;color:var(--mute);margin-bottom:8px}.q .sec{font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;font-size:12px}
+.q .qt{font-size:24px;line-height:1.3;margin:22px 0 4px;font-weight:600}.q .qhint{color:var(--mute);font-size:13.5px;margin:0 0 18px}
+.opts.v{display:flex;flex-direction:column;gap:8px}.opts.v .choice{display:flex;align-items:center;gap:14px;text-align:left;padding:13px 16px;font-size:16px;border-radius:10px;background:#fff;border:1px solid var(--line);width:100%}
+.opts.v .choice kbd{flex:0 0 26px;height:26px;border-radius:6px;border:1px solid var(--line);display:grid;place-items:center;font:600 12px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--mute);background:#f9fafb}
+.opts.v .choice.on{background:var(--accent-soft);border-color:var(--accent);color:var(--ink)}.opts.v .choice.on kbd{background:var(--accent);color:#fff;border-color:var(--accent)}
+.opts.v .choice span{display:flex;flex-direction:column}.opts.v .choice small{color:var(--mute);font-size:13.5px}
+.q .navbtns{margin-top:26px}
+/* result */
+.result .res-head{display:grid;grid-template-columns:3fr 2fr;gap:28px;align-items:start}@media(max-width:860px){.result .res-head{grid-template-columns:1fr}}
+.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:600;margin:0 0 6px}
+.result h2{font-size:34px;margin:0 0 6px;line-height:1.15}.result .tag{font-size:18px;color:#374151;margin:0 0 16px}
+.result .whyp{font-size:16px;margin:0 0 10px;max-width:60ch}.result .whyp.close{color:#374151;font-size:15px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.actions .btn+.btn{margin-left:0}
+.ranks{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:16px 18px}.rk{display:grid;grid-template-columns:1fr 34px;grid-template-rows:auto 6px;column-gap:10px;font-size:14px;margin:8px 0}.rk span{grid-column:1}.rk b{grid-row:1/3;align-self:center;text-align:right;font-variant-numeric:tabular-nums}.rk i{display:block;height:6px;border-radius:3px;background:var(--accent);opacity:.85;grid-column:1}
+.res-sec{padding:26px 0 0;margin-top:28px;border-top:1px solid var(--line)}.res-sec h3{font-size:21px;margin:0 0 4px}
+.cov{padding:12px 0;border-bottom:1px dashed var(--line)}.cov:last-child{border-bottom:0}.cov-h{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:6px}.cov-h b{font-size:15.5px}
+.cov-bars{position:relative;height:10px;background:#eef0f2;border-radius:5px;overflow:hidden}.cov-bars i{position:absolute;left:0;top:0;height:10px;border-radius:5px}.cov-bars .dem{background:#c7ccd4}.cov-bars .you{background:var(--accent);height:4px;top:3px}
+.cov-m{display:flex;justify-content:space-between;gap:16px;font-size:13px;color:var(--mute);margin-top:5px}.cov-m span:last-child{text-align:right;max-width:60%}
+.mid{background:#e0f2fe;color:#075985;padding:1px 8px;border-radius:10px;font-size:12.5px;white-space:nowrap}
+.wk{margin:14px 0;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 18px}.wk-h{display:flex;justify-content:space-between;font-weight:600;margin-bottom:4px}.wk-h span{color:var(--mute);font-weight:400;font-size:13px}
+.res .skl{display:inline-block;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);margin-right:8px}
+.proof{background:var(--accent-soft);border:0;border-radius:12px;padding:22px 26px;margin-top:28px}.proof h3{margin-top:0}
+.res-foot{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:30px}.res-foot .btn+.btn{margin-left:0}
+@media print{.top,.res-foot,.actions,footer,#paths,#how{display:none!important}.result .res-head{grid-template-columns:1fr}}
+/* v2: identity, hero band, archetype tiles, interstitials, reveal */
+.hero{background:#0b1f3a;color:#fff;margin:0 -24px;padding:64px 24px 44px;border-radius:0}.hero .in{max-width:1100px;margin:0 auto}
+.hero h1{font-size:46px;color:#fff;max-width:22ch}.hero p{color:#c7d2e2;max-width:60ch}.hero .btn.ghost{background:transparent;color:#fff;border-color:#5b7396}.hero .facts{color:#9fb0c8}.hero .facts b{color:#fff}
+.hero .promise{display:flex;gap:18px;flex-wrap:wrap;margin:18px 0 0;font-size:14px;color:#c7d2e2}.hero .promise span::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#60a5fa;margin-right:8px;vertical-align:middle}
+.outcomes{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin:-26px auto 0;max-width:1100px;position:relative}@media(max-width:1000px){.outcomes{grid-template-columns:repeat(3,1fr)}}@media(max-width:640px){.outcomes{grid-template-columns:repeat(2,1fr)}}
+.outcome{background:#fff;border:1px solid var(--line);border-top:4px solid var(--c);border-radius:10px;padding:14px 14px 12px;text-decoration:none;color:inherit;display:block}.outcome:hover{border-color:var(--c)}
+.outcome b{display:block;font-size:15.5px;margin-bottom:2px}.outcome span{font-size:13px;color:var(--mute);display:block}.outcome small{display:block;font-size:12px;color:var(--c);margin-top:8px;font-weight:600}
+.mono{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:12px;background:var(--c,#14508c);color:#fff;font-weight:700;font-size:20px;flex:0 0 44px}.mono.big{width:84px;height:84px;font-size:38px;border-radius:20px;flex-basis:84px}
+.opts.v.grid2{display:grid;grid-template-columns:1fr 1fr}@media(max-width:640px){.opts.v.grid2{grid-template-columns:1fr}}
+.q.inter .inter-card{display:flex;gap:18px;align-items:flex-start;background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--c);border-radius:12px;padding:22px 24px;margin-top:22px}.inter-body{margin:0;font-size:18px;line-height:1.5}
+.reveal{display:flex;gap:22px;align-items:center;padding:6px 0 26px;border-bottom:1px solid var(--line);margin-bottom:24px;animation:rise .5s ease-out}.reveal h2{font-size:40px;margin:0 0 4px;color:var(--c)}.reveal .ident{font-size:19px;margin:0 0 8px;color:var(--ink)}.reveal .rolel{margin:0;color:#374151}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.res-sec.split{display:grid;grid-template-columns:1fr 1fr;gap:28px}@media(max-width:860px){.res-sec.split{grid-template-columns:1fr}}.res-sec.split ul,.res-sec.split ol{padding-left:20px;margin:6px 0}.res-sec.split li{padding:3px 0}
+.result .ranks .rk i{background:var(--c)}.cov-bars .you{background:var(--c)}
+#quiz.live{max-width:800px}
+.rk{display:block;margin:10px 0}.rk span{display:flex;justify-content:space-between;font-size:14px}.rk b{font-variant-numeric:tabular-nums}.rk i{display:block;height:6px;border-radius:3px;margin-top:4px}
+body.quiz-live #paths,body.quiz-live #how{display:none}
+
+/* learn */
+.dem{display:grid;grid-template-columns:180px 1fr;gap:18px;align-items:start;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-top:10px}@media(max-width:760px){.dem{grid-template-columns:1fr}}
+.dem-n{font-size:14px;color:var(--mute)}.dem-n b{display:block;font-size:28px;color:var(--ink)}
+.dem-bars{display:grid;gap:6px}.db{display:grid;grid-template-columns:200px 1fr 44px 44px;gap:10px;align-items:center;font-size:13.5px;text-decoration:none;color:inherit}.db i{height:8px;background:#eef0f2;border-radius:4px;overflow:hidden}.db em{display:block;height:8px;background:var(--c)}.db b{text-align:right;font-variant-numeric:tabular-nums}.db small{color:var(--mute)}
+.ltabs{display:flex;gap:6px;flex-wrap:wrap;margin:18px 0 6px}.ltabs a{font-size:14px;text-decoration:none;border:1px solid var(--line);background:#fff;padding:6px 12px;border-radius:18px;color:#374151}.ltabs a:hover{border-color:var(--accent);color:var(--accent)}
+.prov{max-width:80ch}
+#brief p{max-width:72ch}#brief h3{margin:22px 0 4px}sup a{text-decoration:none;font-size:11px;margin-left:1px;color:var(--accent)}
+.cc{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 18px}.cc p{margin:6px 0 0;font-size:14.5px;color:#374151}
+.ex{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:12px 0}.ex-h{display:flex;align-items:center;gap:12px}.ex-h .n{width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:600;font-size:14px}.ex-h .m{margin-left:auto;color:var(--mute);font-size:13px}.ex ol{margin:6px 0;padding-left:22px;font-size:14.5px}
+.iq{border:1px solid var(--line);border-radius:10px;background:var(--panel);margin:8px 0;padding:12px 16px}.iq summary{cursor:pointer;font-weight:600}.iq ul{margin:4px 0;font-size:14.5px}
+.srcs{font-size:14px}.srcs li{padding:3px 0}.srcs .m{color:var(--mute);font-size:13px}
+.filters{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:0 0 12px;font-size:13px}.filters span{color:var(--mute);margin:0 4px 0 10px}.filters span:first-child{margin-left:0}
+.filters button{border:1px solid var(--line);background:#fff;border-radius:16px;padding:4px 11px;font-size:13px;cursor:pointer}.filters button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.ridx .ri{display:grid;grid-template-columns:78px 1fr;gap:12px;padding:10px 0}.lv{font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;font-weight:600;padding:2px 0;border-radius:6px;text-align:center;height:fit-content}
+.lv-intro{background:#ecfdf5;color:#047857}.lv-working{background:#eff6ff;color:#1d4ed8}.lv-advanced{background:#f5f3ff;color:#6d28d9}
+.free{font-size:12px;color:var(--ok)}.paid{font-size:12px;color:var(--warn);background:var(--warn-soft);padding:0 6px;border-radius:8px}
+.roles{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px}.rl{font-size:11px;color:var(--mute);border:1px solid var(--line);border-radius:8px;padding:0 6px}
+.pc{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 20px}.pc-h{display:flex;flex-direction:column;margin-bottom:8px}.pc-h .m{font-size:13px;color:var(--mute)}
+.pc dl{display:grid;grid-template-columns:130px 1fr;gap:3px 10px;font-size:13.5px;margin:6px 0 10px}.pc dt{color:var(--mute)}.pc dd{margin:0}
+.res-sec.split li a{text-decoration:none}
+
+/* postings table */
+.jobs{font-size:14px}.jobs td:first-child{max-width:320px}.jobs td.small{color:var(--mute);max-width:260px}@media(max-width:860px){.jobs th:nth-child(5),.jobs td:nth-child(5){display:none}}
+
+.skip{position:absolute;left:-999px;top:8px;background:var(--accent);color:#fff;padding:8px 12px;border-radius:6px;z-index:10}.skip:focus{left:8px}
+
+/* Mobile and accessibility fixes (task 2.11). Mobile widths and focus styles only. */
+
+/* Focus visibility: product.css sets outline-width but outline-style:none, so nothing shows. */
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,
+.choice:focus-visible,.btn:focus-visible,.db:focus-visible,.tab:focus-visible{
+  outline:3px solid var(--accent);outline-offset:2px;border-radius:6px
+}
+.hero a:focus-visible,.hero button:focus-visible{outline-color:#fff}
+.btn:focus-visible{outline-offset:3px}
+
+@media(max-width:700px){
+  /* Header: 6 nav links plus the brand overflowed to 471px at a 390px viewport. */
+  .top .in{flex-wrap:wrap;gap:8px 16px;padding:10px 16px}
+  .top .brand{flex:0 0 100%;font-size:15px}
+  .top nav{margin-left:0;flex-wrap:wrap;gap:4px 16px;width:100%}
+  .top nav a{font-size:15px;min-height:40px;display:inline-flex;align-items:center}
+
+  .wrap{padding:0 16px}
+  .hero{margin:0;padding:36px 16px 30px}
+  .hero h1{font-size:27px;max-width:none}
+  .hero p{font-size:17px}
+
+  /* Tap targets */
+  .btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+  .btn+.btn{margin-left:0}
+  .actions,.res-foot{gap:10px}
+  .opts.v .choice{min-height:48px}
+  .choice{min-height:44px;display:inline-flex;align-items:center}
+  summary{min-height:40px;display:flex;align-items:center}
+
+  /* Demand bars: the 200px label column left the bar 0px wide. Bar moves to its own row. */
+  .db{grid-template-columns:1fr auto auto;gap:4px 10px;padding:6px 0}
+  .db span{grid-column:1/-1}
+  .db i{grid-column:1/2;height:10px}
+  .dem{padding:14px 16px}
+
+  /* Tables: the postings table measured 395px inside a 342px column. */
+  table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .jobs td:first-child,.jobs td.small{max-width:200px}
+
+  /* Two-column definition lists and filter rows stack. */
+  .pc{display:block}
+  .filters{display:flex;flex-wrap:wrap;gap:8px}
+
+  /* Text under 14px: smallest values were 11px to 12.5px. */
+  .small,small,.muted.small,.db,.db small,.meta,.chip,.rl,.rl a,.lv,.free,.paid,
+  .iq-tag,.iq-score,th,td.small,.m,.prov,.qhint,dt,dd,
+  .q .sec,.q .progress,.eyebrow,.mid,.na,.gap,.have,.res .m,.res .why,.res .skl,
+  .stats div,.skill .d,.skill .sk span,.steps li,.cov-m,.wk-h span,.outcome small,.outcome span,
+  .filters span,.filters button,.ridx .ri,.srcs li,.srcs .m,.pc-h .m,.pc dt,.pc dd,.ex-h .m,
+  footer,footer a{font-size:13.5px}
+  .opts.v .choice kbd{font-size:13px}
+  .db b{font-size:14px}
+  .muted{color:#5b6472}
+}
+
+@media(max-width:700px){
+  /* Page-level CSS is injected after this file, so these need a second selector. */
+  summary .iq-tag,.iq-h .iq-tag{font-size:13.5px}
+  /* Footnote markers stay superscript-sized; the padding gives a usable tap area. */
+  sup a{font-size:12px;padding:3px 5px;margin-left:0}
+}
+
+/* progress ticks and the My plan page */
+label.dn{display:inline-block;margin-right:7px;vertical-align:baseline}
+label.dn input{width:14px;height:14px;margin:0;vertical-align:-1px;accent-color:var(--accent);cursor:pointer}
+.res li a.done,.ridx .ri a.done,.pl-list li a.done{text-decoration:line-through;color:var(--mute)}
+.res li.done .why,.res li.done .m,.pl-list li.done .m{color:var(--mute)}
+.pl-head{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:flex-end}
+.pl-bar{height:8px;background:#eef0f2;border-radius:4px;overflow:hidden;margin:10px 0 6px}
+.pl-bar i{display:block;height:8px;background:var(--accent);border-radius:4px}
+.pl-wk{border-top:1px solid var(--line);padding:16px 0 4px}.pl-wk:first-of-type{border-top:0}
+.pl-wk-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px}.pl-wk-h b{font-size:16px}
+.pl-list{margin:6px 0 0;padding:0;list-style:none}
+.pl-list li{padding:7px 0;border-top:1px dashed var(--line);font-size:14.5px}.pl-list li:first-child{border-top:0}
+.pl-list .skl{color:var(--mute);font-size:13px;display:block}
+.pl-list .m{color:var(--mute);font-size:13px}
+.pl-st{font-size:13px;color:var(--mute);white-space:nowrap}
+.pl-url{display:block;font-size:12.5px;color:var(--mute);word-break:break-all}
+
+.iq summary{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.iq-tag{font-size:12px;font-weight:400;color:var(--mute);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:normal}
+.iq-pts{display:grid;gap:6px;margin:6px 0 8px}
+.iq-pts label{display:flex;gap:8px;align-items:flex-start;font-size:14.5px;cursor:pointer}
+.iq-pts input{margin:3px 0 0;flex:0 0 auto}
+.iq-pts label.on{color:var(--mute)}
+.iq-score{margin:0}
+.sc-sum{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:0 0 12px}
+.sc-sum p{margin:0;font-size:14.5px}
+.sc-sum a{font-size:13px;color:var(--mute)}
+</style></head><body><a class="skip" href="#main">Skip to content</a><header class="top"><div class="in"><a class="brand" href="../index.html">AI Security Career Platform</a><nav><a href="../index.html">Home</a><a href="../index.html#paths" class=on>Paths</a><a href="../learn/index.html">Learn</a><a href="../index.html">Diagnostic</a><a href="../plan.html">My plan</a></nav></div></header>
+<main id="main" class="wrap"><div class="ph"><p class="progress muted small"><a href="../index.html#paths">All paths</a> / AI Compliance and Assurance Lead</p><h1>AI Compliance and Assurance Lead</h1><p class="tag">Someone who gets AI systems through audits and regulators: conformity evidence, control mappings and questionnaires, not just risk opinions.</p>
+<a class="btn" href="#skills">Start with the skills</a> <a class="btn ghost" href="../index.html#quiz">Take the diagnostic first</a>
+<div class="stats"><div><b>Evidence</b>4 of 48 postings in this cluster. These 4 postings are a compliance-flavoured subset drawn from the GRC and consulting clusters in the tracker, not a separately coded job family: 3 US and 1 Canada/US, at mid (2), senior (1) and associate (1) level. Skill percentages other than GRC and LLM are taken from the wider AI Governance / GRC cluster (n=7), because that is the job family these roles are advertised in.</div><div><b>Pay, as posted</b>Only 1 of the 4 postings lists pay, at 94875-130000 USD; the other 3 list none.</div><div><b>Titles you will see</b>AI Governance Analyst, Senior AI Governance Analyst, AI Governance Sr Associate, GRC Analyst</div></div></div>
+<section><h2>What you do</h2><ul><li>Assess AI systems against certifiable standards such as ISO/IEC 42001 and ISO/IEC 27001, and record the evidence an auditor will ask for (GRC skill: 100% of the 4 compliance-titled postings; 86% across the wider GRC cluster, n=7).</li><li>Work out which EU AI Act obligations apply to a system at its risk class, and what conformity work follows from that (LLM skill: 100%, n=4 compliance-titled postings).</li><li>Map AI features into existing control sets: SOC 2, ISO 27001, and DORA or NIS2 where the system sits in financial services or critical services (GRC cluster figures, n=7).</li><li>Answer customer and vendor security questionnaires about AI features, and run DPIAs where personal data is involved (Customer-facing: 14% in the GRC cluster, n=7).</li><li>Read the architecture and cloud deployment of an AI system well enough to say whether a claimed control is really in place (Architecture: 43%, Cloud: 43% in the GRC cluster, n=7).</li></ul></section>
+<section id="skills"><h2>Skills, in the order to learn them</h2><p class="sub">Demand is the share of the 4 postings in this cluster that name the skill. Open a skill for the resources; the first one listed is the one to open first.</p>
+<details class="skill" open><summary><span class="n">1</span><span class="sk"><b>AI governance, risk and compliance: NIST AI RMF, ISO/IEC 42001, EU AI Act, CSA AICM</b><span>The work is control mapping and conformity evidence: every one of these postings expects you to run an assessment against a named standard and leave a record behind.</span></span><span class="d"><b>86%</b>demand</span></summary><div class="body"><p class="small muted">Applying formal risk management, management-system, and regulatory frameworks to how an organisation builds, buys, and operates AI. <a href="../learn/grc.html">Open the full AI governance, risk and compliance: NIST AI RMF, ISO/IEC 42001, EU AI Act, CSA AICM page</a> for every resource by level, paid options and, where written, the brief and exercises.</p><ul class="res"><li><a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">AI Risk Management Framework</a> <span class="m">NIST, standard, free, about 3 h, intro</span><span class="why">This is the baseline voluntary framework most AI governance programs are built on, and it links to the RMF 1.0 document, the Playbook, and the Generative AI Profile.</span></li><li><a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf" target="_blank" rel="noopener">Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile (NIST-AI-600-1)</a> <span class="m">NIST, standard, free, about 2 h, working</span><span class="why">Adds the specific risks and actions generative AI introduces on top of the base RMF, which is where most current AI governance work actually sits.</span></li><li><a href="https://airc.nist.gov/AI_RMF_Knowledge_Base/Playbook" target="_blank" rel="noopener">NIST AI RMF Playbook</a> <span class="m">NIST, tool, free, about 3 h, working</span><span class="why">Turns the RMF&#x27;s four functions into concrete, actionable suggestions you can use as a checklist when running an actual assessment.</span></li><li><a href="https://www.iso.org/standard/42001" target="_blank" rel="noopener">ISO/IEC 42001:2023, Information technology, Artificial intelligence, Management system</a> <span class="m">ISO/IEC, standard, free, about 1 h, working</span><span class="why">The management-system standard organisations get certified against for AI governance, structured the same way as ISO 27001 so it is easy to map for security professionals.</span></li><li><a href="https://artificialintelligenceact.eu/the-act/" target="_blank" rel="noopener">EU AI Act, full text and article-by-article explorer</a> <span class="m">artificialintelligenceact.eu, regulation, free, about 3 h, working</span><span class="why">Gives the actual legal text of the first binding cross-sector AI law, with a browsable structure that is far easier to work through than the Official Journal PDF.</span></li><li><a href="https://cloudsecurityalliance.org/artifacts/ai-controls-matrix-v1-1" target="_blank" rel="noopener">AI Controls Matrix (AICM) v1.1</a> <span class="m">Cloud Security Alliance, standard, free, about 4 h, advanced</span><span class="why">A vendor-agnostic control catalogue for AI systems in the cloud that you can use directly as an audit or vendor-assessment checklist, complementing the higher-level RMF and ISO frameworks.</span></li></ul></div></details><details class="skill"><summary><span class="n">2</span><span class="sk"><b>LLM security: prompt injection, jailbreaks, output handling</b><span>You cannot judge whether an AI control works without knowing how the system fails: prompt injection, data leakage through retrieval, and unreliable output.</span></span><span class="d"><b>100%</b>demand</span></summary><div class="body"><p class="small muted">Understanding how attackers manipulate LLM inputs and outputs, and how to design applications that resist prompt injection, jailbreaks, and unsafe output handling. <a href="../learn/llm.html">Open the full LLM security: prompt injection, jailbreaks, output handling page</a> for every resource by level, paid options and, where written, the brief and exercises.</p><ul class="res"><li><a href="https://genai.owasp.org/llm-top-10/" target="_blank" rel="noopener">OWASP Top 10 for LLM Applications</a> <span class="m">OWASP GenAI Security Project, standard, free, about 3 h, intro</span><span class="why">This is the reference list of LLM risks including prompt injection and insecure output handling that most job postings and interviews assume you already know.</span></li><li><a href="https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html" target="_blank" rel="noopener">Prompt Injection Prevention Cheat Sheet</a> <span class="m">OWASP Cheat Sheet Series, guide, free, about 1 h, working</span><span class="why">Short, practical control checklist you can reuse directly in a design review or a client report.</span></li><li><a href="https://portswigger.net/web-security/llm-attacks" target="_blank" rel="noopener">Web LLM attacks</a> <span class="m">PortSwigger Web Security Academy, lab, free, about 3 h, working</span><span class="why">Free browser-based lab where you actually exploit an LLM-backed app instead of just reading about it, which is the fastest way to internalise the attack pattern.</span></li><li><a href="https://github.com/NVIDIA/garak" target="_blank" rel="noopener">garak: LLM vulnerability scanner</a> <span class="m">NVIDIA, tool, free, about 2 h, working</span><span class="why">An open-source scanner you can point at a model to probe for jailbreaks, prompt injection, and data leakage, similar in spirit to running nmap against a network.</span></li><li><a href="https://www.hackaprompt.com/" target="_blank" rel="noopener">HackAPrompt</a> <span class="m">Learn Prompting, lab, free, about 3 h, intro</span><span class="why">A gamified prompt injection competition that builds intuition for how jailbreaks work before you move on to defending real systems.</span></li></ul></div></details><details class="skill"><summary><span class="n">3</span><span class="sk"><b>AI system threat modelling and secure architecture</b><span>Auditors accept evidence, not diagrams, so you need to read a design and tell which components a control statement actually covers.</span></span><span class="d"><b>43%</b>demand</span></summary><div class="body"><p class="small muted">Mapping how an AI or agentic system can be attacked and designing the architecture and controls to reduce that risk. <a href="../learn/architecture.html">Open the full AI system threat modelling and secure architecture page</a> for every resource by level, paid options and, where written, the brief and exercises.</p><ul class="res"><li><a href="https://atlas.mitre.org/" target="_blank" rel="noopener">MITRE ATLAS</a> <span class="m">MITRE, guide, free, about 3 h, working</span><span class="why">Gives you a tactics and techniques matrix for adversarial ML attacks that you can use directly in threat modelling sessions.</span></li><li><a href="https://www.ncsc.gov.uk/collection/guidelines-secure-ai-system-development/introduction" target="_blank" rel="noopener">Guidelines for secure AI system development</a> <span class="m">UK National Cyber Security Centre, guide, free, about 2 h, working</span><span class="why">Walks through secure design, development, deployment and maintenance decisions for AI systems in plain, practitioner language.</span></li><li><a href="https://gandalf.lakera.ai/" target="_blank" rel="noopener">Gandalf</a> <span class="m">Lakera, lab, free, about 1 h, intro</span><span class="why">Lets you try prompt injection against a live guarded LLM so the threats in the frameworks stop being abstract.</span></li></ul></div></details><details class="skill"><summary><span class="n">4</span><span class="sk"><b>Securing model and agent workloads on cloud platforms</b><span>Most of the evidence you collect comes from cloud services: logging, key management, access control, so you need to know where to look for it.</span></span><span class="d"><b>43%</b>demand</span></summary><div class="body"><p class="small muted">Applying cloud security controls, identity boundaries and monitoring to model and agent workloads on AWS, Azure and GCP. <a href="../learn/cloud.html">Open the full Securing model and agent workloads on cloud platforms page</a> for every resource by level, paid options and, where written, the brief and exercises.</p><ul class="res"><li><a href="https://aws.amazon.com/blogs/security/securing-generative-ai-an-introduction-to-the-generative-ai-security-scoping-matrix/" target="_blank" rel="noopener">Securing generative AI: An introduction to the Generative AI Security Scoping Matrix</a> <span class="m">AWS Security Blog, guide, free, about 2 h, working</span><span class="why">Gives you a working model for figuring out which security responsibilities are yours versus the provider&#x27;s for any generative AI deployment.</span></li><li><a href="https://learn.microsoft.com/en-us/security/benchmark/azure/baselines/azure-openai-security-baseline" target="_blank" rel="noopener">Azure security baseline for Azure OpenAI</a> <span class="m">Microsoft Learn, guide, free, about 2 h, working</span><span class="why">Lists the specific network, identity and data controls to configure when you run a model workload on Azure.</span></li><li><a href="https://safety.google/cybersecurity-advancements/saif/" target="_blank" rel="noopener">Google&#x27;s Secure AI Framework (SAIF)</a> <span class="m">Google, guide, free, about 1 h, intro</span><span class="why">Sets out Google&#x27;s own conceptual framework for securing AI systems across the ecosystem, useful for comparing against AWS and Azure approaches.</span></li><li><a href="https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/red-teaming" target="_blank" rel="noopener">Planning red teaming for large language models and their applications</a> <span class="m">Microsoft Learn, guide, free, about 2 h, working</span><span class="why">Explains how to plan and run red teaming for an LLM application hosted on Azure, before and after mitigations are in place.</span></li><li><a href="https://github.com/Azure/PyRIT" target="_blank" rel="noopener">PyRIT (Python Risk Identification Tool for generative AI)</a> <span class="m">Microsoft (Azure), tool, free, about 3 h, advanced</span><span class="why">An open source framework you can run yourself to probe a deployed model or agent for risks, rather than just reading about them.</span></li></ul></div></details><details class="skill"><summary><span class="n">5</span><span class="sk"><b>Application security for LLM-backed software</b><span>Secure development evidence sits inside ISO 27001 and SOC 2 scope, so you need enough AppSec literacy to test whether the practice matches the policy.</span></span><span class="d"><b>29%</b>demand</span></summary><div class="body"><p class="small muted">Applying secure design, review and testing practices to applications that embed LLMs, agents or RAG pipelines. <a href="../learn/appsec.html">Open the full Application security for LLM-backed software page</a> for every resource by level, paid options and, where written, the brief and exercises.</p><ul class="res"><li><a href="https://genai.owasp.org/llm-top-10/" target="_blank" rel="noopener">OWASP Top 10 for LLM Applications</a> <span class="m">OWASP GenAI Security Project, standard, free, about 2 h, intro</span><span class="why">The reference risk list you will map every LLM app review against, so start here.</span></li><li><a href="https://www.ncsc.gov.uk/collection/guidelines-secure-ai-system-development/introduction" target="_blank" rel="noopener">Guidelines for secure AI system development</a> <span class="m">UK National Cyber Security Centre, guide, free, about 2 h, working</span><span class="why">Covers secure design, build, deployment and maintenance for AI systems the way an AppSec review checklist would.</span></li><li><a href="https://www.hackaprompt.com/" target="_blank" rel="noopener">HackAPrompt</a> <span class="m">Learn Prompting, lab, free, about 3 h, intro</span><span class="why">Hands-on practice crafting prompt injection payloads, the equivalent of learning SQL injection by doing it.</span></li><li><a href="https://www.sans.org/cyber-security-courses/genai-llm-application-security" target="_blank" rel="noopener">SEC545: GenAI and LLM Application Security</a> <span class="m">SANS Institute, course, USD 8000, about 36 h, advanced</span><span class="why">A dedicated instructor-led course and GIAC cert for AppSec engineers whose job becomes securing LLM applications full time.</span></li></ul></div></details><details class="skill"><summary><span class="n">6</span><span class="sk"><b>Advisory and customer-facing delivery skills</b><span>Assurance work is written and spoken for other people: auditors, regulators, and customers sending questionnaires, so being clear in front of them is the differentiator.</span></span><span class="d"><b>14%</b>demand</span></summary><div class="body"><p class="small muted">Explaining AI risk and controls to clients and leadership, and delivering advisory work they can act on. <a href="../learn/customer-facing.html">Open the full Advisory and customer-facing delivery skills page</a> for every resource by level, paid options and, where written, the brief and exercises.</p><ul class="res"><li><a href="https://www.enisa.europa.eu/publications/multilayer-framework-for-good-cybersecurity-practices-for-ai/" target="_blank" rel="noopener">Multilayer framework for good cybersecurity practices for AI</a> <span class="m">ENISA, guide, free, about 2 h, working</span><span class="why">A structured way to walk a client through AI security practices across the organisation, not just the model layer.</span></li><li><a href="https://store.iapp.org/ai-governance-professional-aigp-online-training/" target="_blank" rel="noopener">AI Governance Professional (AIGP) training</a> <span class="m">IAPP, course, USD 1500, about 20 h, advanced</span><span class="why">A recognised credential for advisors whose clients need a named expert on AI governance and law, not just technical controls.</span></li></ul></div></details>
+</section>
+<section id="proof"><h2>Prove it: Conformity gap assessment of a fictional RAG assistant against ISO/IEC 42001 and the EU AI Act</h2><p class="sub">About 9 hours, alone, free tools. Certificates say you sat a course; this says you can do the job.</p>
+<div class="card"><p>Invent one fictional RAG assistant, for example a customer-service assistant that answers from a product and policy knowledge base, then run a conformity gap assessment against ISO/IEC 42001 and against the EU AI Act obligations for the risk class you decide it falls into. The output is what an assurance role is hired to produce: a gap list with evidence references and owners, not a risk opinion.</p><ol class="steps"><li>Write a one-page system description of your fictional RAG assistant: purpose, users, data sources, retrieval pipeline, model, and where it is deployed.</li><li>Decide its EU AI Act risk class and write the reasoning in three sentences, naming the criteria you applied.</li><li>List the AI Act obligations that follow at that class, and for each one write what evidence would satisfy it.</li><li>Read the ISO/IEC 42001 clause and control structure, then build a spreadsheet with one row per control in scope.</li><li>For each row record: control, what the assistant does today, gap, evidence you would collect, owner, effort.</li><li>Map 5 of those controls across to ISO/IEC 27001 and SOC 2 so you can show reviewers where existing certification already covers the AI feature.</li><li>Add a short DORA or NIS2 note stating whether the assistant would be in scope if the operator were a financial entity or an essential service, and what changes.</li><li>Write a two-page assessment summary: scope, method, top 5 gaps, proposed evidence plan, and what you could not verify.</li><li>Reread the pack cold after a day and delete every finding you could not support with a named evidence item.</li></ol>
+<p><b>Deliverable:</b> A control-by-control gap spreadsheet plus a two-page conformity assessment summary for one named fictional RAG assistant, covering ISO/IEC 42001, the EU AI Act obligations for its risk class, and a cross-map to ISO 27001 and SOC 2.</p><p><b>Self-check</b></p><ul class="check"><li>the risk class is stated once, clearly, with the criteria that led to it.</li><li>every gap names a specific evidence item, not a general recommendation.</li><li>at least 5 controls are mapped across to ISO 27001 or SOC 2 with the clause or criterion number.</li><li>the summary separates what you verified from what you assumed.</li><li>the spreadsheet could be handed to an auditor without you in the room.</li></ul></div></section>
+<section id="roles"><h2>Roles this path leads to, as posted</h2><p class="sub">The 4 postings in this cluster, read and coded by hand between the seed and follow-up waves. Employer names are left off on purpose; the link opens the original posting, which may have closed since. Pay is quoted as posted, nothing is inferred.</p>
+<table class="jobs"><thead><tr><th>Title</th><th>Where</th><th>Level</th><th>Pay, as posted</th><th>Asks for</th></tr></thead><tbody><tr><td><a href="https://builtin.com/job/ai-governance-analyst/11090880" target="_blank" rel="noopener">AI Governance Analyst</a></td><td>US</td><td>Mid</td><td>94875-130000 USD</td><td class="small">LLM, GRC</td></tr><tr><td><a href="https://builtin.com/job/ai-governance-sr-associate/10393929" target="_blank" rel="noopener">AI Governance Sr Associate</a></td><td>US</td><td>Associate</td><td><span class=muted>not listed</span></td><td class="small">LLM, GRC</td></tr><tr><td><a href="https://jobs.ashbyhq.com/cohere/509f613c-4326-46ca-bde9-ce5e8f6be1dd" target="_blank" rel="noopener">GRC Analyst</a></td><td>Canada/US</td><td>Mid</td><td><span class=muted>not listed</span></td><td class="small">LLM, GRC</td></tr><tr><td><a href="https://www.tealhq.com/job/senior-ai-governance-analyst_7ea1a740dc4a02226219224273460f02e2e20" target="_blank" rel="noopener">Senior AI Governance Analyst</a></td><td>US</td><td>Senior</td><td><span class=muted>not listed</span></td><td class="small">LLM, GRC</td></tr></tbody></table></section>
+<section><h2>Frameworks this role works with</h2><table><thead><tr><th>Framework</th><th>How this role uses it</th></tr></thead><tbody><tr><td><a href="https://www.iso.org/standard/42001" target="_blank" rel="noopener">ISO/IEC 42001 (AI management system)</a></td><td>The certifiable AI management standard this path assesses against; its controls give the structure for the gap spreadsheet.</td></tr><tr><td><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202401689" target="_blank" rel="noopener">EU AI Act (Regulation 2024/1689)</a></td><td>The primary source for risk classes and obligations; read the articles rather than summaries when you decide a class.</td></tr><tr><td><a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI RMF 1.0 + Generative AI Profile</a></td><td>Use it to structure the assessment method behind the gap list, and as the framework most US postings name.</td></tr><tr><td><a href="https://eur-lex.europa.eu/eli/reg/2022/2554/oj" target="_blank" rel="noopener">DORA (Regulation 2022/2554)</a></td><td>Sets the resilience, testing and third-party requirements that apply when an AI system runs inside a financial entity.</td></tr><tr><td><a href="https://www.iso.org/standard/27001" target="_blank" rel="noopener">ISO/IEC 27001</a></td><td>The certification most organisations already hold; you will map AI features into its controls rather than start a new scheme.</td></tr></tbody></table></section>
+<section><h2>This week</h2><div class="card"><p style="margin:0;font-size:17px">This week, pick the fictional RAG assistant you will assess and write its one-page system description, then read the EU AI Act risk-classification articles once in full.</p></div></section>
+<section><h2>Other paths</h2><div class="grid c3"><a class="path-card" href="engineer.html"><h3>AI Security Engineer</h3><p class="tag">Builds and secures LLM and agent applications, adding guardrails and secure architecture on top of existing software engineering skills.</p><div class="meta">16 of 48 postings. Learn first:</div><div class="chips"><span class="chip">LLM security: prompt injection, jailbreaks, output handling 94%</span><span class="chip">Agent and agentic system security: tool use, permissions, memory, multi-agent 81%</span><span class="chip">Python and coding for AI security work 81%</span></div></a><a class="path-card" href="red-team.html"><h3>AI Red Teamer</h3><p class="tag">Attacks LLMs and agents on purpose, using repeatable test plans, to find weaknesses before real attackers do.</p><div class="meta">9 of 48 postings. Learn first:</div><div class="chips"><span class="chip">AI red teaming and adversarial testing 100%</span><span class="chip">Python and coding for AI security work 89%</span><span class="chip">LLM security: prompt injection, jailbreaks, output handling 78%</span></div></a><a class="path-card" href="architect.html"><h3>AI Security Architect</h3><p class="tag">Someone who designs how LLM, RAG and agent systems get built securely, and sets the identity and access boundaries other teams build against.</p><div class="meta">7 of 48 postings. Learn first:</div><div class="chips"><span class="chip">AI system threat modelling and secure architecture 86%</span><span class="chip">LLM security: prompt injection, jailbreaks, output handling 100%</span><span class="chip">Agent and agentic system security: tool use, permissions, memory, multi-agent 86%</span></div></a><a class="path-card" href="grc.html"><h3>AI Governance and Risk Lead</h3><p class="tag">Someone who maps AI systems against risk frameworks and law, and tells the business what it can and cannot ship.</p><div class="meta">7 of 48 postings. Learn first:</div><div class="chips"><span class="chip">AI governance, risk and compliance: NIST AI RMF, ISO/IEC 42001, EU AI Act, CSA AICM 86%</span><span class="chip">LLM security: prompt injection, jailbreaks, output handling 100%</span><span class="chip">AI system threat modelling and secure architecture 43%</span></div></a><a class="path-card" href="consulting.html"><h3>AI Security Consultant</h3><p class="tag">Explains AI security risk to clients and scopes or leads the work that follows.</p><div class="meta">5 of 48 postings. Learn first:</div><div class="chips"><span class="chip">Advisory and customer-facing delivery skills 40%</span><span class="chip">LLM security: prompt injection, jailbreaks, output handling 80%</span><span class="chip">Securing model and agent workloads on cloud platforms 80%</span></div></a><a class="path-card" href="research.html"><h3>AI Security Researcher</h3><p class="tag">Studies how AI systems fail or get attacked, and produces evidence other people can check.</p><div class="meta">4 of 48 postings. Learn first:</div><div class="chips"><span class="chip">AI red teaming and adversarial testing 100%</span><span class="chip">Python and coding for AI security work 100%</span><span class="chip">LLM security: prompt injection, jailbreaks, output handling 100%</span></div></a></div></section>
+</main><footer><div class="wrap">Prototype, built 2026-09-26. Demand figures come from 48 public job postings read by hand, coded on 2026-09-26. Source code and research notes: <a href="https://github.com/zuliaszu/ai-security-career-platform" rel="noopener">GitHub</a>. Nothing you enter leaves your browser. No account, no tracking.</div></footer><script>window.AISCP_REL="../";</script><script>/* My plan: tick resources anywhere, snapshot the quiz week plan, render it on plan.html.
+   Storage: aiscp_done {key: ISO date}, aiscp_plan {saved, top, path_title, hours, weeks, proof}. */
+(function () {
+  var REL = window.AISCP_REL || "", DONE = "aiscp_done", PLAN = "aiscp_plan";
+  var SKILLS = {
+    "Agents": { name: "Agent and agentic system security: tool use, permissions, memory, multi-agent", slug: "agents" },
+    "AppSec": { name: "Application security for LLM-backed software", slug: "appsec" },
+    "Architecture": { name: "AI system threat modelling and secure architecture", slug: "architecture" },
+    "Cloud": { name: "Securing model and agent workloads on cloud platforms", slug: "cloud" },
+    "Coding": { name: "Python and coding for AI security work", slug: "coding" },
+    "Customer-facing": { name: "Advisory and customer-facing delivery skills", slug: "customer-facing" },
+    "GRC": { name: "AI governance, risk and compliance: NIST AI RMF, ISO/IEC 42001, EU AI Act, CSA AICM", slug: "grc" },
+    "IAM": { name: "Identity and least privilege for agents and tools", slug: "iam" },
+    "LLM": { name: "LLM security: prompt injection, jailbreaks, output handling", slug: "llm" },
+    "MCP": { name: "Model Context Protocol security: servers, tool poisoning, auth", slug: "mcp" },
+    "RAG": { name: "RAG pipeline security: retrieval, vector stores, data poisoning", slug: "rag" },
+    "Red teaming": { name: "AI red teaming and adversarial testing", slug: "red-teaming" },
+    "SOC": { name: "Detection, logging and response for AI systems", slug: "soc" }
+  };
+  var BY_NAME = {}; Object.keys(SKILLS).forEach(function (k) { BY_NAME[SKILLS[k].name] = SKILLS[k].slug; });
+
+  function get(k, f) { try { var v = JSON.parse(localStorage.getItem(k)); return v === null || v === undefined ? f : v; } catch (e) { return f; } }
+  function set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  function esc(s) { return String(s === undefined || s === null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+  function ticked(key) { return !!get(DONE, {})[key]; }
+  function tick(key, on) { var d = get(DONE, {}); if (on) d[key] = new Date().toISOString(); else delete d[key]; set(DONE, d); }
+  function num(s, re) { var m = re.exec(s || ""); return m ? Number(m[1]) : 0; }
+
+  function paint(a, on) { a.classList.toggle("done", on); var li = a.closest("li, .ri"); if (li) li.classList.toggle("done", on); }
+  function box(a, key) {
+    if (a.getAttribute("data-plan-box")) return;
+    a.setAttribute("data-plan-box", "1");
+    var lab = document.createElement("label"), cb = document.createElement("input");
+    lab.className = "dn"; cb.type = "checkbox"; cb.checked = ticked(key);
+    cb.title = "Mark as done"; cb.setAttribute("aria-label", "Mark as done");
+    lab.appendChild(cb); a.parentNode.insertBefore(lab, a);
+    cb.addEventListener("change", function () { tick(key, cb.checked); paint(a, cb.checked); if (window.AISCP_PLAN_RENDER) window.AISCP_PLAN_RENDER(); });
+    paint(a, cb.checked);
+  }
+  function boxes(root) {
+    (root || document).querySelectorAll('.res li a[href^="http"], .ridx .ri a[href^="http"], .pl-list li a[href^="http"]').forEach(function (a) { box(a, a.getAttribute("href")); });
+  }
+
+  function snapshot() {
+    var wks = document.querySelectorAll(".result .wk");
+    if (!wks.length) return;
+    var hours = 0;
+    document.querySelectorAll(".result h3").forEach(function (h) { hours = hours || num(h.textContent, /about\s+([\d.]+)\s+hours a week/i); });
+    var weeks = [].map.call(wks, function (w) {
+      return { items: [].map.call(w.querySelectorAll('.res li a[href^="http"]'), function (a) {
+        var li = a.closest("li"), sk = li.querySelector(".skl"), m = li.querySelector(".m");
+        return { title: a.textContent.trim(), url: a.getAttribute("href"), skill: sk ? sk.textContent.trim() : "", hours: num(m && m.textContent, /([\d.]+)\s*h\b/) };
+      }) };
+    });
+    var pe = document.querySelector(".result .res-sec.proof"), proof = null;
+    if (pe) {
+      var h3 = pe.querySelector("h3"), mu = pe.querySelector(".small.muted");
+      proof = { title: (h3 ? h3.textContent : "").replace(/^Then prove it:\s*/, "").trim(), hours: num(mu && mu.textContent, /About\s+([\d.]+)\s+hours/i) };
+    }
+    var rolel = document.querySelector(".result .rolel b"), h2 = document.querySelector(".result h2");
+    var runs = get("aiscp_runs", []), last = runs.length ? runs[runs.length - 1] : {};
+    set(PLAN, { saved: new Date().toISOString(), top: last.top || (h2 ? h2.textContent.trim() : ""),
+      path_title: rolel ? rolel.textContent.trim() : "", hours: hours, weeks: weeks, proof: proof });
+  }
+
+  function itemRow(it) {
+    var slug = BY_NAME[it.skill];
+    var sk = it.skill ? '<span class="skl">' + (slug ? '<a href="' + REL + "learn/" + slug + '.html">' + esc(it.skill) + "</a>" : esc(it.skill)) + "</span>" : "";
+    return "<li>" + sk + '<a href="' + esc(it.url) + '" target="_blank" rel="noopener">' + esc(it.title) + "</a>" +
+      (it.hours ? ' <span class="m">' + it.hours + " h</span>" : "") + "</li>";
+  }
+
+  function renderPlan(root) {
+    var p = get(PLAN, null), d = get(DONE, {});
+    if (!p || !p.weeks) {
+      root.innerHTML = '<div class="card"><h2>Take the diagnostic first</h2><p>Your plan is built from a diagnostic result. It is stored in this browser only.</p><p><a class="btn" href="' + REL + 'index.html#quiz">Take the diagnostic</a></p></div>';
+      return;
+    }
+    var all = [], planKeys = {};
+    p.weeks.forEach(function (w) { (w.items || []).forEach(function (it) { all.push(it); planKeys[it.url] = 1; }); });
+    var doneN = all.filter(function (it) { return !!d[it.url]; }).length;
+    var leftH = all.reduce(function (s, it) { return s + (d[it.url] ? 0 : (it.hours || 0)); }, 0);
+    var pk = p.proof ? "proof:" + p.proof.title : null, proofDone = pk ? !!d[pk] : false;
+    if (p.proof && !proofDone) leftH += p.proof.hours || 0;
+    var total = all.length + (p.proof ? 1 : 0), doneAll = doneN + (proofDone ? 1 : 0);
+    var pct = total ? Math.round(100 * doneAll / total) : 0;
+
+    var html = '<div class="card"><div class="pl-head"><div><h2 style="margin:0 0 4px">' + esc(p.path_title || p.top || "Your plan") + "</h2>" +
+      '<p class="small muted" style="margin:0">Saved ' + esc((p.saved || "").slice(0, 10)) + (p.hours ? ", about " + p.hours + " hours a week" : "") + ". Kept in this browser only.</p></div>" +
+      '<div class="small muted">' + doneAll + " of " + total + " done, about " + Math.round(leftH) + " hours left</div></div>" +
+      '<div class="pl-bar"><i style="width:' + pct + '%"></i></div>';
+
+    html += p.weeks.map(function (w, i) {
+      var items = w.items || [], n = items.filter(function (it) { return !!d[it.url]; }).length;
+      var st = items.length && n === items.length ? "done" : n ? n + " of " + items.length + " done" : "not started";
+      return '<div class="pl-wk"><div class="pl-wk-h"><b>Week ' + (i + 1) + '</b><span class="pl-st">' + st + "</span></div>" +
+        '<ul class="pl-list res">' + items.map(itemRow).join("") + "</ul></div>";
+    }).join("");
+
+    if (p.proof) {
+      html += '<div class="pl-wk"><div class="pl-wk-h"><b>Proof exercise</b><span class="pl-st">' + (proofDone ? "done" : "to do") + "</span></div>" +
+        '<ul class="pl-list"><li><label class="dn"><input type="checkbox" id="pl-proof"' + (proofDone ? " checked" : "") + ' aria-label="Mark as done"></label><span' + (proofDone ? ' class="done"' : "") + ">" + esc(p.proof.title) + "</span>" +
+        (p.proof.hours ? ' <span class="m">about ' + p.proof.hours + " h</span>" : "") + "</li></ul></div>";
+    }
+    html += '<p style="margin:18px 0 0"><button type="button" class="btn ghost" id="pl-clear">Clear my plan</button></p></div>';
+
+    var others = Object.keys(d).filter(function (k) { return k.indexOf("http") === 0 && !planKeys[k]; });
+    if (others.length) {
+      html += '<div class="card" style="margin-top:16px"><h2 style="margin:0 0 4px">Resources you ticked elsewhere</h2>' +
+        '<p class="small muted" style="margin:0 0 8px">' + others.length + " item" + (others.length === 1 ? "" : "s") + " outside this plan.</p>" +
+        '<ul class="pl-list">' + others.map(function (u) {
+          return '<li><a href="' + esc(u) + '" target="_blank" rel="noopener">' + esc(u.replace(/^https?:\/\//, "").slice(0, 70)) + "</a>" +
+            '<span class="pl-url">ticked ' + esc(String(d[u]).slice(0, 10)) + "</span></li>";
+        }).join("") + "</ul></div>";
+    }
+    root.innerHTML = html;
+    var cb = document.getElementById("pl-proof");
+    if (cb) cb.addEventListener("change", function () { tick(pk, cb.checked); renderPlan(root); });
+    var cl = document.getElementById("pl-clear");
+    if (cl) cl.addEventListener("click", function () {
+      if (window.confirm("Clear the saved plan? Your ticks stay, the plan snapshot goes.")) { try { localStorage.removeItem(PLAN); } catch (e) {} renderPlan(root); }
+    });
+    boxes(root);
+  }
+
+  function run() {
+    boxes(document);
+    snapshot();
+    var root = document.getElementById("plan-root");
+    if (root) { window.AISCP_PLAN_RENDER = function () { renderPlan(root); }; renderPlan(root); }
+  }
+  function ready(f) { if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", f); else f(); }
+  ready(function () {
+    run();
+    var q = document.getElementById("quiz");
+    if (q && window.MutationObserver) new MutationObserver(function () { boxes(document); snapshot(); }).observe(q, { childList: true, subtree: true });
+  });
+})();
+</script><script>(function () {
+  var sec = document.getElementById("questions");
+  if (!sec) return;
+  var boxes = [].slice.call(sec.querySelectorAll('.iq-pts input[type=checkbox]'));
+  if (!boxes.length) return;
+
+  var KEY = "aiscp_selfcheck", PAGE = location.pathname;
+
+  function readAll() {
+    try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; }
+  }
+  function save(state) {
+    var all = readAll();
+    all[PAGE] = state;
+    try { localStorage.setItem(KEY, JSON.stringify(all)); } catch (e) {}
+  }
+  var state = readAll()[PAGE] || {};
+
+  var sum = document.createElement("div");
+  sum.className = "sc-sum";
+  var line = document.createElement("p");
+  var reset = document.createElement("a");
+  reset.href = "#questions";
+  reset.textContent = "Reset";
+  sum.appendChild(line);
+  sum.appendChild(reset);
+  var first = sec.querySelector(".iq");
+  sec.insertBefore(sum, first);
+
+  function render() {
+    var covered = 0, total = 0;
+    [].forEach.call(sec.querySelectorAll(".iq-score"), function (el) {
+      var q = el.dataset.q, t = parseInt(el.dataset.total, 10) || 0;
+      var n = sec.querySelectorAll('.iq-pts input[data-q="' + q + '"]:checked').length;
+      el.textContent = n + " of " + t + " covered";
+      covered += n;
+      total += t;
+    });
+    var n_q = sec.querySelectorAll(".iq").length;
+    var threshold = Math.ceil(total * 0.8);
+    var txt = "You have covered " + covered + " of " + total + " points across " + n_q + " question" + (n_q === 1 ? "" : "s") + ". ";
+    line.textContent = txt + (covered >= threshold
+      ? "That is past " + threshold + ": do the proof exercise."
+      : "Ready for the proof exercise at " + threshold + ".");
+  }
+
+  boxes.forEach(function (box) {
+    var q = box.dataset.q, i = parseInt(box.dataset.i, 10);
+    box.checked = (state[q] || []).indexOf(i) !== -1;
+    box.parentNode.classList.toggle("on", box.checked);
+    box.addEventListener("change", function () {
+      var list = state[q] || [];
+      var at = list.indexOf(i);
+      if (box.checked && at === -1) list.push(i);
+      if (!box.checked && at !== -1) list.splice(at, 1);
+      state[q] = list;
+      box.parentNode.classList.toggle("on", box.checked);
+      save(state);
+      render();
+    });
+  });
+
+  reset.addEventListener("click", function (e) {
+    e.preventDefault();
+    state = {};
+    save(state);
+    boxes.forEach(function (box) {
+      box.checked = false;
+      box.parentNode.classList.remove("on");
+    });
+    render();
+  });
+
+  render();
+})();
+</script></body></html>
