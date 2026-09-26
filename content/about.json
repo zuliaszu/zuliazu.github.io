@@ -1,62 +1,54 @@
 {
   "beliefs": [
     {
-      "title": "Start with the application",
-      "body": "Look at the data, users and actions the application supports. Model behaviour matters, but so do the access controls and software around it."
+      "title": "Make security understandable",
+      "body": "I want teams to understand what a control does and how to use it. Explain the risk in plain language, make the safe way practical and check that it works in day-to-day delivery."
     },
     {
-      "title": "Treat retrieved content as untrusted",
-      "body": "Documents and tool responses can contain instructions an attacker wants the model to follow. Check how the application handles that content before it reaches an agent."
+      "title": "Give people clear ownership",
+      "body": "A review is one point in time. Someone still has to run the system, handle incidents and keep the controls working. I care about clear owners and a culture where people can raise a problem early."
     },
     {
-      "title": "Limit what agents can do",
-      "body": "Give agents only the tools and permissions they need. Require human approval for consequential actions, and keep records of what ran."
+      "title": "Look across five layers",
+      "body": "I work through identity, data, the model, the application and infrastructure. Who can act? What can they access? How can the model fail? What checks does the application enforce? Where does it run? This is a way to organise the review, not a compliance standard."
     },
     {
-      "title": "Make findings reproducible",
-      "body": "Record the input, observed behaviour and security impact. Give the engineering team enough detail to reproduce the issue and test the fix."
+      "title": "Check what agents can actually do",
+      "body": "Documents and tool responses can contain hostile instructions. I check what happens if the model follows one: what data it could reveal, which actions it could take and where the application requires approval. A prompt alone is not an access control."
+    },
+    {
+      "title": "Build compliance into the design",
+      "body": "For AI, data use and accountability need attention from the start. I bring privacy, retention, residency and evidence into the design, with legal or compliance specialists where needed. A completed checklist does not prove the system is secure."
+    },
+    {
+      "title": "Use frameworks to guide the work",
+      "body": "NIST AI RMF helps organise risk decisions, OWASP helps identify application risks and MITRE ATLAS helps map threats. I use them to ask better questions, choose controls and record evidence, with findings an engineer can reproduce and fix."
     }
   ],
   "topics": [
     {
-      "name": "AI vs traditional security",
-      "line": "Where AI security genuinely needs its own defences rather than borrowing cybersecurity's playbook.",
-      "src": "AI Security vs Traditional Cybersecurity.txt"
+      "name": "AI security foundations",
+      "line": "What traditional security still covers, and where models and agents introduce different risks."
     },
     {
-      "name": "Data poisoning",
-      "line": "How unvalidated training data becomes the earliest and quietest way to compromise a model.",
-      "src": "Data Attacks.txt"
+      "name": "Data and model attacks",
+      "line": "Poisoning, evasion and information leakage, explained through the system around the model."
     },
     {
-      "name": "Model attacks",
-      "line": "Evasion, extraction and inversion, and where they actually surface in a real architecture.",
-      "src": "Model Attacks.txt"
+      "name": "Agents and their permissions",
+      "line": "Tool access, untrusted content and controls the application must enforce."
     },
     {
-      "name": "Supply chain compromise",
-      "line": "Every artefact from a notebook's API key to a vendor's cloud infrastructure is part of the attack surface.",
-      "src": "Supply Chain and Dependency Compromises.txt"
+      "name": "AI governance and compliance",
+      "line": "Turning obligations and risk decisions into ownership, controls and usable evidence."
     },
     {
-      "name": "Security org design",
-      "line": "How a security org's shape should track headcount and risk profile rather than the last breach.",
-      "src": "How to Structure Security for a Big Org.txt"
+      "name": "Security operations and culture",
+      "line": "Clear responsibilities, incident handling and helping delivery teams own security."
     },
     {
-      "name": "Forward deployed engineering",
-      "line": "What the FDE role really is, and why it is a trust and access-control question as much as a delivery model.",
-      "src": "What is a Forward Deployed Engineer.txt"
-    },
-    {
-      "name": "AI exploits in the wild",
-      "line": "Real, documented cases of AI systems being broken outside the lab, from voice ID to a $1 car.",
-      "src": "AI Weaknesses in the Real World.txt"
-    },
-    {
-      "name": "Data science myths",
-      "line": "Pushing back on the fallacies that make people trust models more than they should.",
-      "src": "Debunking Data Science Myths.txt"
+      "name": "Building and delivering AI",
+      "line": "Supply-chain risks and the trust boundaries involved when engineers work inside customer environments."
     }
   ],
   "writing": [
@@ -116,6 +108,7 @@
     }
   ],
   "think_head": "How I approach AI security",
-  "think_intro": "Practical checks for reviewing an AI application.",
-  "topics_head": "What I talk about"
+  "think_intro": "Security should be straightforward enough for people to understand, own and run. This is how I approach the work.",
+  "topics_head": "What I talk about",
+  "topics_intro": "Recurring themes in my talks, workshops and writing."
 }

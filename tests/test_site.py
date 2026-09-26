@@ -22,7 +22,7 @@ class SiteTests(unittest.TestCase):
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
         pages = mod.pages()
-        self.assertEqual(len(pages), 24)
+        self.assertEqual(len(pages), 32)
         for path, depth in pages:
             with self.subTest(page=str(path.relative_to(ROOT))):
                 text = path.read_text()
@@ -70,7 +70,7 @@ class SiteTests(unittest.TestCase):
     def test_all_pages_have_correct_profile_and_canonical(self):
         profile = json.loads((ROOT/'content/site.json').read_text())['linkedin']
         pages = [p for p in ROOT.rglob('*.html') if p.name != 'theme-btn.html']
-        self.assertEqual(len(pages), 27)
+        self.assertEqual(len(pages), 35)
         for p in pages:
             with self.subTest(page=p):
                 tags = Tags(p.read_text()).tags

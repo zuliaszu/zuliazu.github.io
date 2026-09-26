@@ -3,29 +3,30 @@
   "title": "AI Security Leader at AWS",
   "linkedin": "https://www.linkedin.com/in/zulia-shavaeva-72767113b/",
   "platform": "ai-security-career-platform/",
-  "meta_description": "Zulia Shavaeva, AI security leader at AWS. Learn AI security with a free guide, practical exercises and a study plan built around your experience.",
+  "meta_description": "Zulia Shavaeva, AI security leader at AWS. Free AI and security learning for beginners, developers, leaders and customer-facing teams, with practical exercises.",
   "hero": {
     "eyebrow": "AI security leader at AWS",
     "h1": "Hi, I'm Zulia.",
-    "sub": "I help teams build and deploy AI securely. My work covers security reviews of AI applications, protecting sensitive data and controlling what agents can access.\n\nI created this free guide to help security professionals learn AI security. Use it to find a starting point, choose what to study and put it into practice.",
-    "cta_primary": "Find your AI security path",
-    "cta_primary_note": "16 questions, about 4 minutes, no signup",
+    "sub": "I help teams build and deploy AI securely. My work covers security reviews of AI applications, protecting sensitive data and controlling what agents can access.\n\nI want AI to be easier to understand, and security easier to put into practice. I built this free guide so you can start from zero, build with AI or make informed decisions about it. There are specialist routes for security professionals too.",
+    "cta_primary": "Start a learning route",
+    "cta_primary_note": "Free, no account. Try a short task, check your work and keep what you make.",
     "cta_secondary": "Connect on LinkedIn",
     "typed_phrases": [
       "AI application security",
       "data protection",
       "agent permissions",
       "teaching AI security"
-    ]
+    ],
+    "cta_primary_href": "ai-security-career-platform/routes/index.html"
   },
   "proof": [
     {
-      "figure": "8 years",
+      "figure": "8+ years",
       "label": "in software engineering, DevOps and security"
     },
     {
-      "figure": "45+",
-      "label": "engagement security assessments"
+      "figure": "100+",
+      "label": "engagements supported"
     },
     {
       "figure": "40+",
@@ -36,38 +37,38 @@
       "label": "sign-ups to our community public-speaking programme"
     }
   ],
-  "help_head": "Learn AI security",
-  "help_intro": "The guide is free to use, with no account needed. Take the quiz for a suggested starting point, or browse the paths yourself.",
+  "help_head": "Learn AI and security",
+  "help_intro": "Start with what you want to do. The lessons and exercises here are free, with no account needed. Optional external courses may charge; these are labelled.",
   "help": [
     {
-      "title": "Find a starting point",
-      "body": "Answer 16 questions about your experience and interests. The quiz suggests a path and a study plan. It is a guide, not a skills assessment.",
-      "link_label": "Take the quiz",
-      "href": "quiz/",
+      "title": "Pick a learning route",
+      "body": "New to AI or security? Start with the foundations. Or choose a route for developers, leaders, technical presales or sales. Each has lessons, a first task and a way to check your work.",
+      "link_label": "See the routes",
+      "href": "ai-security-career-platform/routes/index.html",
       "cta": true
     },
     {
-      "title": "Choose a learning path",
-      "body": "Seven paths cover engineering, red teaming, architecture, governance, compliance, consulting and research. Each includes resources and an exercise you can use for practice.",
-      "link_label": "See the seven paths",
-      "href": "ai-security-career-platform/#paths"
+      "title": "Explore an AI security career",
+      "body": "Already work in technology or security? Answer 16 questions for a suggested specialist career path and study plan. The quiz does not assess job readiness or choose among the beginner routes.",
+      "link_label": "Take the career quiz",
+      "href": "quiz/"
     },
     {
-      "title": "Build the skills you need",
-      "body": "Browse 13 skill pages with reading, exercises and practice questions. Start with free resources; paid options are clearly labelled.",
+      "title": "Go deeper on one skill",
+      "body": "Thirteen skill pages with reading, exercises and practice questions, plus seven specialist career paths. Free resources first; anything paid is labelled.",
       "link_label": "Open the Learn library",
       "href": "ai-security-career-platform/learn/index.html"
     }
   ],
   "about_head": "From software development to AI security",
   "about": [
-    "I lead security for the AWS Generative AI Innovation Center in EMEA, working with delivery teams to review AI systems and address risks before deployment.",
-    "I started in software development and taught algorithms and data structures at Durham University, where I studied Computer Science. At AWS, I moved from DevOps into security, risk and compliance, then specialised in AI security.",
-    "My work includes threat modelling and security assessments of AI applications. I advise teams on data residency and retention, and review the permissions they give AI agents and tools.",
-    "Teaching has stayed part of my work. I run security workshops and mentor women moving into cloud and security. This guide shares the foundations I wish had been easier to find when I started."
+    "I lead security for the AWS Generative AI Innovation Center in EMEA. I work with delivery teams to review AI systems and deal with the risks before deployment.",
+    "I started in software development and taught algorithms and data structures at Durham University, where I studied Computer Science. At AWS I moved from DevOps into security, risk and compliance, then specialised in AI security. That is more than eight years across engineering and security, and more than a hundred engagements.",
+    "Day to day that means threat modelling and security reviews of AI applications, advice on data residency and retention, and checking what permissions teams hand to AI agents and their tools.",
+    "Teaching stayed part of the work. I run security workshops, and I mentor women moving into cloud and security. This guide is the foundation I wish someone had written down for me."
   ],
   "talks_head": "Speaking and teaching",
-  "talks_intro": "I speak about AI security and help people prepare their first technical talks. You can reach me on LinkedIn about speaking or workshops.",
+  "talks_intro": "I speak about AI security and help people prepare their first technical talk. Message me on LinkedIn about speaking or workshops.",
   "talks": [
     {
       "title": "GenAI security capture-the-flag",

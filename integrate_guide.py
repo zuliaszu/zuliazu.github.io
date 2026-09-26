@@ -45,7 +45,7 @@ def put(text, key, body, anchor_re, where):
 # --- page inventory -----------------------------------------------------------
 def pages():
     out = [(p, 0) for p in sorted(GUIDE.glob("*.html"))]
-    for sub in ("paths", "learn"):
+    for sub in ("paths", "learn", "routes"):
         out += [(p, 1) for p in sorted((GUIDE / sub).glob("*.html"))]
     return out
 
@@ -56,6 +56,8 @@ def label_of(path, title):
         return "Guide home and diagnostic", "guide"
     if rel == "plan.html":
         return "My plan", "plan"
+    if rel.startswith("routes/"):
+        return "Learning routes", "routes"
     if rel == "learn/index.html":
         return "Learn hub", "learn"
     head = title.split(" | ")[0].strip() or rel
@@ -65,7 +67,7 @@ def label_of(path, title):
 
 
 def crumb(path, root, g, label, key):
-    trail = ['<a href="%sindex.html">Free AI security guide</a>' % g]
+    trail = ['<a href="%sroutes/index.html">Free AI and security guide</a>' % g]
     if key == "learn":
         trail += ['<span class="sep">/</span>', '<a href="%slearn/index.html">Learn</a>' % g]
     elif key == "paths":
@@ -76,8 +78,7 @@ def crumb(path, root, g, label, key):
 
 
 def header(root, g, key, theme_btn):
-    links = [("%sindex.html" % g, "Guide", "guide"),
-             ("%sindex.html#paths" % g, "Paths", "paths"),
+    links = [("%sroutes/index.html" % g, "Start here", "routes"), ("%sindex.html" % g, "Careers", "guide"),
              ("%slearn/index.html" % g, "Learn", "learn"),
              ("%splan.html" % g, "My plan", "plan")]
     nav = "".join('<a href="%s"%s>%s</a>' % (h, ' class="on"' if k == key else "", t) for h, t, k in links)
@@ -85,7 +86,7 @@ def header(root, g, key, theme_btn):
             '<a class="brand" href="%s">%s</a>'
             '<a class="zs-back" href="%s" aria-label="Back to %s\'s home page">&larr; Back to Zulia</a>'
             '<button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>'
-            '<nav id="nav" aria-label="Site">%s<a class="btn" href="%squiz/">Take the quiz</a>%s</nav>'
+            '<nav id="nav" aria-label="Site">%s<a class="btn" href="%squiz/">Career quiz</a>%s</nav>'
             '</div></header>' % (root, NAME, root, NAME.split()[0], nav, root, theme_btn))
 
 
@@ -134,8 +135,8 @@ def transform(path, depth, head_inline, theme_btn):
     # footer: one extra line inside the guide's existing footer, no second landmark
     foot = ('<p class="zs-foot"><a href="%s">%s: home</a><span class="sep">&middot;</span>'
             '<a href="%scv/">CV</a><span class="sep">&middot;</span>'
-            '<a href="%squiz/">Take the quiz</a><span class="sep">&middot;</span>'
-            '<a href="%sindex.html">Guide home</a><span class="sep">&middot;</span>'
+            '<a href="%squiz/">Career quiz</a><span class="sep">&middot;</span>'
+            '<a href="%sroutes/index.html">Learning routes</a><span class="sep">&middot;</span>'
             '<a href="%s" rel="noopener">LinkedIn</a></p>' % (root, NAME, root, root, g, html.escape(SITE["linkedin"], quote=True)))
     text = put(text, "foot", foot, re.compile(r"</footer>", re.S), "before")
 

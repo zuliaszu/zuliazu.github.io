@@ -168,6 +168,7 @@
 
   function render(mount) {
     var s = state();
+    if (!s.done) { mount.replaceChildren(); return; }
     var list = el("ol", "jy-steps");
     var items = steps(s);
     var gated = [];

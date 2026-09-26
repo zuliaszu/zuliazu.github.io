@@ -38,14 +38,14 @@ def head(title, desc, rel, extra="", route=""):
             + (f"<script>{HEAD_INLINE}</script>" if HEAD_INLINE else "") + f'{extra}</head><body><canvas id="fx" aria-hidden="true"></canvas>')
 
 def top(rel, on):
-    links = [(f"{rel}#help", "Free guide", "help"), (f"{rel}#about", "About", "about"), (f"{rel}#talks", "Talks", "talks"), (f"{rel}cv/", "CV", "cv"), (D["linkedin"], "LinkedIn", "li")]
+    links = [(f"{rel}ai-security-career-platform/routes/index.html", "Start learning", "help"), (f"{rel}#about", "About", "about"), (f"{rel}#talks", "Talks", "talks"), (f"{rel}cv/", "CV", "cv"), (D["linkedin"], "LinkedIn", "li")]
     nav = "".join(f'<a href="{esc(h)}"{" class=on" if k == on else ""}{" rel=noopener" if h.startswith("http") else ""}>{t}</a>' for h, t, k in links)
     return (f'<a class="skip" href="#main">Skip to content</a><header class="top"><div class="in"><a class="brand" href="{rel or "./"}">{esc(D["name"])}</a>'
-            f'<button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button><nav id="nav">{nav}<a class="btn" href="{rel}quiz/">Take the quiz</a>' + THEME_BTN + '</nav></div></header>')
+            f'<button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button><nav id="nav">{nav}<a class="btn" href="{rel}quiz/">Career quiz</a>' + THEME_BTN + '</nav></div></header>')
 
 def foot(rel):
-    return (f'<footer><div class="wrap in"><span>{esc(D["footer_line"])} {YEAR}.</span><span><a href="{esc(D["linkedin"])}" rel="noopener">LinkedIn</a> &middot; <a href="{rel}cv/">CV</a> &middot; <a href="{esc(platform_url(rel))}">Free AI security guide</a></span></div></footer>'
-            f'<script src="{rel}site.js" defer></script>' + (f'<script src="{rel}fx.js" defer></script>' if OPT["fx.js"] else "") + (f'<script src="{rel}unlock.js" defer></script>' if OPT["unlock.js"] else "") + '</body></html>')
+    return (f'<footer><div class="wrap in"><span>{esc(D["footer_line"])} {YEAR}.</span><span><a href="{esc(D["linkedin"])}" rel="noopener">LinkedIn</a> &middot; <a href="{rel}cv/">CV</a> &middot; <a href="{esc(platform_url(rel))}routes/index.html">Free AI and security guide</a></span></div></footer>'
+            f'<script src="{rel}site.js" defer></script>' + (f'<script src="{rel}fx.js" defer></script>' if OPT["fx.js"] else "") + (f'<script src="{rel}unlock.js" defer></script>' if OPT["unlock.js"] else "") + f'<script src="{rel}ai-security-career-platform/assets/extra-routes.js" defer></script></body></html>')
 
 H = D["hero"]
 INTRO = "".join(f"<p>{esc(p)}</p>" for p in H["sub"].split("\n\n"))
@@ -54,12 +54,13 @@ PAGES = (f'''<section id="pages"><div class="sec-head rv"><div><p class="eyebrow
 THINK = (f'''<section id="think"><div class="sec-head rv"><div><p class="eyebrow">In practice</p><h2>{esc(ABOUT.get("think_head",""))}</h2></div><p>{esc(ABOUT.get("think_intro",""))}</p></div>
 <ol class="beliefs rv">{"".join(f'<li><span class="k">0{i+1}</span><div><h3>{esc(x["title"])}</h3><p>{esc(x["body"])}</p></div></li>' for i, x in enumerate(ABOUT.get("beliefs", [])))}</ol>
 </section>''') if ABOUT.get('beliefs') else ''
+TOPICS = (f'<div class="speaking-topics rv"><h3>{esc(ABOUT.get("topics_head", "What I talk about"))}</h3><ul>' + ''.join(f'<li><b>{esc(t["name"])}</b><p>{esc(t["line"])}</p></li>' for t in ABOUT.get('topics', [])) + '</ul></div>') if ABOUT.get('topics') else ''
 home = head(f'{D["name"]}, {D["title"]}', D["meta_description"], "") + top("", "home") + f'''
 <main id="main" class="wrap">
 <div class="hero"><div class="rv in"><p class="eyebrow">{esc(H["eyebrow"])}</p><h1>{esc(H["h1"])}</h1><span id="typed" class="typed" data-phrases='{esc(json.dumps(H["typed_phrases"]))}' aria-hidden="true"></span><div class="sub">{INTRO}</div>
-<div class="ctas"><a class="btn amber" href="quiz/">{esc(H["cta_primary"])} {ARROW}</a><a class="btn ghost hero-linkedin" href="{esc(D["linkedin"])}" rel="noopener">{esc(H["cta_secondary"])}</a></div><p class="small" style="color:var(--mute);font-size:14.5px;margin:12px 0 0">{esc(H["cta_primary_note"])}</p></div>
+<div class="ctas"><a class="btn amber" href="{esc(H.get("cta_primary_href", "ai-security-career-platform/routes/index.html"))}">{esc(H["cta_primary"])} {ARROW}</a><a class="btn ghost hero-linkedin" href="{esc(D["linkedin"])}" rel="noopener">{esc(H["cta_secondary"])}</a></div><p class="small" style="color:var(--mute);font-size:14.5px;margin:12px 0 0">{esc(H["cta_primary_note"])}</p></div>
 <figure class="pic rv in"><img src="img/zulia.webp" width="800" height="837" alt="Zulia Shavaeva, portrait by a lake" fetchpriority="high"></figure></div>
-<p class="eyebrow" style="margin:clamp(40px,6vw,64px) 0 14px">Your learning plan</p><div id="journey"></div>
+<div data-route-summary data-route-base="ai-security-career-platform/routes/" hidden></div><div id="journey"></div>
 
 <section id="help"><div class="sec-head rv"><div><p class="eyebrow">Start here</p><h2>{esc(D["help_head"])}</h2></div><p>{esc(D["help_intro"])}</p></div>
 <div class="help rv">{"".join(f'<a href="{esc(h["href"])}"><span class="n">{i+1}</span><div><h3>{esc(h["title"])}</h3><p>{esc(h["body"])}</p><span class="go">{esc(h["link_label"])} &rarr;</span></div>{"<span class=btn>Start &rarr;</span>" if h.get("cta") else ""}</a>' for i, h in enumerate(D["help"]))}</div></section>
@@ -73,6 +74,7 @@ home = head(f'{D["name"]}, {D["title"]}', D["meta_description"], "") + top("", "
 <section id="talks"><div class="talks"><div class="rv"><p class="eyebrow">{esc(D["talks_head"])}</p><h2>{esc(D.get("talks_h2","Talks, workshops, and a community I lead"))}</h2><p style="margin-top:16px;color:var(--ink-2);font-size:18px">{esc(D["talks_intro"])}</p>
 <ul class="talk-list">{"".join(f'<li><b>{esc(t["title"])}</b><span>{esc(t["where"])}</span><span style="color:var(--ink-2)">{esc(t["note"])}</span></li>' for t in D["talks"])}</ul></div>
 <figure class="pic rv"><img src="img/talk-1.webp" width="562" height="750" alt="Zulia speaking to an audience beside a screen titled Critical AWS Security Vulnerabilities" loading="lazy"><figcaption>{esc(D["talk_photo_caption"])}</figcaption></figure></div>
+{TOPICS}
 <p class="rv" style="max-width:62ch;margin:40px 0 0;color:var(--ink-2)">{esc(D["community"])} <a href="https://www.meetup.com/aws-cloud-women-manchester/" rel="noopener">AWS Cloud Women Manchester on Meetup</a>.</p></section>
 
 {PAGES}
@@ -87,7 +89,7 @@ quiz = (head(Q["title"], Q["meta_description"], "../", quiz_css, route="quiz/").
         f'''<main id="main" class="wrap"><div id="hero" class="qhero rv in"><p class="eyebrow">Free, 4 minutes, no signup</p><h1>{esc(Q["h1"])}</h1><p class="sub">{esc(Q["sub"])}</p>
 <div class="ctas"><a class="btn amber" href="#quiz" data-start>Start the quiz {ARROW}</a><a class="btn ghost" href="{esc(platform_url("../"))}#paths">See the seven roles first</a></div>
 <p class="small" style="color:var(--mute);font-size:14.5px;margin:14px 0 0">{esc(Q["note"])}</p></div>
-<div id="quiz" class="card"></div></main>''' + foot("../").replace("</body>", f'<script>window.AISCP_BASE={json.dumps(platform_url("../"))};</script><script src="quiz.js" defer></script><script>window.AISCP_REL={json.dumps(platform_url("../"))};</script><script src="../ai-security-career-platform/embed/plan.js" defer></script></body>'))
+<p class="quiz-alternative"><a href="../ai-security-career-platform/routes/index.html">New to AI or not looking for a security role? Choose a learning route without a quiz.</a></p><div id="quiz" class="card"></div></main>''' + foot("../").replace("</body>", f'<script>window.AISCP_BASE={json.dumps(platform_url("../"))};</script><script src="quiz.js" defer></script><script>window.AISCP_REL={json.dumps(platform_url("../"))};</script><script src="../ai-security-career-platform/embed/plan.js" defer></script></body>'))
 (ROOT / "quiz").mkdir(exist_ok=True)
 (ROOT / "quiz" / "index.html").write_text(asset_versions(quiz, ROOT / "quiz"))
 print("built index.html, quiz/index.html")
