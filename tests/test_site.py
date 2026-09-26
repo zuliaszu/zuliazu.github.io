@@ -67,6 +67,18 @@ class SiteTests(unittest.TestCase):
         self.assertNotIn('<figcaption', hero)
         self.assertIn('Connect on LinkedIn', hero)
         self.assertIn(data['linkedin'], hero)
+    def test_personal_journey_quiz_first_and_honest_privacy(self):
+        data=json.loads((ROOT/'content/site.json').read_text())
+        self.assertEqual(data['hero']['cta_primary_href'],'quiz/')
+        html=(ROOT/'index.html').read_text()
+        hero=html.split('<div class="hero">',1)[1].split('<div id="journey">',1)[0]
+        for text in ['giving back', 'developer', 'Eight questions', 'Completely free', 'No account or email needed', 'saved only in this browser', 'Start with the basics']:
+            self.assertIn(text,hero)
+        self.assertNotIn('no data saved',hero.lower())
+        self.assertNotIn('16 questions',hero)
+        self.assertLess(hero.index('Take the career quiz'),hero.index('Connect on LinkedIn'))
+        self.assertLess(hero.index('Connect on LinkedIn'),hero.index('Start with the basics'))
+        self.assertEqual(data['help'][0]['href'],'quiz/')
     def test_all_pages_have_correct_profile_and_canonical(self):
         profile = json.loads((ROOT/'content/site.json').read_text())['linkedin']
         pages = [p for p in ROOT.rglob('*.html') if p.name != 'theme-btn.html']

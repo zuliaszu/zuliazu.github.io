@@ -58,7 +58,10 @@ TOPICS = (f'<div class="speaking-topics rv"><h3>{esc(ABOUT.get("topics_head", "W
 home = head(f'{D["name"]}, {D["title"]}', D["meta_description"], "") + top("", "home") + f'''
 <main id="main" class="wrap">
 <div class="hero"><div class="rv in"><p class="eyebrow">{esc(H["eyebrow"])}</p><h1>{esc(H["h1"])}</h1><span id="typed" class="typed" data-phrases='{esc(json.dumps(H["typed_phrases"]))}' aria-hidden="true"></span><div class="sub">{INTRO}</div>
-<div class="ctas"><a class="btn amber" href="{esc(H.get("cta_primary_href", "ai-security-career-platform/routes/index.html"))}">{esc(H["cta_primary"])} {ARROW}</a><a class="btn ghost hero-linkedin" href="{esc(D["linkedin"])}" rel="noopener">{esc(H["cta_secondary"])}</a></div><p class="small" style="color:var(--mute);font-size:14.5px;margin:12px 0 0">{esc(H["cta_primary_note"])}</p></div>
+<div class="hero-actions"><h2>{esc(H["quiz_prompt"])}</h2><p class="quiz-explanation">{esc(H["quiz_explanation"])}</p>
+<div class="ctas"><a class="btn amber" href="{esc(H["cta_primary_href"])}">{esc(H["cta_primary"])} {ARROW}</a><a class="btn ghost hero-linkedin" href="{esc(D["linkedin"])}" rel="noopener">{esc(H["cta_secondary"])}</a></div>
+<p class="hero-beginner"><a href="{esc(H["beginner_href"])}">{esc(H["beginner_label"])} &rarr;</a></p>
+<p class="hero-free">{esc(H["cta_primary_note"])}</p><details class="hero-privacy"><summary>Privacy and paid resources</summary><p>{esc(H["privacy_note"])}</p></details></div></div>
 <figure class="pic rv in"><img src="img/zulia.webp" width="800" height="837" alt="Zulia Shavaeva, portrait by a lake" fetchpriority="high"></figure></div>
 <div data-route-summary data-route-base="ai-security-career-platform/routes/" hidden></div><div id="journey"></div>
 

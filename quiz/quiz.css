@@ -349,6 +349,15 @@ label.dn input{width:14px;height:14px;margin:0;vertical-align:-1px;accent-color:
 @media(max-width:600px){.pay-heading{align-items:flex-start;flex-direction:column}.pay-row{grid-template-columns:1fr;gap:14px}.pay-axis{margin-left:0}.salary-chart{padding:20px 16px}.pay-value{font-size:20px}.pay-role>span{margin-bottom:4px}}
 @media print{.pay-switch,.pay-status{display:none!important}.pay-panel[hidden]{display:block!important}.salary-chart{break-inside:auto}.pay-row{break-inside:avoid}.pay-range,.pay-range::before,.pay-range::after{print-color-adjust:exact}}
 
+.pay-compare{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px 28px;align-items:center;border-top:1px solid var(--line);padding:22px 0}
+.pay-compare h3{font-size:20px;margin:0 0 10px;line-height:1.3}
+.pay-compare p{font-size:14px!important;line-height:1.65;margin:0;max-width:64ch}
+.pay-compare .pay-external-note{font-size:12px!important;color:var(--mute);margin-top:10px}
+.pay-compare-link{border:1px solid var(--line);border-radius:999px;padding:12px 18px;font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap}
+.pay-compare-link:hover{border-color:var(--accent)}.pay-compare-link:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.pay-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:700px){.pay-compare{grid-template-columns:1fr}.pay-compare-link{justify-self:start}}
+
 .iq summary{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
 .iq-tag{font-size:12px;font-weight:400;color:var(--mute);border:1px solid var(--line);border-radius:999px;padding:1px 8px;white-space:normal}
 .iq-pts{display:grid;gap:6px;margin:6px 0 8px}

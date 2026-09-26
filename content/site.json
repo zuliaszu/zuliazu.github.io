@@ -7,9 +7,9 @@
   "hero": {
     "eyebrow": "AI security leader at AWS",
     "h1": "Hi, I'm Zulia.",
-    "sub": "I help teams build and deploy AI securely. My work covers security reviews of AI applications, protecting sensitive data and controlling what agents can access.\n\nI want AI to be easier to understand, and security easier to put into practice. I built this free guide so you can start from zero, build with AI or make informed decisions about it. There are specialist routes for security professionals too.",
-    "cta_primary": "Start a learning route",
-    "cta_primary_note": "Free, no account. Try a short task, check your work and keep what you make.",
+    "sub": "I help teams build and deploy AI securely at AWS. I started as a developer, moved into security, risk and compliance, and now focus on AI security. That includes reviewing AI applications, protecting sensitive data and checking what agents can access.\n\nGetting here took a lot of studying and figuring things out. People often ask me where to start with AI security, so I built the guide I wish I'd had. It's my way of giving back, whether you're changing careers or just curious about AI.",
+    "cta_primary": "Take the career quiz",
+    "cta_primary_note": "Completely free: the quiz, learning guide and practice exercises. No account or email needed.",
     "cta_secondary": "Connect on LinkedIn",
     "typed_phrases": [
       "AI application security",
@@ -17,7 +17,12 @@
       "agent permissions",
       "teaching AI security"
     ],
-    "cta_primary_href": "ai-security-career-platform/routes/index.html"
+    "cta_primary_href": "quiz/",
+    "quiz_prompt": "Find your starting point in AI security",
+    "quiz_explanation": "Eight questions to explore where you fit, with a suggested path and an optional study plan.",
+    "beginner_label": "New to AI or security? Start with the basics",
+    "beginner_href": "ai-security-career-platform/routes/index.html",
+    "privacy_note": "Your quiz answers and learning progress are saved only in this browser, not sent to me. Sharing a result link shares the answers in it. External websites have their own privacy policies. Optional paid courses are clearly labelled."
   },
   "proof": [
     {
@@ -37,21 +42,21 @@
       "label": "sign-ups to our community public-speaking programme"
     }
   ],
-  "help_head": "Learn AI and security",
-  "help_intro": "Start with what you want to do. The lessons and exercises here are free, with no account needed. Optional external courses may charge; these are labelled.",
+  "help_head": "Your free AI and security guide",
+  "help_intro": "Find a career direction or learn something new. The guide and exercises here are completely free. Optional external courses may charge; these are labelled.",
   "help": [
-    {
-      "title": "Pick a learning route",
-      "body": "New to AI or security? Start with the foundations. Or choose a route for developers, leaders, technical presales or sales. Each has lessons, a first task and a way to check your work.",
-      "link_label": "See the routes",
-      "href": "ai-security-career-platform/routes/index.html",
-      "cta": true
-    },
     {
       "title": "Explore an AI security career",
       "body": "Answer eight questions for an initial suggested specialist path. Add optional skill details to refine it and choose study hours to create a plan. This is guidance, not a job-readiness assessment.",
       "link_label": "Take the career quiz",
-      "href": "quiz/"
+      "href": "quiz/",
+      "cta": true
+    },
+    {
+      "title": "Pick a learning route",
+      "body": "New to AI or security? Start with the foundations. Or choose a route for developers, leaders, technical presales or sales. Each has lessons, a first task and a way to check your work.",
+      "link_label": "See the routes",
+      "href": "ai-security-career-platform/routes/index.html"
     },
     {
       "title": "Go deeper on one skill",
