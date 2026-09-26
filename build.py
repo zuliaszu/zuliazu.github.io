@@ -86,7 +86,7 @@ home = head(f'{D["name"]}, {D["title"]}', D["meta_description"], "") + top("", "
 Q = D["quiz_page"]
 quiz_css = '<link rel="stylesheet" href="../quiz/quiz-skin.css">'  # order: quiz.css (platform), site.css, theme.css, unlock.css, then the skin
 quiz = (head(Q["title"], Q["meta_description"], "../", quiz_css, route="quiz/").replace('<link rel="stylesheet" href="../site.css">', '<link rel="stylesheet" href="../quiz/quiz.css"><link rel="stylesheet" href="../site.css">', 1) + top("../", "quiz") +
-        f'''<main id="main" class="wrap"><div id="hero" class="qhero rv in"><p class="eyebrow">Free, 4 minutes, no signup</p><h1>{esc(Q["h1"])}</h1><p class="sub">{esc(Q["sub"])}</p>
+        f'''<main id="main" class="wrap"><div id="hero" class="qhero rv in"><p class="eyebrow">Eight questions, free, no signup</p><h1>{esc(Q["h1"])}</h1><p class="sub">{esc(Q["sub"])}</p>
 <div class="ctas"><a class="btn amber" href="#quiz" data-start>Start the quiz {ARROW}</a><a class="btn ghost" href="{esc(platform_url("../"))}#paths">See the seven roles first</a></div>
 <p class="small" style="color:var(--mute);font-size:14.5px;margin:14px 0 0">{esc(Q["note"])}</p></div>
 <p class="quiz-alternative"><a href="../ai-security-career-platform/routes/index.html">New to AI or not looking for a security role? Choose a learning route without a quiz.</a></p><div id="quiz" class="card"></div></main>''' + foot("../").replace("</body>", f'<script>window.AISCP_BASE={json.dumps(platform_url("../"))};</script><script src="quiz.js" defer></script><script>window.AISCP_REL={json.dumps(platform_url("../"))};</script><script src="../ai-security-career-platform/embed/plan.js" defer></script></body>'))

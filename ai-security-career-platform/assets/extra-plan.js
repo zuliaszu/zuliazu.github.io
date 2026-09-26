@@ -63,6 +63,10 @@
       path_title: rolel ? rolel.textContent.trim() : "", hours: hours, weeks: weeks, proof: proof });
   }
 
+  /* The quiz calls this once it has rendered a week plan. Before that there is no .wk in the result and snapshot()
+     leaves any earlier saved plan alone, so a result on its own never overwrites aiscp_plan. */
+  window.AISCP_PLAN_SNAPSHOT = snapshot;
+
   function itemRow(it) {
     var slug = BY_NAME[it.skill];
     var sk = it.skill ? '<span class="skl">' + (slug ? '<a href="' + REL + "learn/" + slug + '.html">' + esc(it.skill) + "</a>" : esc(it.skill)) + "</span>" : "";

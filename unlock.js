@@ -124,11 +124,19 @@
     return svg;
   }
 
+  function latestResultURL() {
+    var run = lastRun();
+    if (run && run.answers && typeof run.answers === "object") {
+      try { return "quiz/#r=" + btoa(unescape(encodeURIComponent(JSON.stringify(run.answers)))).replace(/=+$/, ""); } catch (_) {}
+    }
+    return "quiz/";
+  }
+
   function steps(s) {
     var base = s.done ? PLATFORM + "paths/" + s.slug + ".html" : null;
     var plan = readJSON("aiscp_plan");
     var ticks = doneCount();
-    var planNote = "A study schedule based on your available time.";
+    var planNote = "Choose your study hours from your quiz result to create a plan.";
     if (s.done && plan) {
       planNote = ticks > 0
         ? "Started. " + ticks + (ticks === 1 ? " step" : " steps") + " ticked off."
@@ -138,7 +146,7 @@
       {
         n: 1, open: true,
         head: "Find a starting point",
-        body: "Sixteen questions about how you work today. About four minutes, no signup.",
+        body: "Eight questions for a starting point. Optional skill questions to refine it.",
         href: "quiz/",
         cta: s.done ? "Take it again" : "Take the quiz"
       },
@@ -154,7 +162,7 @@
         n: 3, open: s.done,
         head: "Your study plan",
         body: planNote,
-        href: PLATFORM + "plan.html", cta: "Open the plan",
+        href: plan ? PLATFORM + "plan.html" : latestResultURL(), cta: plan ? "Open the plan" : "Create a study plan",
         flag: (s.done && plan) ? "Saved" : null
       },
       {

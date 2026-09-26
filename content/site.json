@@ -49,7 +49,7 @@
     },
     {
       "title": "Explore an AI security career",
-      "body": "Already work in technology or security? Answer 16 questions for a suggested specialist career path and study plan. The quiz does not assess job readiness or choose among the beginner routes.",
+      "body": "Answer eight questions for an initial suggested specialist path. Add optional skill details to refine it and choose study hours to create a plan. This is guidance, not a job-readiness assessment.",
       "link_label": "Take the career quiz",
       "href": "quiz/"
     },
@@ -104,9 +104,9 @@
   "quiz_page": {
     "title": "Which AI security role fits you? | Zulia Shavaeva",
     "h1": "Which AI security role fits the work you already do?",
-    "sub": "Answer 16 questions about your experience and interests. Get a suggested learning path, a study plan and a practice exercise. Your answers stay in this browser unless you share your result link.",
-    "note": "The quiz uses written scoring rules. It suggests what to explore; it does not measure job readiness.",
-    "meta_description": "Find an AI security learning path based on your experience and interests. A free 16-question quiz by Zulia Shavaeva, with a study plan and practice exercises."
+    "sub": "Eight questions about your background, interests and experience give you an initial suggested path. You can then refine it with optional skill questions or choose study hours to create your plan.",
+    "note": "No account needed. The quiz uses written scoring rules, not a skills assessment. Answers stay in this browser unless you share your result link.",
+    "meta_description": "Explore an AI security career path with eight questions. Optional skill questions and a study plan, free from Zulia Shavaeva."
   },
   "footer_line": "Views on this site are my own, not my employer's.",
   "talks_h2": "Talks and community",
