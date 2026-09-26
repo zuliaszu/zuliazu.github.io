@@ -82,7 +82,7 @@ class SiteTests(unittest.TestCase):
     def test_all_pages_have_correct_profile_and_canonical(self):
         profile = json.loads((ROOT/'content/site.json').read_text())['linkedin']
         pages = [p for p in ROOT.rglob('*.html') if p.name != 'theme-btn.html']
-        self.assertEqual(len(pages), 35)
+        self.assertEqual(len(pages), 36)
         for p in pages:
             with self.subTest(page=p):
                 tags = Tags(p.read_text()).tags

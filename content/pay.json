@@ -1,0 +1,231 @@
+{
+  "checked_on": "2026-09-26",
+  "currency": "GBP",
+  "basis": "Reported annual salary",
+  "roles": [
+    {
+      "id": "engineer",
+      "label": "AI security engineer",
+      "benchmark": "Security Engineering",
+      "source_url": "https://cybersharkrecruitment.squarespace.com/s/Cybershark-Recruitments-UK-Cyber-Security-Salary-Survey-2026.pdf#page=8",
+      "source_page": 8,
+      "work": "Build the application controls and tests around models and their tools.",
+      "note": "Broad security engineering, not an AI-specific salary survey.",
+      "bands": [
+        {
+          "label": "1-3 years",
+          "low": 45000,
+          "high": 59750
+        },
+        {
+          "label": "4-6 years",
+          "low": 62500,
+          "high": 75750
+        },
+        {
+          "label": "7-9 years",
+          "low": 81000,
+          "high": 98500
+        },
+        {
+          "label": "10-12 years",
+          "low": 100000,
+          "high": 115750
+        }
+      ],
+      "path_url": "../ai-security-career-platform/paths/engineer.html"
+    },
+    {
+      "id": "architect",
+      "label": "AI security architect",
+      "benchmark": "Security Architecture",
+      "source_url": "https://cybersharkrecruitment.squarespace.com/s/Cybershark-Recruitments-UK-Cyber-Security-Salary-Survey-2026.pdf#page=8",
+      "source_page": 8,
+      "work": "Design data flows and decide who can authorise each action.",
+      "note": "Broad security architecture. Job scope and relevant experience matter more than the title.",
+      "bands": [
+        {
+          "label": "1-3 years",
+          "low": 48000,
+          "high": 60500
+        },
+        {
+          "label": "4-6 years",
+          "low": 65750,
+          "high": 80250
+        },
+        {
+          "label": "7-9 years",
+          "low": 84500,
+          "high": 100500
+        },
+        {
+          "label": "10-12 years",
+          "low": 106500,
+          "high": 121000
+        }
+      ],
+      "path_url": "../ai-security-career-platform/paths/architect.html"
+    },
+    {
+      "id": "red-team",
+      "label": "AI red teamer",
+      "benchmark": "Penetration Testing/Red Teaming",
+      "source_url": "https://cybersharkrecruitment.squarespace.com/s/Cybershark-Recruitments-UK-Cyber-Security-Salary-Survey-2026.pdf#page=8",
+      "source_page": 8,
+      "work": "Test how AI systems fail and turn findings into reproducible fixes.",
+      "note": "Broad penetration testing and red teaming, not a premium for AI attack skills.",
+      "bands": [
+        {
+          "label": "1-3 years",
+          "low": 45000,
+          "high": 59000
+        },
+        {
+          "label": "4-6 years",
+          "low": 64500,
+          "high": 80000
+        },
+        {
+          "label": "7-9 years",
+          "low": 83500,
+          "high": 100500
+        },
+        {
+          "label": "10-12 years",
+          "low": 109500,
+          "high": 128000
+        }
+      ],
+      "path_url": "../ai-security-career-platform/paths/red-team.html"
+    },
+    {
+      "id": "grc",
+      "label": "AI governance and risk",
+      "benchmark": "Cyber Governance, Risk & Compliance (GRC)",
+      "source_url": "https://cybersharkrecruitment.squarespace.com/s/Cybershark-Recruitments-UK-Cyber-Security-Salary-Survey-2026.pdf#page=7",
+      "source_page": 7,
+      "work": "Set risk ownership and help people make informed deployment decisions.",
+      "note": "Broad cyber GRC. This is not a salary estimate for an AI governance lead.",
+      "bands": [
+        {
+          "label": "1-3 years",
+          "low": 38750,
+          "high": 53250
+        },
+        {
+          "label": "4-6 years",
+          "low": 60500,
+          "high": 73500
+        },
+        {
+          "label": "7-9 years",
+          "low": 72500,
+          "high": 86500
+        },
+        {
+          "label": "10-12 years",
+          "low": 90000,
+          "high": 105000
+        }
+      ],
+      "path_url": "../ai-security-career-platform/paths/grc.html"
+    },
+    {
+      "id": "compliance",
+      "label": "AI compliance and assurance",
+      "benchmark": "Technology Risk & IT Audit",
+      "source_url": "https://cybersharkrecruitment.squarespace.com/s/Cybershark-Recruitments-UK-Cyber-Security-Salary-Survey-2026.pdf#page=8",
+      "source_page": 8,
+      "work": "Check which obligations apply and what the control evidence proves.",
+      "note": "Related audit and technology-risk work, not a direct AI compliance benchmark.",
+      "bands": [
+        {
+          "label": "1-3 years",
+          "low": 35000,
+          "high": 47000
+        },
+        {
+          "label": "4-6 years",
+          "low": 50750,
+          "high": 65000
+        },
+        {
+          "label": "7-9 years",
+          "low": 62000,
+          "high": 77500
+        },
+        {
+          "label": "10-12 years",
+          "low": 78500,
+          "high": 93750
+        }
+      ],
+      "path_url": "../ai-security-career-platform/paths/compliance.html"
+    },
+    {
+      "id": "consulting",
+      "label": "AI security consultant",
+      "benchmark": "Security Consultant",
+      "source_url": "https://www.itjobswatch.co.uk/jobs/uk/security%20consultant.do",
+      "source_page": null,
+      "work": "Help clients scope the work, understand risks and act on findings.",
+      "note": "Broad security-consultant vacancies, not AI-specific consulting pay. This uses advertised salaries, not the experience-banded survey above.",
+      "bands": [],
+      "path_url": "../ai-security-career-platform/paths/consulting.html",
+      "advertised": {
+        "low": 55000,
+        "high": 86250,
+        "median": 70000,
+        "salary_count": 368,
+        "vacancy_count": 594,
+        "period": "6 months to 26 September 2026"
+      }
+    },
+    {
+      "id": "research",
+      "label": "AI security researcher",
+      "benchmark": null,
+      "source_url": null,
+      "source_page": null,
+      "work": "Reproduce attack and defence results, with clear test conditions.",
+      "note": "We have not verified a comparable UK AI-security research range. Academic pay and AI-lab total compensation should not be pooled.",
+      "bands": [],
+      "path_url": "../ai-security-career-platform/paths/research.html"
+    }
+  ],
+  "source_title": "Cybershark Recruitment 2026 UK Cyber Security Salary Survey",
+  "source_url": "https://cybersharkrecruitment.squarespace.com/s/Cybershark-Recruitments-UK-Cyber-Security-Salary-Survey-2026.pdf",
+  "methodology": "The report gives salary ranges by experience band and reports 3,861 participants overall. It does not give counts for each role/band or define how its ranges were calculated. The table is not explicitly defined as base-only. Bonuses, equity and sales OTE have not been added. These are directional recruiter benchmarks, not a representative UK market estimate or a personal salary prediction. No AI premium or currency conversion has been applied.",
+  "leadership": [
+    {
+      "title": "Head of",
+      "low": 118500,
+      "high": 142500
+    },
+    {
+      "title": "Director",
+      "low": 155000,
+      "high": 181500
+    },
+    {
+      "title": "CISO",
+      "low": 195000,
+      "high": 219500
+    }
+  ],
+  "market_sources": [
+    {
+      "id": "sector-2026",
+      "label": "DSIT Cyber Security Sectoral Analysis 2026",
+      "url": "https://www.gov.uk/government/publications/cyber-security-sectoral-analysis-2026/cyber-security-sectoral-analysis-2026",
+      "period": "2026 publication; research and data blending in 2025"
+    },
+    {
+      "id": "skills-2025",
+      "label": "DSIT Cyber Security Skills in the UK Labour Market 2025",
+      "url": "https://www.gov.uk/government/publications/cyber-security-skills-in-the-uk-labour-market-2025/cyber-security-skills-in-the-uk-labour-market-2025",
+      "period": "2025 publication; vacancy data January-December 2024"
+    }
+  ]
+}

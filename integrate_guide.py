@@ -79,6 +79,7 @@ def crumb(path, root, g, label, key):
 
 def header(root, g, key, theme_btn):
     links = [("%sroutes/index.html" % g, "Start here", "routes"), ("%sindex.html" % g, "Careers", "guide"),
+             ("%spay/" % root, "Pay &amp; careers", "pay"),
              ("%slearn/index.html" % g, "Learn", "learn"),
              ("%splan.html" % g, "My plan", "plan")]
     nav = "".join('<a href="%s"%s>%s</a>' % (h, ' class="on"' if k == key else "", t) for h, t, k in links)

@@ -35,13 +35,13 @@ def head(title, desc, rel, extra="", route=""):
             f'<meta name="description" content="{esc(desc)}"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:image" content="{esc(D["site_url"])}/img/zulia.jpg"><meta property="og:url" content="{esc(canonical)}"><link rel="canonical" href="{esc(canonical)}"><meta name="theme-color" content="#0a0f1c">'
             f'<link rel="icon" href="{rel}img/favicon.svg" type="image/svg+xml">{fonts(rel)}<link rel="stylesheet" href="{rel}site.css">'
             + (f'<link rel="stylesheet" href="{rel}theme.css">' if OPT["theme.css"] else "") + (f'<link rel="stylesheet" href="{rel}unlock.css">' if OPT["unlock.css"] else "")
-            + (f"<script>{HEAD_INLINE}</script>" if HEAD_INLINE else "") + f'{extra}</head><body><canvas id="fx" aria-hidden="true"></canvas>')
+            + (f"<script>{HEAD_INLINE}</script>" if HEAD_INLINE else "") + '<noscript><style>.top nav{display:flex!important;position:static;flex-wrap:wrap;flex-direction:row}.top .in{flex-wrap:wrap}.menu-btn{display:none!important}</style></noscript>' + f'{extra}</head><body><canvas id="fx" aria-hidden="true"></canvas>')
 
 def top(rel, on):
-    links = [(f"{rel}ai-security-career-platform/routes/index.html", "Start learning", "help"), (f"{rel}#about", "About", "about"), (f"{rel}#talks", "Talks", "talks"), (f"{rel}cv/", "CV", "cv"), (D["linkedin"], "LinkedIn", "li")]
-    nav = "".join(f'<a href="{esc(h)}"{" class=on" if k == on else ""}{" rel=noopener" if h.startswith("http") else ""}>{t}</a>' for h, t, k in links)
+    links = [(f"{rel}ai-security-career-platform/routes/index.html", "Start learning", "help"), (f"{rel}pay/", "Pay & careers", "pay"), (f"{rel}#about", "About", "about"), (f"{rel}#talks", "Talks", "talks"), (f"{rel}cv/", "CV", "cv"), (D["linkedin"], "LinkedIn", "li")]
+    nav = "".join(f'<a href="{esc(h)}"{" class=on" if k == on else ""}{" rel=noopener" if h.startswith("http") else ""}>{esc(t)}</a>' for h, t, k in links)
     return (f'<a class="skip" href="#main">Skip to content</a><header class="top"><div class="in"><a class="brand" href="{rel or "./"}">{esc(D["name"])}</a>'
-            f'<button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button><nav id="nav">{nav}<a class="btn" href="{rel}quiz/">Career quiz</a>' + THEME_BTN + '</nav></div></header>')
+            f'<button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button><nav id="nav" aria-label="Site">{nav}<a class="btn" href="{rel}quiz/">Career quiz</a>' + THEME_BTN + '</nav></div></header>')
 
 def foot(rel):
     return (f'<footer><div class="wrap in"><span>{esc(D["footer_line"])} {YEAR}.</span><span><a href="{esc(D["linkedin"])}" rel="noopener">LinkedIn</a> &middot; <a href="{rel}cv/">CV</a> &middot; <a href="{esc(platform_url(rel))}routes/index.html">Free AI and security guide</a></span></div></footer>'
@@ -95,7 +95,15 @@ quiz = (head(Q["title"], Q["meta_description"], "../", quiz_css, route="quiz/").
 <p class="quiz-alternative"><a href="../ai-security-career-platform/routes/index.html">New to AI or not looking for a security role? Choose a learning route without a quiz.</a></p><div id="quiz" class="card"></div></main>''' + foot("../").replace("</body>", f'<script>window.AISCP_BASE={json.dumps(platform_url("../"))};</script><script src="quiz.js" defer></script><script>window.AISCP_REL={json.dumps(platform_url("../"))};</script><script src="../ai-security-career-platform/embed/plan.js" defer></script></body>'))
 (ROOT / "quiz").mkdir(exist_ok=True)
 (ROOT / "quiz" / "index.html").write_text(asset_versions(quiz, ROOT / "quiz"))
-print("built index.html, quiz/index.html")
+from pay_page import render as render_pay
+pay = head("UK pay and AI security careers | Zulia Shavaeva", "Explore UK security salary benchmarks by profession and experience, understand the hiring evidence, and choose a free AI security learning path.", "../", '<link rel="stylesheet" href="../pay.css">', route="pay/") + top("../", "pay") + render_pay(json.loads((ROOT/"content/pay.json").read_text())) + foot("../").replace("</body>", '<script src="../pay.js" defer></script></body>')
+(ROOT/"pay").mkdir(exist_ok=True)
+(ROOT/"pay/index.html").write_text(asset_versions(pay, ROOT/"pay"))
+cv_path=ROOT/"cv/index.html"
+cv=cv_path.read_text()
+cv=re.sub(r'<header class="top">.*?</header>', top("../", "cv").split('</a>',1)[1],cv,count=1,flags=re.S)
+cv_path.write_text(asset_versions(cv,ROOT/"cv"))
+print("built index.html, quiz/index.html, pay/index.html and CV navigation")
 
 if (ROOT / "integrate_guide.py").exists():
     runpy.run_path(str(ROOT / "integrate_guide.py"), run_name="__main__")
