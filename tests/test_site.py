@@ -3,6 +3,8 @@ import importlib.util
 from html.parser import HTMLParser
 from pathlib import Path
 import unittest
+import json
+import re
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -52,6 +54,39 @@ class SiteTests(unittest.TestCase):
         self.assertLess((ROOT/'img/zulia.webp').stat().st_size, 65000)
         self.assertNotIn('s.style.opacity = "0"', (ROOT/'fx.js').read_text())
         self.assertNotIn('.rv{opacity:0', (ROOT/'site.css').read_text())
+    def test_personal_intro_and_photo(self):
+        html = (ROOT/'index.html').read_text()
+        data = json.loads((ROOT/'content/site.json').read_text())
+        self.assertEqual(data['title'], 'AI Security Leader at AWS')
+        self.assertIn('AI security leader at AWS', html)
+        self.assertIn('Generative AI Innovation Center in EMEA', html)
+        self.assertNotIn('Based in Manchester', html)
+        self.assertNotIn('Working across the UK', html)
+        self.assertNotIn('photo_caption', data['hero'])
+        hero = html.split('<div class="hero">',1)[1].split('<div id="journey">',1)[0]
+        self.assertNotIn('<figcaption', hero)
+        self.assertIn('Connect on LinkedIn', hero)
+        self.assertIn(data['linkedin'], hero)
+    def test_all_pages_have_correct_profile_and_canonical(self):
+        profile = json.loads((ROOT/'content/site.json').read_text())['linkedin']
+        pages = [p for p in ROOT.rglob('*.html') if p.name != 'theme-btn.html']
+        self.assertEqual(len(pages), 27)
+        for p in pages:
+            with self.subTest(page=p):
+                tags = Tags(p.read_text()).tags
+                canonical = [a.get('href') for t,a in tags if t=='link' and a.get('rel')=='canonical']
+                self.assertEqual(len(canonical),1)
+                self.assertTrue(canonical[0].startswith('https://zulia.uk/'))
+                linked = [a['href'] for t,a in tags if t=='a' and 'linkedin.com/' in a.get('href','')]
+                self.assertTrue(linked)
+                self.assertTrue(all(u==profile for u in linked))
+    def test_resource_copy_has_no_unsubstantiated_ranking(self):
+        for p in (ROOT/'ai-security-career-platform/paths').glob('*.html'):
+            with self.subTest(page=p):
+                text = p.read_text()
+                for phrase in ('the best single exercise','The shortest free route','The clearest research writeup','the fastest way to internalise','most job postings and interviews'):
+                    self.assertNotIn(phrase,text)
+
     def test_font_licenses_shipped(self):
         for name in ('figtree', 'jetbrains-mono', 'space-grotesk'):
             self.assertTrue((ROOT/'fonts'/f'{name}-latin.woff2').is_file())

@@ -1,38 +1,42 @@
 {
   "name": "Zulia Shavaeva",
-  "title": "Security Leader, Generative AI Innovation Center, AWS",
+  "title": "AI Security Leader at AWS",
   "linkedin": "https://www.linkedin.com/in/zulia-shavaeva-72767113b/",
   "platform": "ai-security-career-platform/",
-  "meta_description": "A free guide to moving from cybersecurity into AI security, by Zulia Shavaeva. Find a learning path, plan your study and practise with exercises.",
+  "meta_description": "Zulia Shavaeva, AI security leader at AWS. Learn AI security with a free guide, practical exercises and a study plan built around your experience.",
   "hero": {
-    "eyebrow": "AI security, EMEA",
-    "h1": "From cybersecurity to AI security",
-    "sub": "Hi, I'm Zulia. I look after security for the AWS Generative AI Innovation Center in EMEA.\n\nI started as a developer, then moved into security, risk and compliance. Learning AI security took a lot of study, and people often ask me where to start.\n\nSo I made a free guide to help security people make that move. It's my way of giving back. I hope you find it useful.",
+    "eyebrow": "AI security leader at AWS",
+    "h1": "Hi, I'm Zulia.",
+    "sub": "I help teams build and deploy AI securely. My work covers security reviews of AI applications, protecting sensitive data and controlling what agents can access.\n\nI created this free guide to help security professionals learn AI security. Use it to find a starting point, choose what to study and put it into practice.",
     "cta_primary": "Find your AI security path",
     "cta_primary_note": "16 questions, about 4 minutes, no signup",
-    "cta_secondary": "Read about me",
-    "photo_caption": "Based in Manchester, UK",
-    "photo_caption_sub": "Working across the UK, EU, Middle East and Africa"
+    "cta_secondary": "Connect on LinkedIn",
+    "typed_phrases": [
+      "AI application security",
+      "data protection",
+      "agent permissions",
+      "teaching AI security"
+    ]
   },
   "proof": [
     {
       "figure": "8 years",
-      "label": "engineering, DevOps and security, the last five in security"
+      "label": "in software engineering, DevOps and security"
     },
     {
       "figure": "45+",
-      "label": "engagement security assessments: banks, insurers, automotive finance, pharma, energy, public sector"
+      "label": "engagement security assessments"
     },
     {
       "figure": "40+",
-      "label": "scientists, and 15+ strategists, whose customer engagements I secure"
+      "label": "scientists supported on AI engagement security"
     },
     {
       "figure": "300+",
-      "label": "sign-ups to the AWS Cloud Women Manchester public-speaking programme"
+      "label": "sign-ups to our community public-speaking programme"
     }
   ],
-  "help_head": "The free training plan",
+  "help_head": "Learn AI security",
   "help_intro": "The guide is free to use, with no account needed. Take the quiz for a suggested starting point, or browse the paths yourself.",
   "help": [
     {
@@ -50,26 +54,25 @@
     },
     {
       "title": "Build the skills you need",
-      "body": "Browse 13 skill pages with reading, exercises and practice questions. Free resources come first. Optional paid courses are listed separately.",
+      "body": "Browse 13 skill pages with reading, exercises and practice questions. Start with free resources; paid options are clearly labelled.",
       "link_label": "Open the Learn library",
       "href": "ai-security-career-platform/learn/index.html"
     }
   ],
-  "about_head": "About",
+  "about_head": "From software development to AI security",
   "about": [
-    "I'm the Security Leader for the AWS Generative AI Innovation Center in EMEA. I review AI systems for security risks and work with delivery teams to address them.",
-    "My route here started in software development. I taught algorithms and data structures at Durham University, where I studied Computer Science, before joining AWS in DevOps. I later moved into security, risk and compliance, and now focus on AI security.",
-    "Much of my work is about protecting data and controlling what AI systems can access. That includes data residency and retention, agent permissions, and the evidence teams need for security and compliance reviews.",
-    "I also help run AWS Cloud Women Manchester and mentor women moving into cloud and security. Teaching has been part of my work since university. This guide is another way to share what I've learned."
+    "I lead security for the AWS Generative AI Innovation Center in EMEA, working with delivery teams to review AI systems and address risks before deployment.",
+    "I started in software development and taught algorithms and data structures at Durham University, where I studied Computer Science. At AWS, I moved from DevOps into security, risk and compliance, then specialised in AI security.",
+    "My work includes threat modelling and security assessments of AI applications. I advise teams on data residency and retention, and review the permissions they give AI agents and tools.",
+    "Teaching has stayed part of my work. I run security workshops and mentor women moving into cloud and security. This guide shares the foundations I wish had been easier to find when I started."
   ],
-  "about_photo_caption": "Off duty, somewhere with a waterfall.",
-  "talks_head": "Talks and community",
+  "talks_head": "Speaking and teaching",
   "talks_intro": "I speak about AI security and help people prepare their first technical talks. You can reach me on LinkedIn about speaking or workshops.",
   "talks": [
     {
       "title": "GenAI security capture-the-flag",
       "where": "Selected for AWS re:Invent 2026 GameDay",
-      "note": "I wrote a CTF spanning prompt injection chains, guardrail bypass and data exfiltration through tool use."
+      "note": "An AI security capture-the-flag exercise I wrote, covering prompt injection and data leaks through tool use."
     },
     {
       "title": "Critical AWS security vulnerabilities: hiding in plain sight",
@@ -79,7 +82,7 @@
     {
       "title": "Public-speaking programme",
       "where": "AWS Cloud Women Manchester",
-      "note": "A programme that gets first-time speakers on stage. 300+ sign-ups so far."
+      "note": "Support for people preparing their first technical talk."
     },
     {
       "title": "Security workshops for delivery teams",
@@ -88,12 +91,12 @@
     }
   ],
   "talk_photo_caption": "Speaking at a community event in Manchester.",
-  "community": "I lead AWS Cloud Women Manchester, the largest AWS Cloud Women chapter in the UK. We run monthly events and workshops, and the public-speaking programme has had more than 300 sign-ups. I also mentor women moving into cloud and security careers.",
+  "community": "I help lead AWS Cloud Women Manchester. We run events and workshops for women learning cloud technology and developing their speaking skills.",
   "pages_head": "",
   "pages": [],
   "cv_band": {
     "h2": "The full CV",
-    "p": "Roles, selected work and expertise on one page, with a PDF to download.",
+    "p": "My experience and selected work, with a downloadable PDF.",
     "btn": "Read the CV",
     "btn2": "Message me on LinkedIn"
   },
@@ -101,8 +104,10 @@
     "title": "Which AI security role fits you? | Zulia Shavaeva",
     "h1": "Which AI security role fits the work you already do?",
     "sub": "Answer 16 questions about your experience and interests. Get a suggested learning path, a study plan and a practice exercise. Your answers stay in this browser unless you share your result link.",
-    "note": "The quiz uses written scoring rules. It suggests what to explore; it does not measure job readiness."
+    "note": "The quiz uses written scoring rules. It suggests what to explore; it does not measure job readiness.",
+    "meta_description": "Find an AI security learning path based on your experience and interests. A free 16-question quiz by Zulia Shavaeva, with a study plan and practice exercises."
   },
   "footer_line": "Views on this site are my own, not my employer's.",
-  "talks_h2": "Talks and community"
+  "talks_h2": "Talks and community",
+  "site_url": "https://zulia.uk"
 }

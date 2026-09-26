@@ -34,8 +34,6 @@ p{margin:0 0 1em}.eyebrow{font:500 12.5px/1 var(--mono);letter-spacing:.12em;tex
 .hero .pic{position:relative;justify-self:end;width:min(100%,400px)}
 .hero .pic img{aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;border-radius:var(--r);outline:1px solid var(--line);outline-offset:-1px;box-shadow:0 30px 60px -30px oklch(30% 0.05 220/.45)}
 .hero .pic::before{content:"";position:absolute;inset:-14px auto auto -14px;width:46%;height:38%;border:1px solid var(--petrol);border-right:0;border-bottom:0;border-radius:var(--r) 0 0 0;opacity:.7}.hero .pic::after{content:"";position:absolute;inset:auto -14px -14px auto;width:46%;height:38%;border:1px solid var(--petrol);border-left:0;border-top:0;border-radius:0 0 var(--r) 0;opacity:.7}
-.hero .pic .cap{position:absolute;left:-8px;bottom:22px;font-family:var(--mono);font-size:12.5px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-size:14px;color:var(--ink-2);box-shadow:0 10px 30px -18px oklch(30% 0.05 220/.5)}
-.hero .pic .cap b{display:block;color:var(--ink);font-weight:600}
 /* proof strip */
 .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:8px 0 0}
 .facts div{padding:22px 22px 22px 0;border-left:1px solid var(--line);padding-left:22px}.facts div:first-child{border-left:0;padding-left:0}
@@ -119,3 +117,5 @@ body{position:relative;isolation:auto}
 
 .hero .pic{margin-inline:0}
 @media(max-width:900px){.hero .pic{width:min(calc(100% - 14px),360px)}}
+
+.about .text h2{margin-bottom:24px}

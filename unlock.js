@@ -132,12 +132,12 @@
     if (s.done && plan) {
       planNote = ticks > 0
         ? "Started. " + ticks + (ticks === 1 ? " step" : " steps") + " ticked off."
-        : "Started.";
+        : "Saved. Choose a resource to begin.";
     }
     return [
       {
         n: 1, open: true,
-        head: "Find your role",
+        head: "Find a starting point",
         body: "Sixteen questions about how you work today. About four minutes, no signup.",
         href: "quiz/",
         cta: s.done ? "Take it again" : "Take the quiz"
@@ -155,11 +155,11 @@
         head: "Your study plan",
         body: planNote,
         href: PLATFORM + "plan.html", cta: "Open the plan",
-        flag: (s.done && plan) ? "Started" : null
+        flag: (s.done && plan) ? "Saved" : null
       },
       {
         n: 4, open: s.done,
-        head: "Prove it",
+        head: "Put it into practice",
         body: "A practice exercise with a deliverable and self-checks.",
         href: base ? base + "#proof" : null, cta: "Open the exercise"
       }
@@ -189,7 +189,7 @@
 
       li.appendChild(el("h3", "jy-h", st.head));
       if (st.n === 2 && s.done) {
-        li.appendChild(el("p", "jy-role", "Your role: " + s.role + ", " + s.title));
+        li.appendChild(el("p", "jy-role", "Suggested path: " + s.title));
       }
       li.appendChild(el("p", "jy-b", st.body));
 
@@ -200,7 +200,7 @@
         a.appendChild(arrowIcon());
         li.appendChild(a);
       } else {
-        li.appendChild(el("p", "jy-locked-note", "Unlocks after the quiz"));
+        li.appendChild(el("p", "jy-locked-note", "Available after the quiz"));
       }
 
       if (st.n > 1) gated.push(li);
@@ -217,18 +217,10 @@
 
     var foot = el("p", "jy-foot");
     foot.appendChild(el("span", null, "Saved in this browser only. "));
-    var reset = el("button", "jy-reset", "Reset");
-    reset.type = "button";
-    foot.appendChild(reset);
     wrap.appendChild(foot);
 
     mount.innerHTML = "";
     mount.appendChild(wrap);
-
-    reset.addEventListener("click", function () {
-      removeKey(SEEN_KEY);
-      render(mount);
-    });
 
     if (s.done && s.at && readString(SEEN_KEY) !== String(s.at)) {
       celebrate(gated, msg);
@@ -237,7 +229,7 @@
   }
 
   function celebrate(nodes, msg) {
-    msg.textContent = "Open now: your path, your plan and the proof exercise.";
+    msg.textContent = "Your learning path and study plan are ready.";
     msg.hidden = false;
     var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) return;

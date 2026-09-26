@@ -3,7 +3,7 @@
 Personal site and free AI security learning guide.
 
 Published from `main`, root folder, using GitHub Pages.
-URL: https://zuliaszu.github.io/zuliazu.github.io/
+URL: https://zulia.uk/
 
 ## Updating the site
 

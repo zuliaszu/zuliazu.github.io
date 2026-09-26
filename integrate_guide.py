@@ -9,11 +9,12 @@ Idempotent: every injected region is wrapped in zs: markers and rewritten on eac
 run. Page content, quiz scoring and plan semantics are never touched; only the
 head, the top navigation, a context strip, a footer line and the script tags.
 """
-import argparse, pathlib, re, sys, hashlib
+import argparse, pathlib, re, sys, hashlib, json, html
 
 ROOT = pathlib.Path(__file__).resolve().parent
 GUIDE = ROOT / "ai-security-career-platform"
-NAME = "Zulia Shavaeva"
+SITE = json.loads((ROOT / "content/site.json").read_text())
+NAME = SITE["name"]
 ASSETS = ("fonts.css", "site.css", "theme.css", "guide.css", "head-inline.js", "theme-btn.html", "site.js", "fx.js")
 
 M = lambda k: ("<!-- zs:%s -->" % k, "<!-- /zs:%s -->" % k)
@@ -118,7 +119,9 @@ def transform(path, depth, head_inline, theme_btn):
     text = re.sub(r"<body([^>]*)>", body_tag, text, count=1)
     text = text.replace('<nav class="ltabs">', '<nav class="ltabs" aria-label="On this page">')
 
-    text = put(text, "head", head_pre(rel, head_inline), re.compile(r'<style>|<link rel="stylesheet" href="[^"]*assets/product.css">', re.S), "before")
+    canonical = SITE["site_url"] + "/" + path.relative_to(ROOT).as_posix()
+    metadata = '<link rel="canonical" href="%s"><meta property="og:url" content="%s">' % (canonical, canonical)
+    text = put(text, "head", head_pre(rel, head_inline) + metadata, re.compile(r'<style>|<link rel="stylesheet" href="[^"]*assets/product.css">', re.S), "before")
     text = put(text, "guide-css", '<link rel="stylesheet" href="%sguide.css"><noscript><style>body.guide .zs-top nav{display:flex;position:static;flex-wrap:wrap;flex-direction:row}body.guide .zs-top .in{flex-wrap:wrap}body.guide .menu-btn{display:none}</style></noscript>' % rel,
                re.compile(r"</head>", re.S), "before")
 
@@ -132,7 +135,8 @@ def transform(path, depth, head_inline, theme_btn):
     foot = ('<p class="zs-foot"><a href="%s">%s: home</a><span class="sep">&middot;</span>'
             '<a href="%scv/">CV</a><span class="sep">&middot;</span>'
             '<a href="%squiz/">Take the quiz</a><span class="sep">&middot;</span>'
-            '<a href="%sindex.html">Guide home</a></p>' % (root, NAME, root, root, g))
+            '<a href="%sindex.html">Guide home</a><span class="sep">&middot;</span>'
+            '<a href="%s" rel="noopener">LinkedIn</a></p>' % (root, NAME, root, root, g, html.escape(SITE["linkedin"], quote=True)))
     text = put(text, "foot", foot, re.compile(r"</footer>", re.S), "before")
 
     scripts = ('<script src="%ssite.js" defer></script><script src="%sfx.js" defer></script>' % (rel, rel))
