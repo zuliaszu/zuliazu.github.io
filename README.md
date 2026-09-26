@@ -22,3 +22,5 @@ No customer names, personal contact details or internal identifiers belong in th
 ## Checks
 
 Run `python3 -m unittest discover -s tests -v` after building. These checks cover the shared guide shell, home links at every directory depth, idempotent rebuilds, dark-mode fallback, local fonts and the portrait size budget.
+
+Role paths use a learning-first template from the source platform. Pay appears only in expandable source rows with location and recorded experience, never as a blended salary range. Shared guide CSS and helper scripts live in `ai-security-career-platform/assets/`; asset hashes refresh browser caches when a file changes.

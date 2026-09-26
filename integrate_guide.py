@@ -9,7 +9,7 @@ Idempotent: every injected region is wrapped in zs: markers and rewritten on eac
 run. Page content, quiz scoring and plan semantics are never touched; only the
 head, the top navigation, a context strip, a footer line and the script tags.
 """
-import argparse, pathlib, re, sys
+import argparse, pathlib, re, sys, hashlib
 
 ROOT = pathlib.Path(__file__).resolve().parent
 GUIDE = ROOT / "ai-security-career-platform"
@@ -118,7 +118,7 @@ def transform(path, depth, head_inline, theme_btn):
     text = re.sub(r"<body([^>]*)>", body_tag, text, count=1)
     text = text.replace('<nav class="ltabs">', '<nav class="ltabs" aria-label="On this page">')
 
-    text = put(text, "head", head_pre(rel, head_inline), re.compile(r"<style>", re.S), "before")
+    text = put(text, "head", head_pre(rel, head_inline), re.compile(r'<style>|<link rel="stylesheet" href="[^"]*assets/product.css">', re.S), "before")
     text = put(text, "guide-css", '<link rel="stylesheet" href="%sguide.css"><noscript><style>body.guide .zs-top nav{display:flex;position:static;flex-wrap:wrap;flex-direction:row}body.guide .zs-top .in{flex-wrap:wrap}body.guide .menu-btn{display:none}</style></noscript>' % rel,
                re.compile(r"</head>", re.S), "before")
 
@@ -147,6 +147,14 @@ def transform(path, depth, head_inline, theme_btn):
         return "%s<span class=\"zs-h1\">%s</span></h1>" % (m.group(1), inner)
     text = re.sub(r'(<div class="hero">.{0,400}?<h1>)(.*?)</h1>', wrap_h1, text, count=1, flags=re.S)
 
+    def version_asset(m):
+        kind, url = m.group(1), m.group(2).split("?")[0]
+        asset = (path.parent / url).resolve()
+        if asset.is_file() and asset.suffix in (".css", ".js"):
+            digest = hashlib.sha256(asset.read_bytes()).hexdigest()[:10]
+            return f'{kind}="{url}?v={digest}"'
+        return m.group(0)
+    text = re.sub(r'(href|src)="([^"]+\.(?:css|js)(?:\?[^"]*)?)"', version_asset, text)
     return text, text != original
 
 

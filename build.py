@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Builds index.html and quiz/index.html from content/site.json + site.css. cv/index.html is hand-maintained.
 Run: /usr/bin/python3 build.py"""
-import json, pathlib, html, datetime, runpy
+import json, pathlib, html, datetime, runpy, hashlib, re
 ROOT = pathlib.Path(__file__).resolve().parent
 D = json.loads((ROOT / "content" / "site.json").read_text())
 esc = lambda s: html.escape(str(s), quote=True)
@@ -15,6 +15,16 @@ THEME_BTN = (ROOT / 'theme-btn.html').read_text().strip()
 OPT = {n: (ROOT / n).exists() for n in ("theme.css", "fx.js", "unlock.css", "unlock.js")}
 ABOUT = json.loads((ROOT / "content" / "about.json").read_text()) if (ROOT / "content" / "about.json").exists() else {}
 HEAD_INLINE = (ROOT / "head-inline.js").read_text().strip() if (ROOT / "head-inline.js").exists() else ""
+
+def asset_versions(text, directory):
+    def replace(m):
+        attr, url = m.group(1), m.group(2).split("?")[0]
+        asset = (directory / url).resolve()
+        if asset.is_file():
+            digest = hashlib.sha256(asset.read_bytes()).hexdigest()[:10]
+            return f'{attr}="{url}?v={digest}"'
+        return m.group(0)
+    return re.sub(r'(href|src)="([^"]+\.(?:css|js)(?:\?[^"]*)?)"', replace, text)
 
 def platform_url(rel=""):
     return rel + D["platform"]
@@ -69,7 +79,7 @@ home = head(f'{D["name"]}, {D["title"]}', D["meta_description"], "") + top("", "
 
 <section id="cv"><div class="band rv"><div><h2>{esc(D["cv_band"]["h2"])}</h2><p>{esc(D["cv_band"]["p"])}</p></div><div class="btns"><a class="btn" href="cv/">{esc(D["cv_band"]["btn"])}</a><a class="btn ghost" href="{esc(D["linkedin"])}" rel="noopener">{esc(D["cv_band"]["btn2"])}</a></div></div></section>
 </main>''' + foot("")
-(ROOT / "index.html").write_text(home)
+(ROOT / "index.html").write_text(asset_versions(home, ROOT))
 
 Q = D["quiz_page"]
 quiz_css = '<link rel="stylesheet" href="../quiz/quiz-skin.css">'  # order: quiz.css (platform), site.css, theme.css, unlock.css, then the skin
@@ -79,7 +89,7 @@ quiz = (head(Q["title"], Q["sub"][:155], "../", quiz_css).replace('<link rel="st
 <p class="small" style="color:var(--mute);font-size:14.5px;margin:14px 0 0">{esc(Q["note"])}</p></div>
 <div id="quiz" class="card"></div></main>''' + foot("../").replace("</body>", f'<script>window.AISCP_BASE={json.dumps(platform_url("../"))};</script><script src="quiz.js" defer></script><script>window.AISCP_REL={json.dumps(platform_url("../"))};</script><script src="../ai-security-career-platform/embed/plan.js" defer></script></body>'))
 (ROOT / "quiz").mkdir(exist_ok=True)
-(ROOT / "quiz" / "index.html").write_text(quiz)
+(ROOT / "quiz" / "index.html").write_text(asset_versions(quiz, ROOT / "quiz"))
 print("built index.html, quiz/index.html")
 
 if (ROOT / "integrate_guide.py").exists():

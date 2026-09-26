@@ -172,6 +172,66 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
   sup a{font-size:12px;padding:3px 5px;margin-left:0}
 }
 
+/* Reading-first role paths: shared type, clear next task, evidence below the guide. */
+.path-page .path-hero{padding:clamp(36px,6vw,72px) 0 32px;border-bottom:1px solid var(--line)}
+.path-page .path-hero h1{font-family:var(--serif,inherit);font-size:clamp(38px,5.2vw,64px);font-weight:600;line-height:1.08;letter-spacing:-.035em;max-width:22ch;margin:0 0 20px}
+.path-page .path-intro{font-size:clamp(18px,1.6vw,21px);line-height:1.55;max-width:60ch;color:var(--ink-2,var(--mute));margin:0 0 28px}
+.path-page .path-jumps{display:flex;flex-wrap:wrap;gap:12px 24px;font-size:15px}
+.path-page .path-jumps a{text-decoration:none;padding-block:6px;border-bottom:1px solid var(--line)}
+.path-page section{padding:40px 0;border-bottom:1px solid var(--line);scroll-margin-top:100px}
+.path-page .path-start{display:grid;grid-template-columns:1fr 1.5fr;gap:32px 56px;padding-block:40px}
+.path-page .path-start p{font-size:18px;max-width:54ch}
+.path-page .path-start p.small{font-size:14px;margin:12px 0 0}
+.path-page h2{font-size:clamp(26px,3vw,34px);line-height:1.16;letter-spacing:-.025em;margin:0 0 18px}
+.path-page .path-start .eyebrow,.path-page .path-section-head .eyebrow{font-size:12px;line-height:1.5;margin-bottom:12px}
+.path-page .path-section-head{max-width:72ch;margin-bottom:26px}
+.path-page .path-section-head p{color:var(--ink-2,var(--mute));font-size:17px;margin-bottom:0}
+.path-page .path-section-head p.eyebrow{color:var(--accent);margin-bottom:12px}
+.path-page .path-work{display:grid;grid-template-columns:1fr 1.5fr;gap:32px 56px}
+.path-page .path-work ul{padding-left:20px;margin:0;max-width:64ch}
+.path-page .path-work li{padding-bottom:10px;font-size:17px}
+.path-page .skill{border:0;border-top:1px solid var(--line);border-radius:0;background:transparent;margin:0}
+.path-page .skill:last-child{border-bottom:1px solid var(--line)}
+.path-page .skill summary{padding:22px 0;grid-template-columns:36px minmax(0,1fr) 20px;gap:18px}
+.path-page .skill .n{font-family:var(--mono,monospace);background:none!important;color:var(--accent)!important;border-radius:0;font-weight:500}
+.path-page .skill .sk b{font-family:var(--serif,inherit);font-size:20px;line-height:1.3}
+.path-page .skill .sk span{display:block;margin-top:5px;max-width:68ch;color:var(--ink-2,var(--mute))}
+.path-page .skill .body{padding:0 0 24px 54px;max-width:90ch}
+.path-page .skill-toggle{font-size:24px;color:var(--accent);transition:transform .15s}
+.path-page .skill[open] .skill-toggle{transform:rotate(45deg)}
+.path-page .res li{padding:12px 0;font-size:16px}
+.path-page .res .m{display:block;margin:3px 0;color:var(--mute)}
+.path-page .res .why{line-height:1.5;color:var(--ink-2,var(--mute))}
+.path-page .lesson-link{font-weight:600}
+.path-page .practice-brief{max-width:78ch}
+.path-page .path-detail{border-top:1px solid var(--line);margin:18px 0;padding:0}
+.path-page .path-detail>summary{padding:18px 0;cursor:pointer;font-weight:600;font-size:17px;line-height:1.4}
+.path-page .path-detail p{max-width:82ch}
+.path-page .path-detail li{margin-block:8px}
+.path-page .job-table-scroll{max-width:100%;overflow-x:auto}
+.path-page .job-evidence{width:100%;min-width:700px;font-size:15px;display:table}
+.path-page .job-evidence td{padding:16px 14px}
+.path-page .job-evidence td:first-child{min-width:250px;max-width:340px}
+.path-page .source-host{display:block;font-size:13px;color:var(--mute);margin-top:6px}
+.path-page .salary-quote{font-variant-numeric:tabular-nums}
+.path-page .sample-counts{list-style:none;padding:0;max-width:78ch}
+.path-page .sample-counts li{display:flex;justify-content:space-between;gap:24px;border-bottom:1px solid var(--line);padding:10px 0}
+.path-page .sample-counts b{white-space:nowrap;font-family:var(--mono,monospace)}
+.path-page .path-other ul{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px 30px}
+.path-page .path-other a{display:block;text-decoration:none;padding:10px 0;border-bottom:1px solid var(--line)}
+.path-page .path-frameworks{padding:8px 0}
+@media(max-width:700px){
+  .path-page .path-start,.path-page .path-work{grid-template-columns:1fr;gap:12px}
+  .path-page section{padding-block:30px}
+  .path-page .path-jumps{gap:6px 18px;font-size:14px}
+  .path-page .path-start p{font-size:17px}
+  .path-page .skill summary{gap:10px;grid-template-columns:28px minmax(0,1fr) 16px}
+  .path-page .skill .body{padding-left:0}
+  .path-page .skill .sk b{font-size:18px}
+  .path-page .path-other ul{grid-template-columns:1fr;gap:0}
+  .path-page .path-detail>summary{display:list-item}
+}
+
 /* progress ticks and the My plan page */
 label.dn{display:inline-block;margin-right:7px;vertical-align:baseline}
 label.dn input{width:14px;height:14px;margin:0;vertical-align:-1px;accent-color:var(--accent);cursor:pointer}
