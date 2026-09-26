@@ -1,0 +1,6 @@
+/* Skin for the embedded career quiz (quiz.css is the platform stylesheet; site.css loads after it). */
+:root{--accent:oklch(42% 0.07 215);--accent-soft:oklch(93% 0.025 215);--bg:var(--paper);--panel:#fffdfa;--line:oklch(88% 0.012 80);--ink:oklch(24% 0.03 230)}
+.qhero{padding:clamp(36px,6vw,80px) 0 clamp(24px,4vw,48px);max-width:60ch}.qhero .sub{font-size:clamp(17px,1.5vw,20px);color:var(--ink-2);margin:20px 0 28px}.qhero .ctas{display:flex;gap:12px;flex-wrap:wrap}
+#hero.hidden{display:none}
+#quiz.live{background:var(--panel);border-radius:var(--r);margin-top:24px}
+#quiz h2,#quiz h3{font-family:var(--serif)}
