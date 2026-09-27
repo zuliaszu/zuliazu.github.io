@@ -1,6 +1,6 @@
 {
-  "version": "v1.0",
-  "note": "Rule-based scoring. Each rule adds fixed points to named clusters when its condition matches an answer; op 'has' matches when a multi-select answer contains the value. Scores are sums of matched rule points; nothing is learned or inferred statistically. v1.0 (25 Sep): skill questions are behaviour-anchored (values 1, 2, 4, 5: none, basic, working, strong), a 'most of your week' multi-select adds background evidence, salary rules removed, every label is a second-person sentence used verbatim in 'Why this fit'.",
+  "version": "v1.1",
+  "note": "Rule-based scoring. Each rule adds fixed points to named clusters when its condition matches an answer; op 'has' matches when a multi-select answer contains the value. Scores are sums of matched rule points; nothing is learned or inferred statistically. v1.0 (25 Sep): skill questions are behaviour-anchored (values 1, 2, 4, 5: none, basic, working, strong), a 'most of your week' multi-select adds background evidence, salary rules removed, every label is a second-person sentence used verbatim in 'Why this fit'. v1.1 (27 Sep): network background and weekly activity options added; existing answer scores unchanged. Background weights suggest adjacent learning paths, not demonstrated skills.",
   "cluster_names": [
     "AI/Agent Security Engineer",
     "AI Red Team / Adversarial Testing",
@@ -34,6 +34,18 @@
         "AI Security Architect": 3
       },
       "label": "You come from cloud security, and securing model and agent workloads is mostly cloud security with new components",
+      "kind": "background"
+    },
+    {
+      "id": "R-role-netsec",
+      "field": "role_family",
+      "op": "eq",
+      "value": "netsec",
+      "points": {
+        "AI Security Architect": 3,
+        "AI/Agent Security Engineer": 2
+      },
+      "label": "You come from network engineering or network security, which gives you a starting point for reviewing connections and boundaries in AI systems",
       "kind": "background"
     },
     {
@@ -204,6 +216,18 @@
         "AI Governance / GRC": 2
       },
       "label": "With more than 10 years you are placed for senior architecture, advisory and governance roles",
+      "kind": "background"
+    },
+    {
+      "id": "R-week-network",
+      "field": "week_activities",
+      "op": "has",
+      "value": "network",
+      "points": {
+        "AI Security Architect": 2,
+        "AI/Agent Security Engineer": 1
+      },
+      "label": "Your week includes network configuration, segmentation or traffic analysis, which can transfer to securing AI infrastructure",
       "kind": "background"
     },
     {

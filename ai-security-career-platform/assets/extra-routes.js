@@ -2,7 +2,7 @@
 (function () {
   'use strict';
   var KEY = 'aiscp_routes_v1';
-  var titles = {'ai-fundamentals':'AI fundamentals','security-fundamentals':'Security fundamentals','ai-security-fundamentals':'AI security fundamentals',developer:'Build and test a small AI app',leadership:'Leading AI adoption safely','technical-presales':'Technical pre-sales for AI security',sales:'Sales conversations about AI security'};
+  var titles = {'network-to-ai-security':'From network security to AI security','ai-fundamentals':'AI fundamentals','security-fundamentals':'Security fundamentals','ai-security-fundamentals':'AI security fundamentals',developer:'Build and test a small AI app',leadership:'Leading AI adoption safely','technical-presales':'Technical pre-sales for AI security',sales:'Sales conversations about AI security'};
   var data = {}, persistent = true;
   try {
     var raw = JSON.parse(localStorage.getItem(KEY) || '{}');

@@ -39,7 +39,7 @@ class PayTests(unittest.TestCase):
   for r in self.d['roles']:self.assertTrue((R/'pay'/r['path_url']).resolve().is_file())
  def test_nav_every_page_and_single_header(self):
   pages=[p for p in R.rglob('*.html') if p.name!='theme-btn.html']
-  self.assertEqual(len(pages),36)
+  self.assertEqual(len(pages),37)
   for p in pages:
    tags=Tags(p.read_text()).tags
    self.assertEqual(sum(t=='header' for t,a in tags),1,str(p))

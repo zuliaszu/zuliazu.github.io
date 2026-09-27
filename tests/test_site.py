@@ -22,7 +22,7 @@ class SiteTests(unittest.TestCase):
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
         pages = mod.pages()
-        self.assertEqual(len(pages), 32)
+        self.assertEqual(len(pages), 33)
         for path, depth in pages:
             with self.subTest(page=str(path.relative_to(ROOT))):
                 text = path.read_text()
@@ -82,7 +82,7 @@ class SiteTests(unittest.TestCase):
     def test_all_pages_have_correct_profile_and_canonical(self):
         profile = json.loads((ROOT/'content/site.json').read_text())['linkedin']
         pages = [p for p in ROOT.rglob('*.html') if p.name != 'theme-btn.html']
-        self.assertEqual(len(pages), 36)
+        self.assertEqual(len(pages), 37)
         for p in pages:
             with self.subTest(page=p):
                 tags = Tags(p.read_text()).tags
@@ -98,6 +98,19 @@ class SiteTests(unittest.TestCase):
                 text = p.read_text()
                 for phrase in ('the best single exercise','The shortest free route','The clearest research writeup','the fastest way to internalise','most job postings and interviews'):
                     self.assertNotIn(phrase,text)
+
+    def test_network_route_and_quiz_release_together(self):
+        guide=ROOT/'ai-security-career-platform'
+        route=guide/'routes/network-to-ai-security.html'
+        self.assertTrue(route.is_file())
+        self.assertIn('network-to-ai-security.html',(guide/'routes/index.html').read_text())
+        self.assertIn('network-to-ai-security',(guide/'assets/extra-routes.js').read_text())
+        quiz=(ROOT/'quiz/quiz.js').read_bytes()
+        self.assertEqual(quiz,(guide/'embed/quiz.js').read_bytes())
+        text=quiz.decode()
+        self.assertIn('Network engineering or network security',text)
+        self.assertIn('routes/network-to-ai-security.html',text)
+        self.assertIn('"id": "R-role-netsec"',text)
 
     def test_font_licenses_shipped(self):
         for name in ('figtree', 'jetbrains-mono', 'space-grotesk'):
