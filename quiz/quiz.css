@@ -371,3 +371,13 @@ label.dn input{width:14px;height:14px;margin:0;vertical-align:-1px;accent-color:
 .sc-sum{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:0 0 12px}
 .sc-sum p{margin:0;font-size:14.5px}
 .sc-sum a{font-size:13px;color:var(--mute)}
+
+.training-section{scroll-margin-top:115px;margin:32px 0;padding:24px 0;border-top:1px solid var(--line)}
+.training-section>p{max-width:72ch}.training-section h3{margin-top:28px}.training-list{list-style:none;padding:0!important;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.training-list .training-card{margin:0;padding:20px;border:1px solid var(--line);border-radius:10px;background:var(--panel);min-width:0}
+.training-card h4{font-size:18px;line-height:1.5;margin:0 0 8px}.training-card a{overflow-wrap:anywhere}.training-card p{font-size:15px;line-height:1.65;margin:10px 0}.training-card .small{font-size:13px}
+.training-card .training-meta{color:var(--mute);font-size:13px}.training-access{font-weight:600}.training-notes{padding-left:22px}.training-notes li{margin:20px 0}.training-notes p{margin:6px 0}
+.training-related{margin:32px 0}.training-related ul{display:flex;flex-wrap:wrap;gap:12px 28px;padding-left:20px}.training-related h2{font-size:22px}.training-card .dn input{width:18px;height:18px}
+.plan-storage-warning{padding:12px;border:1px solid var(--line);color:var(--ink)}
+@media(max-width:950px){.training-list{grid-template-columns:1fr}}
+@media print{.training-list{display:block}.training-card{break-inside:avoid}.training-card .dn{display:none}.training-related{display:none}}

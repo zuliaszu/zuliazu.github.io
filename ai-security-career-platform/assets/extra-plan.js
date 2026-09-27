@@ -17,10 +17,27 @@
     "Red teaming": { name: "AI red teaming and adversarial testing", slug: "red-teaming" },
     "SOC": { name: "Detection, logging and response for AI systems", slug: "soc" }
   };
+  var MEMORY = {}, VOLATILE = {}, storageOK = true;
+  var META = "aiscp_resource_meta_v1";
   var BY_NAME = {}; Object.keys(SKILLS).forEach(function (k) { BY_NAME[SKILLS[k].name] = SKILLS[k].slug; });
 
-  function get(k, f) { try { var v = JSON.parse(localStorage.getItem(k)); return v === null || v === undefined ? f : v; } catch (e) { return f; } }
-  function set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  function get(k, f) {
+    if (VOLATILE[k]) return MEMORY[k];
+    try { var v = JSON.parse(localStorage.getItem(k));
+      if (v === null || v === undefined || (f && typeof f === "object" && (typeof v !== "object" || Array.isArray(v) !== Array.isArray(f)))) return (Object.prototype.hasOwnProperty.call(MEMORY,k) ? MEMORY[k] : f);
+      MEMORY[k] = v; return v;
+    } catch (e) { storageOK = false; return (Object.prototype.hasOwnProperty.call(MEMORY,k) ? MEMORY[k] : f); }
+  }
+  function warning() {
+    var old = document.querySelector(".plan-storage-warning");
+    if (!storageOK && !old && document.querySelector("main")) {
+      old = document.createElement("p"); old.className = "plan-storage-warning"; old.setAttribute("role", "status");
+      old.textContent = "Resource ticks cannot be saved in this browser right now. They work for this visit only. Keep your own record before leaving.";
+      document.querySelector("main").prepend(old);
+    }
+  }
+  function set(k, v) { MEMORY[k] = v; try { localStorage.setItem(k, JSON.stringify(v)); delete VOLATILE[k]; } catch (e) { VOLATILE[k] = true; storageOK = false; warning(); } }
+  function safeHTTP(u) { try { var x = new URL(u); return (x.protocol === "https:" || x.protocol === "http:") && !!x.hostname; } catch (_) { return false; } }
   function esc(s) { return String(s === undefined || s === null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
   function ticked(key) { return !!get(DONE, {})[key]; }
   function tick(key, on) { var d = get(DONE, {}); if (on) d[key] = new Date().toISOString(); else delete d[key]; set(DONE, d); }
@@ -32,13 +49,13 @@
     a.setAttribute("data-plan-box", "1");
     var lab = document.createElement("label"), cb = document.createElement("input");
     lab.className = "dn"; cb.type = "checkbox"; cb.checked = ticked(key);
-    cb.title = "Mark as done"; cb.setAttribute("aria-label", "Mark as done");
+    cb.title = "Mark as done"; cb.setAttribute("aria-label", "Mark as done: " + a.textContent.trim());
     lab.appendChild(cb); a.parentNode.insertBefore(lab, a);
-    cb.addEventListener("change", function () { tick(key, cb.checked); paint(a, cb.checked); if (window.AISCP_PLAN_RENDER) window.AISCP_PLAN_RENDER(); });
+    cb.addEventListener("change", function () { tick(key, cb.checked); var meta = get(META, {}); if (cb.checked) meta[key] = {title:a.textContent.trim().slice(0,300)}; set(META, meta); document.querySelectorAll("a[data-plan-box]").forEach(function(other){if(other.getAttribute("href")===key){var label=other.previousElementSibling;if(label && label.matches("label.dn"))label.querySelector("input").checked=cb.checked;paint(other,cb.checked);}}); if (window.AISCP_PLAN_RENDER) window.AISCP_PLAN_RENDER(); });
     paint(a, cb.checked);
   }
   function boxes(root) {
-    (root || document).querySelectorAll('.res li a[href^="http"], .ridx .ri a[href^="http"], .pl-list li a[href^="http"]').forEach(function (a) { box(a, a.getAttribute("href")); });
+    (root || document).querySelectorAll('.res li a[href^="http"], .ridx .ri a[href^="http"], .pl-list li a[href^="http"], [data-training-resource], .route-reading a[href^="http"], .pc-h a[href^="http"]').forEach(function (a) { if (safeHTTP(a.getAttribute("href"))) box(a, a.getAttribute("href")); });
   }
 
   function snapshot() {
@@ -74,12 +91,24 @@
       (it.hours ? ' <span class="m">' + it.hours + " h</span>" : "") + "</li>";
   }
 
+  function renderCompleted(planKeys) {
+    var mount = document.getElementById("completed-resources"); if (!mount) return;
+    var d = get(DONE, {}), meta = get(META, {});
+    var others = Object.keys(d).filter(function (u) { return safeHTTP(u) && d[u] && !planKeys[u]; });
+    mount.innerHTML = '<h2>Resources you completed</h2><p class="small muted">Self-reported course and reading ticks from across the site. No quiz needed. Written notes stay in your own files.</p>' +
+      (others.length ? '<ul class="pl-list">' + others.map(function (u) {
+        var title = meta[u] && typeof meta[u].title === "string" ? meta[u].title : u.replace(/^https?:\/\//, "").slice(0,100);
+        return '<li><a href="' + esc(u) + '" target="_blank" rel="noopener">' + esc(title) + '</a><span class="pl-url">ticked ' + esc(String(d[u]).slice(0,10)) + '</span></li>';
+      }).join("") + '</ul>' : '<p>No resource ticks yet. Mark a course or reading resource as done on a learning page.</p>');
+  }
+
   function renderPlan(root) {
     var p = get(PLAN, null), d = get(DONE, {});
-    if (!p || !p.weeks) {
+    if (!p || !Array.isArray(p.weeks)) {
       root.innerHTML = '<div class="card"><h2>No weekly plan saved</h2><p>Choose study hours after a career quiz result to save a weekly plan. Learning routes above track progress separately and do not need the quiz.</p><p><a class="btn" href="' + REL + 'index.html#quiz">Take the career quiz</a></p></div>';
-      return;
+      renderCompleted({}); boxes(document.getElementById("completed-resources")); warning(); return;
     }
+    p.weeks = p.weeks.filter(function(w){return w && Array.isArray(w.items);}).map(function(w){return {items:w.items.filter(function(it){return it && typeof it.title === "string" && safeHTTP(it.url);})};});
     var all = [], planKeys = {};
     p.weeks.forEach(function (w) { (w.items || []).forEach(function (it) { all.push(it); planKeys[it.url] = 1; }); });
     var doneN = all.filter(function (it) { return !!d[it.url]; }).length;
@@ -108,23 +137,15 @@
     }
     html += '<p style="margin:18px 0 0"><button type="button" class="btn ghost" id="pl-clear">Clear my plan</button></p></div>';
 
-    var others = Object.keys(d).filter(function (k) { return k.indexOf("http") === 0 && !planKeys[k]; });
-    if (others.length) {
-      html += '<div class="card" style="margin-top:16px"><h2 style="margin:0 0 4px">Resources you ticked elsewhere</h2>' +
-        '<p class="small muted" style="margin:0 0 8px">' + others.length + " item" + (others.length === 1 ? "" : "s") + " outside this plan.</p>" +
-        '<ul class="pl-list">' + others.map(function (u) {
-          return '<li><a href="' + esc(u) + '" target="_blank" rel="noopener">' + esc(u.replace(/^https?:\/\//, "").slice(0, 70)) + "</a>" +
-            '<span class="pl-url">ticked ' + esc(String(d[u]).slice(0, 10)) + "</span></li>";
-        }).join("") + "</ul></div>";
-    }
+    renderCompleted(planKeys);
     root.innerHTML = html;
     var cb = document.getElementById("pl-proof");
     if (cb) cb.addEventListener("change", function () { tick(pk, cb.checked); renderPlan(root); });
     var cl = document.getElementById("pl-clear");
     if (cl) cl.addEventListener("click", function () {
-      if (window.confirm("Clear the saved plan? Your ticks stay, the plan snapshot goes.")) { try { localStorage.removeItem(PLAN); } catch (e) {} renderPlan(root); }
+      if (window.confirm("Clear the saved plan? Your ticks stay, the plan snapshot goes.")) { MEMORY[PLAN] = null; try { localStorage.removeItem(PLAN); delete VOLATILE[PLAN]; } catch (e) { VOLATILE[PLAN] = true; storageOK = false; warning(); } renderPlan(root); }
     });
-    boxes(root);
+    boxes(root); boxes(document.getElementById("completed-resources")); warning();
   }
 
   function run() {
@@ -135,7 +156,7 @@
   }
   function ready(f) { if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", f); else f(); }
   ready(function () {
-    run();
+    run(); warning();
     var q = document.getElementById("quiz");
     if (q && window.MutationObserver) new MutationObserver(function () { boxes(document); snapshot(); }).observe(q, { childList: true, subtree: true });
   });
