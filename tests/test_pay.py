@@ -33,9 +33,9 @@ class PayTests(unittest.TestCase):
   text=pay.render(self.d)
   for x in ['not AI-specific salaries','not explicitly defined as base-only','January-December 2024','down 33% from 2023','69,600','3% employment growth','not a count of open AI-security jobs','No zero-experience salary','does not measure job readiness']:self.assertIn(x,text)
   self.assertNotIn('$',text)
- def test_static_seven_roles_and_no_hidden_data(self):
+ def test_static_nine_choices_and_no_hidden_data(self):
   text=pay.render(self.d);tags=Tags(text).tags
-  roles=[a for t,a in tags if 'data-pay-role' in a];self.assertEqual(len(roles),7);self.assertTrue(all('hidden' not in a for a in roles))
+  roles=[a for t,a in tags if 'data-pay-role' in a];self.assertEqual(len(roles),9);self.assertTrue(all('hidden' not in a for a in roles))
   for r in self.d['roles']:self.assertTrue((R/'pay'/r['path_url']).resolve().is_file())
  def test_nav_every_page_and_single_header(self):
   pages=[p for p in R.rglob('*.html') if p.name!='theme-btn.html']

@@ -20,8 +20,8 @@
     "cta_primary_href": "quiz/",
     "quiz_prompt": "Find your starting point in AI security",
     "quiz_explanation": "Eight questions to explore where you fit, with a suggested path and an optional study plan.",
-    "beginner_label": "New to AI or security? Start with the basics",
-    "beginner_href": "ai-security-career-platform/routes/index.html",
+    "beginner_label": "Start with the basics: Step 0 in AI security",
+    "beginner_href": "ai-security-career-platform/routes/index.html#step-0",
     "privacy_note": "Your quiz answers and learning progress are saved only in this browser, not sent to me. Sharing a result link shares the answers in it. External websites have their own privacy policies. Optional paid courses are clearly labelled."
   },
   "proof": [
@@ -43,26 +43,37 @@
     }
   ],
   "help_head": "Your free AI and security guide",
-  "help_intro": "Find a career direction or learn something new. The guide and exercises here are completely free. Optional external courses may charge; these are labelled.",
+  "help_intro": "Start with the basics, choose a career or learn something for the work you do now.",
   "help": [
     {
-      "title": "Explore an AI security career",
-      "body": "Answer eight questions for an initial suggested specialist path. Add optional skill details to refine it and choose study hours to create a plan. This is guidance, not a job-readiness assessment.",
-      "link_label": "Take the career quiz",
-      "href": "quiz/",
-      "cta": true
+      "title": "Step 0: AI and security foundations",
+      "body": "AI basics, security basics, then AI security. Follow the sequence or skip what you know. No coding needed.",
+      "href": "ai-security-career-platform/routes/index.html#step-0",
+      "link_label": "Start Step 0"
     },
     {
-      "title": "Pick a learning route",
-      "body": "New to AI or security? Start with the foundations. Or choose a route for developers, leaders, technical presales or sales. Each has lessons, a first task and a way to check your work.",
-      "link_label": "See the routes",
-      "href": "ai-security-career-platform/routes/index.html"
+      "title": "Choose an AI security career",
+      "body": "Explore specialist roles and the work they involve, with learning steps and practice projects.",
+      "href": "ai-security-career-platform/#paths",
+      "link_label": "Explore career paths"
     },
     {
-      "title": "Go deeper on one skill",
-      "body": "Thirteen skill pages with reading, exercises and practice questions, plus seven specialist career paths. Free resources first; anything paid is labelled.",
-      "link_label": "Open the Learn library",
-      "href": "ai-security-career-platform/learn/index.html"
+      "title": "Bring your network-security experience",
+      "body": "Connect segmentation and traffic controls to AI data flows, tool permissions and testing.",
+      "href": "ai-security-career-platform/routes/network-to-ai-security.html",
+      "link_label": "Open the network route"
+    },
+    {
+      "title": "Lead AI security",
+      "body": "For security leaders, CISOs and managers: practise supplier reviews, risk decisions and incident planning.",
+      "href": "ai-security-career-platform/routes/leadership.html",
+      "link_label": "Open the leadership route"
+    },
+    {
+      "title": "Learn a specific skill",
+      "body": "Explanations and exercises on language models, agents, data access and other AI security topics.",
+      "href": "ai-security-career-platform/learn/index.html",
+      "link_label": "Open the skill library"
     }
   ],
   "about_head": "From software development to AI security",
@@ -109,7 +120,7 @@
   "quiz_page": {
     "title": "Which AI security role fits you? | Zulia Shavaeva",
     "h1": "Which AI security role fits the work you already do?",
-    "sub": "Eight questions about your background, interests and experience give you an initial suggested path. You can then refine it with optional skill questions or choose study hours to create your plan.",
+    "sub": "Answer eight questions about your background and interests for a suggested career direction. Add skill details or study hours after the result if useful.",
     "note": "No account needed. The quiz uses written scoring rules, not a skills assessment. Answers stay in this browser unless you share your result link.",
     "meta_description": "Explore an AI security career path with eight questions. Optional skill questions and a study plan, free from Zulia Shavaeva."
   },

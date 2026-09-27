@@ -55,7 +55,7 @@
     var pe = document.querySelector(".result .res-sec.proof"), proof = null;
     if (pe) {
       var h3 = pe.querySelector("h3"), mu = pe.querySelector(".small.muted");
-      proof = { title: (h3 ? h3.textContent : "").replace(/^Then prove it:\s*/, "").trim(), hours: num(mu && mu.textContent, /About\s+([\d.]+)\s+hours/i) };
+      proof = { title: (h3 ? h3.textContent : "").replace(/^(?:Then prove it|Practice project):\s*/, "").trim(), hours: num(mu && mu.textContent, /About\s+([\d.]+)\s+hours/i) };
     }
     var rolel = document.querySelector(".result .rolel b"), h2 = document.querySelector(".result h2");
     var runs = get("aiscp_runs", []), last = runs.length ? runs[runs.length - 1] : {};
@@ -77,7 +77,7 @@
   function renderPlan(root) {
     var p = get(PLAN, null), d = get(DONE, {});
     if (!p || !p.weeks) {
-      root.innerHTML = '<div class="card"><h2>Take the diagnostic first</h2><p>Your plan is built from a diagnostic result. It is stored in this browser only.</p><p><a class="btn" href="' + REL + 'index.html#quiz">Take the diagnostic</a></p></div>';
+      root.innerHTML = '<div class="card"><h2>No weekly plan saved</h2><p>Choose study hours after a career quiz result to save a weekly plan. Learning routes above track progress separately and do not need the quiz.</p><p><a class="btn" href="' + REL + 'index.html#quiz">Take the career quiz</a></p></div>';
       return;
     }
     var all = [], planKeys = {};

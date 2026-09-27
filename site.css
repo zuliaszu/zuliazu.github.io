@@ -153,3 +153,5 @@ body{position:relative;isolation:auto}
  .top nav a,body.guide .zs-top nav a{padding:13px 32px}.top nav a.btn,body.guide .zs-top nav a.btn{margin:10px 32px 0;justify-content:center}
 }
 @media(min-width:1101px){.top nav{gap:18px}.top .in{gap:20px}.top nav a{white-space:nowrap}}
+
+.journey-nav{border-bottom:1px solid var(--line);font-size:14px}.journey-nav>div{max-width:1120px;margin:auto;padding:10px clamp(16px,4vw,40px);display:flex;flex-wrap:wrap;gap:6px 24px}.journey-nav a{color:var(--ink-2);padding:6px 0;text-underline-offset:4px}.journey-related{padding:28px 0;border-top:1px solid var(--line);line-height:2}.journey-nav a:focus-visible{outline:2px solid currentColor;outline-offset:4px}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}@media print{.journey-nav{display:none}}

@@ -192,11 +192,58 @@
       "note": "We have not verified a comparable UK AI-security research range. Academic pay and AI-lab total compensation should not be pooled.",
       "bands": [],
       "path_url": "../ai-security-career-platform/paths/research.html"
+    },
+    {
+      "id": "network",
+      "label": "Network security",
+      "benchmark": "Network Security Engineer",
+      "source_url": "https://www.itjobswatch.co.uk/jobs/uk/network%20security%20engineer.do",
+      "source_page": null,
+      "work": "Apply network-security experience to AI connections, egress restrictions and tool access. The learning route leads into architecture or engineering.",
+      "note": "UK network-security engineer vacancies, not AI-specific salaries. This describes the existing profession, not a pay rise for taking the AI route.",
+      "bands": [],
+      "path_url": "../ai-security-career-platform/routes/network-to-ai-security.html",
+      "advertised": {
+        "low": 47500,
+        "high": 79688,
+        "median": 65000,
+        "salary_count": 42,
+        "vacancy_count": 63,
+        "period": "6 months to 27 September 2026"
+      }
+    },
+    {
+      "id": "leadership",
+      "label": "Security leadership / CISO",
+      "benchmark": "UK cyber-security leadership",
+      "source_url": "https://cybersharkrecruitment.squarespace.com/s/Cybershark-Recruitments-UK-Cyber-Security-Salary-Survey-2026.pdf#page=6",
+      "source_page": 6,
+      "work": "Set security priorities, fund controls and assign responsibility for AI risk. A CISO (chief information security officer) leads the wider security programme, not only AI.",
+      "note": "Broad cyber leadership, not AI-specific pay. These roles require organisational and people leadership experience; completing a learning route does not establish readiness.",
+      "bands": [],
+      "leadership_bands": [
+        {
+          "title": "Head of",
+          "low": 118500,
+          "high": 142500
+        },
+        {
+          "title": "Director",
+          "low": 155000,
+          "high": 181500
+        },
+        {
+          "title": "CISO",
+          "low": 195000,
+          "high": 219500
+        }
+      ],
+      "path_url": "../ai-security-career-platform/routes/leadership.html"
     }
   ],
   "source_title": "Cybershark Recruitment 2026 UK Cyber Security Salary Survey",
   "source_url": "https://cybersharkrecruitment.squarespace.com/s/Cybershark-Recruitments-UK-Cyber-Security-Salary-Survey-2026.pdf",
-  "methodology": "The report gives salary ranges by experience band and reports 3,861 participants overall. It does not give counts for each role/band or define how its ranges were calculated. The table is not explicitly defined as base-only. Bonuses, equity and sales OTE have not been added. These are directional recruiter benchmarks, not a representative UK market estimate or a personal salary prediction. No AI premium or currency conversion has been applied.",
+  "methodology": "The report gives salary ranges by experience band and reports 3,861 participants overall. It does not give counts for each role/band or define how its ranges were calculated. The table is not explicitly defined as base-only. Bonuses, equity and sales OTE have not been added. These are directional recruiter benchmarks, not a representative UK market estimate or a personal salary prediction. No AI premium or currency conversion has been applied. Network security uses IT Jobs Watch advertised salary percentiles with its own observation period and sample count.",
   "leadership": [
     {
       "title": "Head of",

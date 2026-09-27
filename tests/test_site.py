@@ -78,7 +78,7 @@ class SiteTests(unittest.TestCase):
         self.assertNotIn('16 questions',hero)
         self.assertLess(hero.index('Take the career quiz'),hero.index('Connect on LinkedIn'))
         self.assertLess(hero.index('Connect on LinkedIn'),hero.index('Start with the basics'))
-        self.assertEqual(data['help'][0]['href'],'quiz/')
+        self.assertEqual(data['help'][0]['href'],'ai-security-career-platform/routes/index.html#step-0')
     def test_all_pages_have_correct_profile_and_canonical(self):
         profile = json.loads((ROOT/'content/site.json').read_text())['linkedin']
         pages = [p for p in ROOT.rglob('*.html') if p.name != 'theme-btn.html']

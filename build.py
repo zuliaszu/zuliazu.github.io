@@ -2,6 +2,7 @@
 """Builds index.html and quiz/index.html from content/site.json + site.css. cv/index.html is hand-maintained.
 Run: /usr/bin/python3 build.py"""
 import json, pathlib, html, datetime, runpy, hashlib, re
+from journey_navigation import navigation
 ROOT = pathlib.Path(__file__).resolve().parent
 D = json.loads((ROOT / "content" / "site.json").read_text())
 esc = lambda s: html.escape(str(s), quote=True)
@@ -41,7 +42,7 @@ def top(rel, on):
     links = [(f"{rel}ai-security-career-platform/routes/index.html", "Start learning", "help"), (f"{rel}pay/", "Pay & careers", "pay"), (f"{rel}#about", "About", "about"), (f"{rel}#talks", "Talks", "talks"), (f"{rel}cv/", "CV", "cv"), (D["linkedin"], "LinkedIn", "li")]
     nav = "".join(f'<a href="{esc(h)}"{" class=on" if k == on else ""}{" rel=noopener" if h.startswith("http") else ""}>{esc(t)}</a>' for h, t, k in links)
     return (f'<a class="skip" href="#main">Skip to content</a><header class="top"><div class="in"><a class="brand" href="{rel or "./"}">{esc(D["name"])}</a>'
-            f'<button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button><nav id="nav" aria-label="Site">{nav}<a class="btn" href="{rel}quiz/">Career quiz</a>' + THEME_BTN + '</nav></div></header>')
+            f'<button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button><nav id="nav" aria-label="Site">{nav}<a class="btn" href="{rel}quiz/">Career quiz</a>' + THEME_BTN + '</nav></div></header>' + navigation(rel+'ai-security-career-platform/'))
 
 def foot(rel):
     return (f'<footer><div class="wrap in"><span>{esc(D["footer_line"])} {YEAR}.</span><span><a href="{esc(D["linkedin"])}" rel="noopener">LinkedIn</a> &middot; <a href="{rel}cv/">CV</a> &middot; <a href="{esc(platform_url(rel))}routes/index.html">Free AI and security guide</a></span></div></footer>'
@@ -92,7 +93,7 @@ quiz = (head(Q["title"], Q["meta_description"], "../", quiz_css, route="quiz/").
         f'''<main id="main" class="wrap"><div id="hero" class="qhero rv in"><p class="eyebrow">Eight questions, free, no signup</p><h1>{esc(Q["h1"])}</h1><p class="sub">{esc(Q["sub"])}</p>
 <div class="ctas"><a class="btn amber" href="#quiz" data-start>Start the quiz {ARROW}</a><a class="btn ghost" href="{esc(platform_url("../"))}#paths">Explore career paths</a></div>
 <p class="small" style="color:var(--mute);font-size:14.5px;margin:14px 0 0">{esc(Q["note"])}</p></div>
-<p class="quiz-alternative"><a href="../ai-security-career-platform/routes/index.html">New to AI or not looking for a security role? Choose a learning route without a quiz.</a></p><div id="quiz" class="card"></div></main>''' + foot("../").replace("</body>", f'<script>window.AISCP_BASE={json.dumps(platform_url("../"))};</script><script src="quiz.js" defer></script><script>window.AISCP_REL={json.dumps(platform_url("../"))};</script><script src="../ai-security-career-platform/embed/plan.js" defer></script></body>'))
+<p class="quiz-alternative"><a href="../ai-security-career-platform/routes/index.html#step-0">New to AI security? Start with Step 0.</a></p><div id="quiz" class="card"></div></main>''' + foot("../").replace("</body>", f'<script>window.AISCP_BASE={json.dumps(platform_url("../"))};</script><script src="quiz.js" defer></script><script>window.AISCP_REL={json.dumps(platform_url("../"))};</script><script src="../ai-security-career-platform/embed/plan.js" defer></script></body>'))
 (ROOT / "quiz").mkdir(exist_ok=True)
 (ROOT / "quiz" / "index.html").write_text(asset_versions(quiz, ROOT / "quiz"))
 from pay_page import render as render_pay
@@ -101,7 +102,7 @@ pay = head("UK pay and AI security careers | Zulia Shavaeva", "Explore UK securi
 (ROOT/"pay/index.html").write_text(asset_versions(pay, ROOT/"pay"))
 cv_path=ROOT/"cv/index.html"
 cv=cv_path.read_text()
-cv=re.sub(r'<header class="top">.*?</header>', top("../", "cv").split('</a>',1)[1],cv,count=1,flags=re.S)
+cv=re.sub(r'<header class="top">.*?</header>(?:<nav class="journey-nav".*?</nav>)?', top("../", "cv").split('</a>',1)[1],cv,count=1,flags=re.S)
 cv_path.write_text(asset_versions(cv,ROOT/"cv"))
 print("built index.html, quiz/index.html, pay/index.html and CV navigation")
 

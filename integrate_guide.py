@@ -10,6 +10,8 @@ run. Page content, quiz scoring and plan semantics are never touched; only the
 head, the top navigation, a context strip, a footer line and the script tags.
 """
 import argparse, pathlib, re, sys, hashlib, json, html
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from journey_navigation import navigation
 
 ROOT = pathlib.Path(__file__).resolve().parent
 GUIDE = ROOT / "ai-security-career-platform"
@@ -67,20 +69,13 @@ def label_of(path, title):
 
 
 def crumb(path, root, g, label, key):
-    trail = ['<a href="%sroutes/index.html">Free AI and security guide</a>' % g]
-    if key == "learn":
-        trail += ['<span class="sep">/</span>', '<a href="%slearn/index.html">Learn</a>' % g]
-    elif key == "paths":
-        trail += ['<span class="sep">/</span>', '<a href="%sindex.html#paths">Paths</a>' % g]
-    elif key == "plan":
-        trail += ['<span class="sep">/</span>', '<span>My plan</span>']
-    return '<div class="zs-crumb"><div class="in">' + "".join(trail) + '</div></div>'
+    return navigation(g, guide=True)
 
 
 def header(root, g, key, theme_btn):
-    links = [("%sroutes/index.html" % g, "Start here", "routes"), ("%sindex.html" % g, "Careers", "guide"),
+    links = [("%sroutes/index.html" % g, "Start learning", "routes"), ("%sindex.html#paths" % g, "Career paths", "guide"),
              ("%spay/" % root, "Pay &amp; careers", "pay"),
-             ("%slearn/index.html" % g, "Learn", "learn"),
+             ("%slearn/index.html" % g, "Skill library", "learn"),
              ("%splan.html" % g, "My plan", "plan")]
     nav = "".join('<a href="%s"%s>%s</a>' % (h, ' class="on"' if k == key else "", t) for h, t, k in links)
     return ('<header class="top zs-top"><div class="in">'
@@ -132,6 +127,20 @@ def transform(path, depth, head_inline, theme_btn):
 
     text = put(text, "crumb", crumb(path, root, g, label, key),
                marked("header"), "after")
+
+    page_rel = path.relative_to(GUIDE).as_posix()
+    extra = ''
+    if page_rel.startswith('paths/'):
+        role = path.stem
+        pay_link = '<h2>UK pay for this career</h2><p><a href="../../pay/#'+role+'">Open the profession-specific salary guide</a>. Check the source dates and salary basis before comparing offers.</p>'
+        text = put(text, 'role-pay', pay_link, re.compile(r'<section id="roles">'), 'after')
+        extra = '<p class="journey-related"><a href="../routes/index.html#step-0">New to AI security? Start at Step 0</a> · <a href="../../pay/#'+role+'">UK pay for this career</a> · <a href="../index.html#paths">All career paths and routes</a></p>'
+    elif page_rel == 'routes/network-to-ai-security.html':
+        extra = '<p class="journey-related"><a href="../../pay/#network">UK network-security pay</a> · <a href="../index.html#paths">Compare AI security careers</a> · <a href="index.html#step-0">Step 0: foundations</a></p>'
+    elif page_rel == 'routes/leadership.html':
+        extra = '<p class="journey-related"><a href="../../pay/#leadership">UK security leadership pay</a> · <a href="../paths/grc.html">Governance and risk career</a> · <a href="../index.html#paths">All career paths and routes</a></p>'
+    if extra:
+        text = put(text, "journey-related", extra, re.compile(r'</main>', re.S), 'before')
 
     # footer: one extra line inside the guide's existing footer, no second landmark
     foot = ('<p class="zs-foot"><a href="%s">%s: home</a><span class="sep">&middot;</span>'

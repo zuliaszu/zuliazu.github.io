@@ -313,6 +313,9 @@ label.dn input{width:14px;height:14px;margin:0;vertical-align:-1px;accent-color:
 @media(max-width:800px){.route-layout{grid-template-columns:1fr;gap:8px}.route-outline{position:static;display:block}.route-outline nav{display:flex;flex-wrap:wrap;gap:4px 20px}.route-outline h2{width:100%;margin-bottom:4px}.route-outline a{font-size:14px}.route-recommend{display:block}.route-recommend .btn{margin-top:20px}.route-hero{padding-top:28px}}
 @media print{.route-outline,.route-actions,.route-print,.route-career{display:none!important}.route-layout{display:block}.route-body{max-width:none}.route-body section{break-inside:auto}.route-body h2,.route-body h3{break-after:avoid}.route-body details>*{display:block}.route-body details>summary{display:list-item}}
 
+.career-starts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin:28px 0 44px}.career-start{padding:22px 0;border-block:1px solid var(--line);min-width:0}.career-start h3{font-size:23px;line-height:1.25;margin:10px 0}.career-start p{margin:0 0 16px;max-width:65ch}.career-start a{font-weight:600}.route-group{scroll-margin-top:110px}@media(max-width:800px){.career-starts{grid-template-columns:1fr;gap:0}.career-start+ .career-start{border-top:0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
 .salary-chart{border:1px solid var(--line);border-radius:14px;padding:clamp(20px,3vw,36px);background:var(--panel);margin:12px 0 28px}
 .pay-heading{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:20px}
 .pay-heading h2{font-size:clamp(26px,3vw,36px);margin:0!important}

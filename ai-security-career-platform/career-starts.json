@@ -1,0 +1,31 @@
+[
+  {
+    "id": "step-0",
+    "title": "Step 0: AI and security foundations",
+    "label": "Start from the basics",
+    "description": "Learn AI basics, then security basics, then bring them together in an AI security review. Skip the parts you know.",
+    "href": "routes/index.html#step-0",
+    "link_label": "Start Step 0",
+    "nav_label": "Step 0: foundations"
+  },
+  {
+    "id": "network-to-ai-security",
+    "title": "Network security to AI security",
+    "label": "Build on network experience",
+    "description": "Apply segmentation and traffic analysis to AI applications. Learn where tool permissions and data access need separate controls.",
+    "href": "routes/network-to-ai-security.html",
+    "link_label": "Open the network route",
+    "pay": "network",
+    "nav_label": "Networking"
+  },
+  {
+    "id": "leadership",
+    "title": "AI security leadership / CISO",
+    "label": "Lead security decisions",
+    "description": "Practise risk decisions, supplier reviews and incident planning. For security leaders and managers taking responsibility for AI.",
+    "href": "routes/leadership.html",
+    "link_label": "Open the leadership route",
+    "pay": "leadership",
+    "nav_label": "Leadership / CISO"
+  }
+]
