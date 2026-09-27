@@ -112,6 +112,15 @@ class SiteTests(unittest.TestCase):
         self.assertIn('routes/network-to-ai-security.html',text)
         self.assertIn('"id": "R-role-netsec"',text)
 
+    def test_browse_entry_includes_network_route_without_quiz(self):
+        quiz=(ROOT/'quiz/index.html').read_text()
+        self.assertIn('Explore career paths',quiz)
+        self.assertNotIn('See the seven roles',quiz)
+        browse=(ROOT/'ai-security-career-platform/index.html').read_text().split('<section id="paths">',1)[1].split('</section>',1)[0]
+        self.assertIn('data-background-route="network-to-ai-security"',browse)
+        self.assertIn('routes/network-to-ai-security.html',browse)
+        self.assertEqual(browse.count('class="path-card"'),7)
+
     def test_font_licenses_shipped(self):
         for name in ('figtree', 'jetbrains-mono', 'space-grotesk'):
             self.assertTrue((ROOT/'fonts'/f'{name}-latin.woff2').is_file())
