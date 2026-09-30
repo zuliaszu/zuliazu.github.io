@@ -19,6 +19,17 @@ SITE = json.loads((ROOT / "content/site.json").read_text())
 NAME = SITE["name"]
 ASSETS = ("fonts.css", "site.css", "theme.css", "guide.css", "head-inline.js", "theme-btn.html", "site.js", "fx.js")
 
+ANALYTICS = SITE.get("analytics", {})
+GA_ID = str(ANALYTICS.get("ga4_measurement_id", "")).strip() if ANALYTICS.get("enabled") else ""
+
+
+def analytics_tag(rel):
+    """Same opt-in loader build.py emits; empty when analytics is off."""
+    if not GA_ID:
+        return ""
+    return '<script>window.ZS_ANALYTICS=%s;</script><script src="%sanalytics.js" defer></script>' % (json.dumps({"id": GA_ID}), rel)
+
+
 M = lambda k: ("<!-- zs:%s -->" % k, "<!-- /zs:%s -->" % k)
 block = lambda k, body: M(k)[0] + body + M(k)[1]
 
@@ -152,6 +163,7 @@ def transform(path, depth, head_inline, theme_btn):
 
     scripts = ('<script src="%ssite.js" defer></script><script src="%sfx.js" defer></script>' % (rel, rel))
     text = put(text, "scripts", scripts, re.compile(r"</body>", re.S), "before")
+    text = put(text, "analytics", analytics_tag(rel), re.compile(r"</body>", re.S), "before")
 
     # fx.js assembles ".hero h1" word by word unless the heading already has an
     # element child; wrapping the text keeps the guide hero static.

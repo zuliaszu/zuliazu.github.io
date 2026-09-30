@@ -126,5 +126,44 @@ class SiteTests(unittest.TestCase):
             self.assertTrue((ROOT/'fonts'/f'{name}-latin.woff2').is_file())
             self.assertIn('SIL OPEN FONT LICENSE', (ROOT/'fonts'/f'{name}-OFL.txt').read_text())
 
+    def test_analytics_is_opt_in_and_off_by_default(self):
+        site = json.loads((ROOT/'content/site.json').read_text())
+        self.assertEqual(site['analytics']['enabled'], False)
+        self.assertEqual(site['analytics']['ga4_measurement_id'], '')
+        for page in list(ROOT.rglob('*.html')):
+            if '.git' in page.parts: continue
+            text = page.read_text()
+            self.assertNotIn('googletagmanager', text, page)
+            self.assertNotIn('ZS_ANALYTICS', text, page)
+        for page in ('index.html', 'quiz/index.html', 'pay/index.html', 'cv/index.html', 'ai-security-career-platform/routes/developer.html', 'ai-security-career-platform/index.html'):
+            html = (ROOT/page).read_text()
+            self.assertEqual(html.count('<!-- zs:analytics -->'), 1 if page != 'index.html' and page != 'quiz/index.html' and page != 'pay/index.html' else 0, page)
+        js = (ROOT/'analytics.js').read_text()
+        self.assertIn("if (!/^G-[A-Z0-9]{4,}$/.test(ID)) return;", js)
+        self.assertIn("location.origin + location.pathname", js)
+        self.assertIn("ad_storage: 'denied'", js)
+        self.assertIn("allow_google_signals: false", js)
+        self.assertIn("globalPrivacyControl", js)
+        self.assertNotIn('#r=', js)
+        for ev in ('route_step', 'route_complete', 'quiz_start', 'quiz_complete', 'course_link_click'):
+            self.assertIn("'" + ev + "'", js)
+        css = (ROOT/'site.css').read_text()
+        for cls in ('.zs-consent', '.zs-consent-toggle', '.route-ring-arc', '.route-bar i', '.route-saved{--accent:var(--petrol)}'):
+            self.assertIn(cls, css)
+        spec = importlib.util.spec_from_file_location('buildmod_check', ROOT / 'build.py')
+        src = (ROOT/'build.py').read_text()
+        self.assertIn('analytics_tag(rel)', src)
+        self.assertIn('{analytics_tag(rel)}</body>', src)
+        self.assertIn('privacy_note', src)
+
+    def test_homepage_progress_summary_mount_and_shared_script(self):
+        html = (ROOT/'index.html').read_text()
+        self.assertIn('<div data-route-summary data-route-base="ai-security-career-platform/routes/" hidden></div>', html)
+        self.assertIn('ai-security-career-platform/assets/extra-routes.js', html)
+        built = (ROOT/'ai-security-career-platform/assets/extra-routes.js').read_text()
+        self.assertIn('var ROUTES = {"ai-fundamentals":{"t":"AI fundamentals","s":[["first-task"', built)
+        self.assertIn('route-ring', built)
+        self.assertIn('Your learning progress', built)
+
 if __name__ == '__main__':
     unittest.main()

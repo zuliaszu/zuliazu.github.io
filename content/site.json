@@ -126,5 +126,10 @@
   },
   "footer_line": "Views on this site are my own, not my employer's.",
   "talks_h2": "Talks and community",
-  "site_url": "https://zulia.uk"
+  "site_url": "https://zulia.uk",
+  "analytics": {
+    "enabled": false,
+    "ga4_measurement_id": "",
+    "privacy_note": "If you allow the optional analytics, I see anonymous usage counts (pages visited, country, which lessons and quizzes get finished), never your answers or notes. Change that choice any time from the footer."
+  }
 }

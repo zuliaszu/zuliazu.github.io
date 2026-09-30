@@ -155,3 +155,38 @@ body{position:relative;isolation:auto}
 @media(min-width:1101px){.top nav{gap:18px}.top .in{gap:20px}.top nav a{white-space:nowrap}}
 
 .journey-nav{border-bottom:1px solid var(--line);font-size:14px}.journey-nav>div{max-width:1120px;margin:auto;padding:10px clamp(16px,4vw,40px);display:flex;flex-wrap:wrap;gap:6px 24px}.journey-nav a{color:var(--ink-2);padding:6px 0;text-underline-offset:4px}.journey-related{padding:28px 0;border-top:1px solid var(--line);line-height:2}.journey-nav a:focus-visible{outline:2px solid currentColor;outline-offset:4px}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}@media print{.journey-nav{display:none}}
+
+/* Progress summary (shared with the guide): ring + one bar per started route. */
+.route-saved{--accent:var(--petrol)}
+.route-saved .route-bars a{color:var(--petrol)}
+.route-dash{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px 40px;align-items:start}
+.route-dash-ring{text-align:center;max-width:180px}
+.route-dash-ring p{margin:8px 0 0;font-size:14px;color:var(--mute)}
+.route-ring{display:block;margin:0 auto;overflow:visible}
+.route-ring-track{fill:none;stroke:var(--line);stroke-width:10}
+.route-ring-arc{fill:none;stroke:var(--accent);stroke-width:10;stroke-linecap:round;transform:rotate(-90deg);transform-origin:50% 50%;transition:stroke-dashoffset .9s cubic-bezier(.22,1,.36,1)}
+.route-ring-num{font-size:26px;font-weight:700;fill:var(--ink);letter-spacing:-.02em}
+.route-ring-sub{font-size:11px;fill:var(--mute)}
+.route-bars{list-style:none;padding:0;margin:0}
+.route-saved .route-bars li{margin:0 0 18px}
+.route-bar-head{display:flex;justify-content:space-between;gap:16px;align-items:baseline}
+.route-bar-head a{font-weight:600;text-decoration:none}
+.route-bar-head a:hover{text-decoration:underline;text-underline-offset:4px}
+.route-bar-head span{font-size:14px;color:var(--mute);white-space:nowrap;font-variant-numeric:tabular-nums}
+.route-bar{height:8px;border-radius:4px;background:var(--line);overflow:hidden;margin:8px 0 6px}
+.route-bar i{display:block;height:100%;border-radius:4px;background:var(--accent);min-width:4px;transition:width .6s cubic-bezier(.22,1,.36,1)}
+.route-saved .route-bar-next{margin:0;font-size:14px;color:var(--mute)}
+.route-bar-next a{font-weight:600}
+@media(max-width:640px){.route-dash{grid-template-columns:1fr}.route-dash-ring{max-width:none}.route-bar-head{flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){.route-ring-arc,.route-bar i{transition:none}}
+
+/* Opt-in analytics: consent card and footer toggle (analytics.js). Inert unless content/site.json enables analytics. */
+.zs-consent{position:fixed;left:16px;right:16px;bottom:16px;z-index:40;max-width:440px;margin-inline:auto 0;padding:20px 22px;background:var(--paper-2);color:var(--ink);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 48px oklch(0% 0 0/.28);font-size:15px;line-height:1.55}
+.zs-consent p{margin:0 0 10px}
+.zs-consent .zs-consent-h{font-family:var(--serif);font-weight:600;font-size:18px;letter-spacing:-.02em;margin-bottom:8px}
+.zs-consent-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.zs-consent .btn{padding:10px 16px;font-size:15px}
+.zs-consent-line{margin:10px 0 0;font-size:13.5px;color:var(--mute)}
+.zs-consent-toggle{background:none;border:0;padding:0;font:inherit;color:var(--petrol);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.zs-consent-toggle:hover{color:var(--petrol-deep)}
+@media(max-width:640px){.zs-consent{left:10px;right:10px;bottom:10px;max-width:none}}

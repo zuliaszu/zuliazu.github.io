@@ -132,7 +132,9 @@ window.AISCP={"rules": {"version": "v1.1", "note": "Rule-based scoring. Each rul
     else if (e.key === "Escape" && phase === "refine") { bump(); results(); }
     else if (e.key === "Backspace" && !/input|textarea/i.test(e.target.tagName)) { e.preventDefault(); goBack(); }
   }
-  function start() { bump(); answers = {}; ix = 0; phase = "core"; runAt = null;
+  /* Lifecycle signal for optional analytics (only if the visitor accepted). Carries no answers: quiz_start has no detail, quiz_complete has the suggested path slug only. */
+  function emit(name, detail) { try { document.dispatchEvent(new CustomEvent("aiscp:" + name, { detail: detail || {} })); } catch (e) {} }
+  function start() { bump(); answers = {}; ix = 0; phase = "core"; runAt = null; emit("quiz_start");
     if (hero) hero.classList.add("hidden"); root.classList.add("live"); document.body.classList.add("quiz-live");
     if (location.hash.indexOf("#r=") === 0) history.replaceState(null, "", location.pathname);
     render(); }
@@ -194,7 +196,7 @@ window.AISCP={"rules": {"version": "v1.1", "note": "Rule-based scoring. Each rul
     bump();
     var a = answers, r = score(a), ranked = Object.keys(r.scores).map(function (n) { return { n: n, s: r.scores[n] }; }).sort(function (x, y) { return y.s - x.s || x.n.localeCompare(y.n); });
     var top = ranked[0].n, path = BY_CLUSTER[top], second = ranked[1].n, sec = BY_CLUSTER[second], why = whyText(top, second, r.why, ranked, a), max = Math.max(1, ranked[0].s);
-    var code = encode(a); if (!fromHash) history.replaceState(null, "", location.pathname + "#r=" + code);
+    var code = encode(a); if (!fromHash) { history.replaceState(null, "", location.pathname + "#r=" + code); emit("quiz_complete", { result: path.slug }); }
     var rows = path.skills.slice().sort(function (x, y) { return x.priority - y.priority; }).map(function (sk) { var v = rating(a, sk.key), name = (RES[sk.key] || {}).skill_name || sk.key;
       var you = v === null ? "not asked" : v >= 4 ? "covered" : v === 2 ? "basics only" : "gap", cls = v === null ? "na" : v >= 4 ? "have" : v === 2 ? "mid" : "gap";
       return '<div class="cov"><div class="cov-h"><b>' + esc(name) + '</b><span class="' + cls + '">' + you + '</span></div><div class="cov-bars"><i class="dem" style="width:' + sk.pct + '%"></i><i class="you" style="width:' + (v === null ? 0 : v * 20) + '%"></i></div><div class="cov-m"><span>' + sk.pct + "% of " + (sk.basis_n || path.n_postings) + ' research postings ask for it</span><span>' + esc(sk.why_here) + "</span></div></div>"; }).join("");

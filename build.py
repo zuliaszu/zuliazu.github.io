@@ -16,6 +16,16 @@ THEME_BTN = (ROOT / 'theme-btn.html').read_text().strip()
 OPT = {n: (ROOT / n).exists() for n in ("theme.css", "fx.js", "unlock.css", "unlock.js")}
 ABOUT = json.loads((ROOT / "content" / "about.json").read_text()) if (ROOT / "content" / "about.json").exists() else {}
 HEAD_INLINE = (ROOT / "head-inline.js").read_text().strip() if (ROOT / "head-inline.js").exists() else ""
+ANALYTICS = D.get("analytics", {})
+GA_ID = str(ANALYTICS.get("ga4_measurement_id", "")).strip() if ANALYTICS.get("enabled") else ""
+if GA_ID and not re.fullmatch(r"G-[A-Z0-9]{4,}", GA_ID):
+    raise SystemExit("analytics.ga4_measurement_id must look like G-XXXXXXXXXX")
+
+def analytics_tag(rel):
+    """Opt-in GA4 loader. Empty string when analytics is off, so the site stays tracker-free by default."""
+    if not GA_ID:
+        return ""
+    return f'<script>window.ZS_ANALYTICS={json.dumps({"id": GA_ID})};</script><script src="{rel}analytics.js" defer></script>'
 
 def asset_versions(text, directory):
     def replace(m):
@@ -46,7 +56,7 @@ def top(rel, on):
 
 def foot(rel):
     return (f'<footer><div class="wrap in"><span>{esc(D["footer_line"])} {YEAR}.</span><span><a href="{esc(D["linkedin"])}" rel="noopener">LinkedIn</a> &middot; <a href="{rel}cv/">CV</a> &middot; <a href="{esc(platform_url(rel))}routes/index.html">Free AI and security guide</a></span></div></footer>'
-            f'<script src="{rel}site.js" defer></script>' + (f'<script src="{rel}fx.js" defer></script>' if OPT["fx.js"] else "") + (f'<script src="{rel}unlock.js" defer></script>' if OPT["unlock.js"] else "") + f'<script src="{rel}ai-security-career-platform/assets/extra-routes.js" defer></script></body></html>')
+            f'<script src="{rel}site.js" defer></script>' + (f'<script src="{rel}fx.js" defer></script>' if OPT["fx.js"] else "") + (f'<script src="{rel}unlock.js" defer></script>' if OPT["unlock.js"] else "") + f'<script src="{rel}ai-security-career-platform/assets/extra-routes.js" defer></script>{analytics_tag(rel)}</body></html>')
 
 H = D["hero"]
 INTRO = "".join(f"<p>{esc(p)}</p>" for p in H["sub"].split("\n\n"))
@@ -62,7 +72,7 @@ home = head(f'{D["name"]}, {D["title"]}', D["meta_description"], "") + top("", "
 <div class="hero-actions"><h2>{esc(H["quiz_prompt"])}</h2><p class="quiz-explanation">{esc(H["quiz_explanation"])}</p>
 <div class="ctas"><a class="btn amber" href="{esc(H["cta_primary_href"])}">{esc(H["cta_primary"])} {ARROW}</a><a class="btn ghost hero-linkedin" href="{esc(D["linkedin"])}" rel="noopener">{esc(H["cta_secondary"])}</a></div>
 <p class="hero-beginner"><a href="{esc(H["beginner_href"])}">{esc(H["beginner_label"])} &rarr;</a></p>
-<p class="hero-free">{esc(H["cta_primary_note"])}</p><details class="hero-privacy"><summary>Privacy and paid resources</summary><p>{esc(H["privacy_note"])}</p></details></div></div>
+<p class="hero-free">{esc(H["cta_primary_note"])}</p><details class="hero-privacy"><summary>Privacy and paid resources</summary><p>{esc(H["privacy_note"])}{" " + esc(ANALYTICS.get("privacy_note", "")) if GA_ID else ""}</p></details></div></div>
 <figure class="pic rv in"><img src="img/zulia.webp" width="800" height="837" alt="Zulia Shavaeva, portrait by a lake" fetchpriority="high"></figure></div>
 <div data-route-summary data-route-base="ai-security-career-platform/routes/" hidden></div><div id="journey"></div>
 
@@ -103,6 +113,8 @@ pay = head("UK pay and AI security careers | Zulia Shavaeva", "Explore UK securi
 cv_path=ROOT/"cv/index.html"
 cv=cv_path.read_text()
 cv=re.sub(r'<header class="top">.*?</header>(?:<nav class="journey-nav".*?</nav>)?', top("../", "cv").split('</a>',1)[1],cv,count=1,flags=re.S)
+cv_analytics = "<!-- zs:analytics -->" + analytics_tag("../") + "<!-- /zs:analytics -->"  # hand-maintained page: same opt-in loader, marker region rewritten each build
+cv = re.sub(r"<!-- zs:analytics -->.*?<!-- /zs:analytics -->", lambda m: cv_analytics, cv, count=1, flags=re.S) if "<!-- zs:analytics -->" in cv else cv.replace("</body>", cv_analytics + "</body>", 1)
 cv_path.write_text(asset_versions(cv,ROOT/"cv"))
 print("built index.html, quiz/index.html, pay/index.html and CV navigation")
 

@@ -316,6 +316,28 @@ label.dn input{width:14px;height:14px;margin:0;vertical-align:-1px;accent-color:
 .career-starts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin:28px 0 44px}.career-start{padding:22px 0;border-block:1px solid var(--line);min-width:0}.career-start h3{font-size:23px;line-height:1.25;margin:10px 0}.career-start p{margin:0 0 16px;max-width:65ch}.career-start a{font-weight:600}.route-group{scroll-margin-top:110px}@media(max-width:800px){.career-starts{grid-template-columns:1fr;gap:0}.career-start+ .career-start{border-top:0}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
+/* Progress summary: ring + one bar per started route. Uses --accent; the personal site maps --accent to its own cyan. */
+.route-dash{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px 40px;align-items:start}
+.route-dash-ring{text-align:center;max-width:180px}
+.route-dash-ring p{margin:8px 0 0;font-size:14px;color:var(--mute)}
+.route-ring{display:block;margin:0 auto;overflow:visible}
+.route-ring-track{fill:none;stroke:var(--line);stroke-width:10}
+.route-ring-arc{fill:none;stroke:var(--accent);stroke-width:10;stroke-linecap:round;transform:rotate(-90deg);transform-origin:50% 50%;transition:stroke-dashoffset .9s cubic-bezier(.22,1,.36,1)}
+.route-ring-num{font-size:26px;font-weight:700;fill:var(--ink);letter-spacing:-.02em}
+.route-ring-sub{font-size:11px;fill:var(--mute)}
+.route-bars{list-style:none;padding:0;margin:0}
+.route-saved .route-bars li{margin:0 0 18px}
+.route-bar-head{display:flex;justify-content:space-between;gap:16px;align-items:baseline}
+.route-bar-head a{font-weight:600;text-decoration:none}
+.route-bar-head a:hover{text-decoration:underline;text-underline-offset:4px}
+.route-bar-head span{font-size:14px;color:var(--mute);white-space:nowrap;font-variant-numeric:tabular-nums}
+.route-bar{height:8px;border-radius:4px;background:var(--line);overflow:hidden;margin:8px 0 6px}
+.route-bar i{display:block;height:100%;border-radius:4px;background:var(--accent);min-width:4px;transition:width .6s cubic-bezier(.22,1,.36,1)}
+.route-saved .route-bar-next{margin:0;font-size:14px;color:var(--mute)}
+.route-bar-next a{font-weight:600}
+@media(max-width:640px){.route-dash{grid-template-columns:1fr}.route-dash-ring{max-width:none}.route-bar-head{flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){.route-ring-arc,.route-bar i{transition:none}}
+
 .salary-chart{border:1px solid var(--line);border-radius:14px;padding:clamp(20px,3vw,36px);background:var(--panel);margin:12px 0 28px}
 .pay-heading{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:20px}
 .pay-heading h2{font-size:clamp(26px,3vw,36px);margin:0!important}
