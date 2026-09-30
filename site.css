@@ -186,6 +186,9 @@ body{position:relative;isolation:auto}
 .zs-consent .zs-consent-h{font-family:var(--serif);font-weight:600;font-size:18px;letter-spacing:-.02em;margin-bottom:8px}
 .zs-consent-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
 .zs-consent .btn{padding:10px 16px;font-size:15px}
+.zs-consent-later{background:none;border:0;padding:10px 6px;font:inherit;font-size:14.5px;color:var(--mute);text-decoration:underline;text-underline-offset:3px;cursor:pointer;margin-left:auto}
+.zs-consent-later:hover{color:var(--ink)}
+body.quiz-live .zs-consent{display:none} /* never cover the quiz controls; the card returns when the quiz closes */
 .zs-consent-line{margin:10px 0 0;font-size:13.5px;color:var(--mute)}
 .zs-consent-toggle{background:none;border:0;padding:0;font:inherit;color:var(--petrol);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 .zs-consent-toggle:hover{color:var(--petrol-deep)}

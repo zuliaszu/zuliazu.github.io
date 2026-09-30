@@ -38,11 +38,13 @@
     banner = el('div', '', 'zs-consent'); banner.setAttribute('role', 'dialog'); banner.setAttribute('aria-labelledby', 'zs-consent-h'); banner.setAttribute('aria-describedby', 'zs-consent-p');
     var h = el('p', 'Help me see how this site is used?', 'zs-consent-h'); h.id = 'zs-consent-h';
     var p = el('p', 'Optional Google Analytics: pages visited, country, and which lessons or quizzes people finish. Never your quiz answers, notes or progress. You can change this any time from the footer.'); p.id = 'zs-consent-p';
-    var row = el('div', '', 'zs-consent-actions'), yes = el('button', 'Allow analytics', 'btn'), no = el('button', 'No thanks', 'btn ghost');
-    yes.type = no.type = 'button';
+    var row = el('div', '', 'zs-consent-actions'), yes = el('button', 'Allow analytics', 'btn'), no = el('button', 'No thanks', 'btn ghost'), later = el('button', 'Later', 'zs-consent-later');
+    yes.type = no.type = later.type = 'button'; later.setAttribute('aria-label', 'Decide later; nothing is collected until you choose');
     yes.addEventListener('click', function () { save('granted'); load(); closeBanner(); });
     no.addEventListener('click', function () { save('denied'); unload(); closeBanner(); });
-    row.appendChild(yes); row.appendChild(no); banner.appendChild(h); banner.appendChild(p); banner.appendChild(row);
+    later.addEventListener('click', closeBanner); /* no choice stored: nothing loads, the card returns on the next page */
+    banner.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeBanner(); });
+    row.appendChild(yes); row.appendChild(no); row.appendChild(later); banner.appendChild(h); banner.appendChild(p); banner.appendChild(row);
     document.body.appendChild(banner); yes.focus({preventScroll: true});
   }
   var footLine = null;

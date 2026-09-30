@@ -126,18 +126,18 @@ class SiteTests(unittest.TestCase):
             self.assertTrue((ROOT/'fonts'/f'{name}-latin.woff2').is_file())
             self.assertIn('SIL OPEN FONT LICENSE', (ROOT/'fonts'/f'{name}-OFL.txt').read_text())
 
-    def test_analytics_is_opt_in_and_off_by_default(self):
+    def test_analytics_is_opt_in_consent_gated(self):
         site = json.loads((ROOT/'content/site.json').read_text())
-        self.assertEqual(site['analytics']['enabled'], False)
-        self.assertEqual(site['analytics']['ga4_measurement_id'], '')
-        for page in list(ROOT.rglob('*.html')):
-            if '.git' in page.parts: continue
+        gid = site['analytics']['ga4_measurement_id']
+        self.assertTrue(re.fullmatch(r'G-[A-Z0-9]{4,}', gid), gid)
+        pages = [p for p in ROOT.rglob('*.html') if '.git' not in p.parts and p.name != 'theme-btn.html']
+        self.assertEqual(len(pages), 37)
+        for page in pages:
             text = page.read_text()
-            self.assertNotIn('googletagmanager', text, page)
-            self.assertNotIn('ZS_ANALYTICS', text, page)
-        for page in ('index.html', 'quiz/index.html', 'pay/index.html', 'cv/index.html', 'ai-security-career-platform/routes/developer.html', 'ai-security-career-platform/index.html'):
-            html = (ROOT/page).read_text()
-            self.assertEqual(html.count('<!-- zs:analytics -->'), 1 if page != 'index.html' and page != 'quiz/index.html' and page != 'pay/index.html' else 0, page)
+            self.assertNotIn('googletagmanager', text, page)  # Google is only ever loaded by analytics.js after consent
+            self.assertEqual(text.count('window.ZS_ANALYTICS={"id": "%s"}' % gid), 1 if site['analytics']['enabled'] else 0, page)
+            self.assertEqual(text.count('analytics.js'), 1 if site['analytics']['enabled'] else 0, page)
+        self.assertIn(site['analytics']['privacy_note'][:40], (ROOT/'index.html').read_text())
         js = (ROOT/'analytics.js').read_text()
         self.assertIn("if (!/^G-[A-Z0-9]{4,}$/.test(ID)) return;", js)
         self.assertIn("location.origin + location.pathname", js)
